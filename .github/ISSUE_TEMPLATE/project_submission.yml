@@ -1,0 +1,121 @@
+name: Project Submission
+description: Submit a Python simulation library to PySimHub
+title: "[Project]: "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting your project to PySimHub! We're excited to help the community discover your work.
+
+        Please fill out the information below. We'll review your submission and add it to the catalog.
+
+  - type: input
+    id: name
+    attributes:
+      label: Project Name
+      description: The name of your library
+      placeholder: e.g., SimPy
+    validations:
+      required: true
+
+  - type: textarea
+    id: tagline
+    attributes:
+      label: Tagline
+      description: A brief one-line description (max ~100 characters)
+      placeholder: e.g., Process-based discrete-event simulation framework
+    validations:
+      required: true
+
+  - type: input
+    id: github
+    attributes:
+      label: Repository URL
+      description: GitHub or GitLab URL
+      placeholder: https://github.com/username/project
+    validations:
+      required: true
+
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation URL
+      description: Link to documentation (optional)
+      placeholder: https://project.readthedocs.io
+
+  - type: dropdown
+    id: tags
+    attributes:
+      label: Tags
+      description: Select 3-5 tags that best describe your project
+      multiple: true
+      options:
+        - robotics
+        - control
+        - block-diagram
+        - dynamic-systems
+        - system-modeling
+        - discrete-event
+        - agent-based
+        - fluid-dynamics
+        - fem-pde
+        - molecular-dynamics
+        - optimization
+        - machine-learning
+        - digital-twin
+        - real-time
+        - visualization
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: custom_tags
+    attributes:
+      label: Custom Tags
+      description: If you selected "other" above, suggest additional tags (comma-separated)
+      placeholder: e.g., quantum-simulation, climate-modeling
+
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements Checklist
+      description: Please confirm your project meets these criteria
+      options:
+        - label: Open-source license (MIT, Apache, GPL, BSD, etc.)
+          required: true
+        - label: Available on PyPI or conda-forge
+          required: true
+        - label: Updated within the last 2 years
+          required: true
+        - label: Has documentation or README with examples
+          required: true
+        - label: Related to simulation or scientific computing
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Additional Information
+      description: |
+        Anything else you'd like us to know? For example:
+        - What makes your project unique?
+        - What domain/use case is it best suited for?
+        - Any notable users or citations?
+      placeholder: Optional additional context about your project
+
+  - type: input
+    id: logo
+    attributes:
+      label: Logo URL
+      description: URL to a square logo image (PNG or SVG). Optional - we'll use your GitHub org avatar as fallback.
+      placeholder: https://raw.githubusercontent.com/username/project/main/logo.png
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am the maintainer or have permission to submit this project
+          required: true
