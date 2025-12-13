@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Blog Formatting Guide
-date: '2024-12-02'
+date: '2025-12-13'
 author: PySimHub Team
 description: A comprehensive guide to all formatting options available in PySimHub blog posts, including math, figures, code, and more.
 tags:

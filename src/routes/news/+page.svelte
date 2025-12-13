@@ -2,13 +2,13 @@
 	// Placeholder news items - could be pulled from GitHub releases later
 	const newsItems = [
 		{
-			date: '2024-12-01',
+			date: '2025-12-13',
 			title: 'PySimHub Launch',
 			description: 'We\'re excited to announce the launch of PySimHub, a community hub for Python simulation tools!',
 			type: 'announcement'
 		},
 		{
-			date: '2024-12-01',
+			date: '2025-12-13',
 			title: 'Open for Submissions',
 			description: 'PySimHub is now accepting project submissions. Share your simulation library with the community.',
 			type: 'feature'
