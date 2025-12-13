@@ -2,7 +2,7 @@
 	{
 		"id": "pathsim",
 		"name": "PathSim",
-		"tagline": "A Python native dynamical system simulation framework in the block diagram paradigm.",
+		"tagline": "A dynamical system simulation framework in the block diagram paradigm",
 		"tags": ["block-diagram", "digital-twin", "dynamic-systems", "control", "system-modeling"],
 		"github": "https://github.com/pathsim/pathsim",
 		"docs": "https://pathsim.readthedocs.io"
@@ -13,6 +13,6 @@
 		"tagline": "Block diagram simulation for robotics and control systems",
 		"tags": ["block-diagram", "robotics", "control", "dynamic-systems", "system-modeling"],
 		"github": "https://github.com/petercorke/bdsim",
-		"docs": "https://bdsim.readthedocs.io"
+		"docs": "https://petercorke.github.io/bdsim/"
 	}
 ]
