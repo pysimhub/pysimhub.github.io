@@ -104,15 +104,31 @@ body {
 
 /* Glassmorphism utilities */
 .glass {
-	background: rgba(26, 26, 36, 0.8);
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+	/* Solid fallback for browsers that don't support backdrop-filter */
+	background: rgba(26, 26, 36, 0.95);
 	border: 1px solid var(--color-border);
 }
 
+/* Apply blur only when supported */
+@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+	.glass {
+		background: rgba(26, 26, 36, 0.8);
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+	}
+}
+
 .light .glass {
-	background: rgba(255, 255, 255, 0.9);
+	background: rgba(255, 255, 255, 0.95);
 	border: 1px solid var(--color-border);
+}
+
+@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+	.light .glass {
+		background: rgba(255, 255, 255, 0.85);
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+	}
 }
 
 /* Card glow effect */

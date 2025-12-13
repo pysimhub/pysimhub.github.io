@@ -126,6 +126,8 @@
 <style>
 	header {
 		background: transparent;
+		/* Establish stacking context for backdrop-filter */
+		isolation: isolate;
 	}
 
 	header.scrolled {
