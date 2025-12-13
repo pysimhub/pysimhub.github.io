@@ -1,0 +1,24 @@
+{
+	"pathsim": {
+		"stars": 214,
+		"forks": 21,
+		"lastUpdate": "2025-12-11T09:50:14Z",
+		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
+		"license": "MIT",
+		"avatarUrl": "https://github.com/pathsim.png?size=128",
+		"lastRelease": "2025-12-08T09:31:59Z",
+		"releaseVersion": "v0.14.0",
+		"fetchedAt": "2025-12-13T17:21:34.623Z"
+	},
+	"bdsim": {
+		"stars": 230,
+		"forks": 37,
+		"lastUpdate": "2024-08-06T21:23:51Z",
+		"description": "Simulate dynamic systems expressed in block diagram form using Python",
+		"license": "MIT",
+		"avatarUrl": "https://github.com/petercorke.png?size=128",
+		"lastRelease": "2022-07-14T11:23:39Z",
+		"releaseVersion": "0.9.0",
+		"fetchedAt": "2025-12-13T17:21:34.921Z"
+	}
+}

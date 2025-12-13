@@ -1,0 +1,37 @@
+{
+	"name": "pysimhub.github.io",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"fetch-github": "node scripts/fetch-github-data.js"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/postcss": "^4.1.18",
+		"autoprefixer": "^10.4.22",
+		"fuse.js": "^7.1.0",
+		"mdsvex": "^0.12.6",
+		"postcss": "^8.5.6",
+		"shiki": "^3.20.0",
+		"svelte": "^5.45.6",
+		"svelte-check": "^4.3.4",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3",
+		"vite": "^7.2.6"
+	},
+	"dependencies": {
+		"katex": "^0.16.27",
+		"rehype-katex": "^7.0.1",
+		"remark-math": "^6.0.0"
+	}
+}

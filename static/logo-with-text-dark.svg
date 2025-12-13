@@ -1,0 +1,10 @@
+<svg viewBox="0 0 180 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo icon -->
+  <circle cx="16" cy="16" r="14" stroke="#6366f1" stroke-width="2"/>
+  <path d="M10 16h12M16 10v12M12 12l8 8M20 12l-8 8" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Text: PySimHub (dark text for light backgrounds) -->
+  <text x="40" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">
+    <tspan fill="#111827">Py</tspan><tspan fill="#6366f1">Sim</tspan><tspan fill="#111827">Hub</tspan>
+  </text>
+</svg>
