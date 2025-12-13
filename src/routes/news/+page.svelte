@@ -40,6 +40,15 @@
 <svelte:head>
 	<title>News - PySimHub</title>
 	<meta name="description" content="Latest updates and news from PySimHub, the Python simulation community hub." />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="News - PySimHub" />
+	<meta property="og:description" content="Latest updates and news from PySimHub, the Python simulation community hub." />
+	<meta property="og:url" content="https://pysimhub.io/news" />
+
+	<!-- Twitter -->
+	<meta name="twitter:title" content="News - PySimHub" />
+	<meta name="twitter:description" content="Latest updates and news from PySimHub, the Python simulation community hub." />
 </svelte:head>
 
 <div class="px-4 py-16 sm:px-6 lg:px-8">
