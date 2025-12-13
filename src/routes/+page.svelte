@@ -24,6 +24,15 @@
 		name="description"
 		content="Discover Python libraries for simulation and numerics. Robotics, fluid dynamics, discrete-event, agent-based modeling, and more."
 	/>
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="PySimHub - Python Simulation & Numerics Community" />
+	<meta property="og:description" content="Discover Python libraries for simulation and numerics. Robotics, fluid dynamics, discrete-event, agent-based modeling, and more." />
+	<meta property="og:url" content="https://pysimhub.io/" />
+
+	<!-- Twitter -->
+	<meta name="twitter:title" content="PySimHub - Python Simulation & Numerics Community" />
+	<meta name="twitter:description" content="Discover Python libraries for simulation and numerics. Robotics, fluid dynamics, discrete-event, agent-based modeling, and more." />
 </svelte:head>
 
 <!-- Hero Section -->

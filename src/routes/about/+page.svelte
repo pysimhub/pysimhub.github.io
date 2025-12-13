@@ -1,6 +1,15 @@
 <svelte:head>
 	<title>About - PySimHub</title>
 	<meta name="description" content="Learn about PySimHub's mission to build an open community catalog for Python simulation tools." />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="About - PySimHub" />
+	<meta property="og:description" content="Learn about PySimHub's mission to build an open community catalog for Python simulation tools." />
+	<meta property="og:url" content="https://pysimhub.io/about" />
+
+	<!-- Twitter -->
+	<meta name="twitter:title" content="About - PySimHub" />
+	<meta name="twitter:description" content="Learn about PySimHub's mission to build an open community catalog for Python simulation tools." />
 </svelte:head>
 
 <div class="px-4 py-16 sm:px-6 lg:px-8">

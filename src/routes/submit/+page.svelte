@@ -1,6 +1,15 @@
 <svelte:head>
 	<title>Submit a Project - PySimHub</title>
 	<meta name="description" content="Submit your Python simulation library to PySimHub. Open to submissions from day one via GitHub Issues." />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Submit a Project - PySimHub" />
+	<meta property="og:description" content="Submit your Python simulation library to PySimHub. Open to submissions from day one via GitHub Issues." />
+	<meta property="og:url" content="https://pysimhub.io/submit" />
+
+	<!-- Twitter -->
+	<meta name="twitter:title" content="Submit a Project - PySimHub" />
+	<meta name="twitter:description" content="Submit your Python simulation library to PySimHub. Open to submissions from day one via GitHub Issues." />
 </svelte:head>
 
 <div class="px-4 py-16 sm:px-6 lg:px-8">

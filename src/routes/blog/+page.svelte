@@ -105,6 +105,15 @@
 		name="description"
 		content="Articles, tutorials, and news from the PySimHub community."
 	/>
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Blog - PySimHub" />
+	<meta property="og:description" content="Articles, tutorials, and news from the PySimHub community." />
+	<meta property="og:url" content="https://pysimhub.io/blog" />
+
+	<!-- Twitter -->
+	<meta name="twitter:title" content="Blog - PySimHub" />
+	<meta name="twitter:description" content="Articles, tutorials, and news from the PySimHub community." />
 </svelte:head>
 
 <div class="px-4 py-16 sm:px-6 lg:px-8">
