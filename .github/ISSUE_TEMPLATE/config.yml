@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Website
+    url: https://pysimhub.io
+    about: Visit PySimHub to explore Python simulation libraries
+  - name: Submission Guidelines
+    url: https://pysimhub.io/submit
+    about: View detailed submission requirements and guidelines
