@@ -216,9 +216,8 @@
 							rel="noopener noreferrer"
 							class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-sm font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
 						>
-							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-								<path d="M12.042 0c-1.04.03-2.032.223-2.89.543-2.166.81-2.556 2.005-2.556 3.424v2.51h5.112v.837H4.56c-1.477 0-2.77.89-3.173 2.58-.465 1.938-.486 3.148 0 5.172.36 1.506 1.22 2.58 2.698 2.58h1.745v-2.326c0-1.677 1.45-3.158 3.172-3.158h5.112c1.413 0 2.556-1.164 2.556-2.58V3.967c0-1.38-1.16-2.418-2.556-2.73-.882-.197-1.803-.25-2.072-.237zm-2.89 1.996c.523 0 .948.436.948.972s-.425.972-.948.972-.948-.436-.948-.972.425-.972.948-.972z"/>
-								<path d="M18.57 6.514v2.264c0 1.748-1.48 3.22-3.173 3.22h-5.112c-1.39 0-2.556 1.19-2.556 2.58v4.84c0 1.38 1.198 2.19 2.556 2.58 1.624.466 3.183.55 5.112 0 1.282-.367 2.556-1.105 2.556-2.58v-1.936h-5.112v-.647h7.668c1.478 0 2.028-1.03 2.556-2.58.546-1.596.523-3.13 0-5.17-.375-1.467-1.092-2.58-2.556-2.58l-1.94.01zm-2.89 12.244c.523 0 .948.436.948.972s-.425.972-.948.972-.948-.436-.948-.972.425-.972.948-.972z"/>
+							<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
 							</svg>
 							PyPI
 						</a>
@@ -231,8 +230,8 @@
 							rel="noopener noreferrer"
 							class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-sm font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
 						>
-							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-								<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.423 0 9.818 4.395 9.818 9.818S17.423 21.818 12 21.818 2.182 17.423 2.182 12 6.577 2.182 12 2.182zm-2.863 4.91c-1.591.204-2.952 1.09-3.672 2.462-.318.607-.496 1.272-.547 1.972-.102 1.396.352 2.776 1.243 3.81.891 1.035 2.163 1.69 3.534 1.81.686.06 1.376-.01 2.03-.205.653-.196 1.257-.51 1.773-.922.516-.413.937-.922 1.23-1.498.295-.577.455-1.213.467-1.86.012-.646-.123-1.287-.392-1.875-.27-.587-.666-1.107-1.159-1.52-.493-.413-1.073-.712-1.695-.873a5.12 5.12 0 00-1.897-.15 4.88 4.88 0 00-.915.849z"/>
+							<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
 							</svg>
 							conda-forge
 						</a>
