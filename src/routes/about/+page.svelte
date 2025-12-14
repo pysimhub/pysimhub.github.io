@@ -1,3 +1,7 @@
+<script lang="ts">
+	let { data } = $props();
+</script>
+
 <svelte:head>
 	<title>About - PySimHub</title>
 	<meta name="description" content="Learn about PySimHub's mission to build an open community catalog for Python simulation tools." />
@@ -76,6 +80,38 @@
 				</a>
 			</div>
 		</section>
+
+		<!-- Members -->
+		{#if data.members && data.members.length > 0}
+			<section class="mt-16">
+				<h2 class="text-2xl font-bold text-[var(--color-text-primary)]">Members</h2>
+				<p class="mt-2 text-[var(--color-text-secondary)]">
+					The people behind PySimHub.
+				</p>
+				<div class="mt-8 flex flex-wrap justify-center gap-6">
+					{#each data.members as member}
+						<a
+							href={member.profileUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex flex-col items-center gap-3 rounded-xl p-4 transition-colors hover:bg-[var(--color-bg-hover)]"
+						>
+							<img
+								src={member.avatarUrl}
+								alt={member.name || member.login}
+								class="h-20 w-20 rounded-full border-2 border-[var(--color-border)] transition-all group-hover:border-[var(--color-accent)]"
+							/>
+							<div class="text-center">
+								{#if member.name}
+									<div class="font-medium text-[var(--color-text-primary)]">{member.name}</div>
+								{/if}
+								<div class="text-sm text-[var(--color-text-muted)]">@{member.login}</div>
+							</div>
+						</a>
+					{/each}
+				</div>
+			</section>
+		{/if}
 	</div>
 </div>
 
