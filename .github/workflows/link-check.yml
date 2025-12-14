@@ -42,7 +42,6 @@ jobs:
             --verbose
             --no-progress
             --accept 100..=399
-            --exclude-mail
             --exclude "^https://github\.com/pysimhub/pysimhub\.github\.io/issues/new"
             './build/**/*.html'
             './static/data/projects.json'
