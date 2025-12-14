@@ -1,7 +1,17 @@
 <svg viewBox="0 0 180 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Logo icon -->
-  <circle cx="16" cy="16" r="14" stroke="#6366f1" stroke-width="2"/>
-  <path d="M10 16h12M16 10v12M12 12l8 8M20 12l-8 8" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="16" cy="16" r="14" stroke="#6366f1" stroke-width="2.5"/>
+  <!-- 8 rays from center, linearly increasing length with angle (r=5 to r=10) -->
+  <path d="
+    M16 16 L21 16
+    M16 16 L20 20
+    M16 16 L16 22.4
+    M16 16 L11 21
+    M16 16 L8 16
+    M16 16 L10 10
+    M16 16 L16 6.7
+    M16 16 L23 9
+  " stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
 
   <!-- Text: PySimHub (dark text for light backgrounds) -->
   <text x="40" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">
