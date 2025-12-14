@@ -21,9 +21,14 @@ export interface ProjectConfig {
 	tags: string[];
 	github: string;
 	docs?: string;
+	// Additional links
+	homepage?: string;
+	pypi?: string;
+	condaForge?: string;
+	example?: string;
 	// Custom logo path (falls back to GitHub org avatar)
 	logo?: string;
-	// Optional overrides for GitHub data
+	// Optional overrides for GitHub data - longer description for the modal
 	description?: string;
 	// Manual stats for non-GitHub projects
 	manualStats?: ManualStats;

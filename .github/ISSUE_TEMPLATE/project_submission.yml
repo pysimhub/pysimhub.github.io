@@ -44,6 +44,34 @@ body:
       description: Link to documentation (optional)
       placeholder: https://project.readthedocs.io
 
+  - type: input
+    id: pypi
+    attributes:
+      label: PyPI URL
+      description: Link to PyPI package page (optional)
+      placeholder: https://pypi.org/project/your-package/
+
+  - type: input
+    id: conda_forge
+    attributes:
+      label: conda-forge URL
+      description: Link to conda-forge package (optional)
+      placeholder: https://anaconda.org/conda-forge/your-package
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage URL
+      description: Project website or landing page if different from docs (optional)
+      placeholder: https://your-project.org
+
+  - type: input
+    id: example
+    attributes:
+      label: Example URL
+      description: Link to a tutorial, notebook, or example code (optional)
+      placeholder: https://github.com/username/project/blob/main/examples/quickstart.ipynb
+
   - type: dropdown
     id: tags
     attributes:
@@ -97,20 +125,22 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Additional Information
+      label: About
       description: |
-        Anything else you'd like us to know? For example:
-        - What makes your project unique?
-        - What domain/use case is it best suited for?
-        - Any notable users or citations?
-      placeholder: Optional additional context about your project
+        A 2-4 sentence description of your project for the detailed view. Include:
+        - What problems does it solve?
+        - What are its key features?
+        - What makes it unique?
+      placeholder: "Example: MySimLib is a Python framework for simulating X systems. It provides Y and Z capabilities, with a focus on ease of use and performance. Used by researchers in A, B, and C domains."
+    validations:
+      required: true
 
   - type: input
     id: logo
     attributes:
-      label: Logo URL
-      description: URL to a square logo image (PNG or SVG). Optional - we'll use your GitHub org avatar as fallback.
-      placeholder: https://raw.githubusercontent.com/username/project/main/logo.png
+      label: Logo
+      description: URL to a square logo image (PNG or SVG), or attach the file to this issue. Optional - we'll use your GitHub org avatar as fallback.
+      placeholder: https://raw.githubusercontent.com/username/project/main/logo.png (or attach below)
 
   - type: checkboxes
     id: terms
