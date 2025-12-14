@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import Logo from './Logo.svelte';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
@@ -36,15 +37,7 @@
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
 		<!-- Logo -->
 		<a href="/" class="flex items-center gap-2 text-xl font-bold" onclick={closeMobileMenu}>
-			<svg class="h-8 w-8" viewBox="0 0 32 32" fill="none">
-				<circle cx="16" cy="16" r="14" stroke="var(--color-accent)" stroke-width="2" />
-				<path
-					d="M10 16h12M16 10v12M12 12l8 8M20 12l-8 8"
-					stroke="var(--color-accent)"
-					stroke-width="1.5"
-					stroke-linecap="round"
-				/>
-			</svg>
+			<Logo />
 			<span class="text-[var(--color-text-primary)]">
 				Py<span class="text-[var(--color-accent)]">Sim</span>Hub
 			</span>
