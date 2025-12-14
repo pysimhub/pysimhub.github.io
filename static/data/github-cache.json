@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2025-12-08T09:31:59Z",
 		"releaseVersion": "v0.14.0",
-		"fetchedAt": "2025-12-13T17:21:34.623Z"
+		"fetchedAt": "2025-12-14T06:38:55.429Z"
 	},
 	"bdsim": {
 		"stars": 230,
@@ -19,6 +19,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2025-12-13T17:21:34.921Z"
+		"fetchedAt": "2025-12-14T06:38:55.742Z"
 	}
 }
