@@ -150,12 +150,12 @@ The Navier-Stokes equations:
 
 Standard markdown images:
 
-![PySimHub Logo](/logo.svg)
+![PySimHub Logo](/branding/logo.svg)
 
 For more control, use HTML figure elements:
 
 <figure>
-  <img src="/logo.svg" alt="PySimHub Logo" style="max-width: 200px; margin: 0 auto; display: block;">
+  <img src="/branding/logo.svg" alt="PySimHub Logo" style="max-width: 200px; margin: 0 auto; display: block;">
   <figcaption>Figure 1: The PySimHub logo represents interconnected simulation domains.</figcaption>
 </figure>
 
