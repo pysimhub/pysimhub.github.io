@@ -35,8 +35,11 @@ jobs:
             const path = require('path');
 
             const issueBody = process.env.ISSUE_BODY;
-            const issueNumber = process.env.ISSUE_NUMBER;
+            const issueNumber = parseInt(process.env.ISSUE_NUMBER, 10);
             const issueAuthor = process.env.ISSUE_AUTHOR;
+
+            // Wrap everything in try/catch for error handling
+            try {
 
             // Parse the issue body - GitHub forms create markdown with ### headers
             function parseField(body, fieldName) {
@@ -191,35 +194,36 @@ jobs:
             }
 
             // Create PR
-            const prBody = `## New Project Submission: ${name}
-
-            Submitted by @${issueAuthor} in #${issueNumber}
-
-            ### Project Details
-            - **Name:** ${name}
-            - **Tagline:** ${tagline}
-            - **Repository:** ${github_url}
-            - **Tags:** ${tags.join(', ')}
-            ${docs ? `- **Docs:** ${docs}` : ''}
-            ${pypi ? `- **PyPI:** ${pypi}` : ''}
-            ${condaForge ? `- **conda-forge:** ${condaForge}` : ''}
-            ${logoUrl ? `- **Logo:** ${logoUrl}` : ''}
-
-            ### Description
-            ${description}
-
-            ---
-
-            ### Checklist for reviewers
-            - [ ] Project meets submission criteria
-            - [ ] Tags are appropriate
-            - [ ] Logo displays correctly (if provided)
-            - [ ] Links are valid
-
-            Once merged, the GitHub Actions will fetch the latest stats and deploy the site.
-
-            🤖 Generated automatically from issue #${issueNumber}
-            `.split('\n').map(l => l.trim()).join('\n');
+            const prBody = [
+              `## New Project Submission: ${name}`,
+              ``,
+              `Submitted by @${issueAuthor} in #${issueNumber}`,
+              ``,
+              `### Project Details`,
+              `- **Name:** ${name}`,
+              `- **Tagline:** ${tagline}`,
+              `- **Repository:** ${github_url}`,
+              `- **Tags:** ${tags.join(', ')}`,
+              docs ? `- **Docs:** ${docs}` : null,
+              pypi ? `- **PyPI:** ${pypi}` : null,
+              condaForge ? `- **conda-forge:** ${condaForge}` : null,
+              logoUrl ? `- **Logo:** ${logoUrl}` : null,
+              ``,
+              `### Description`,
+              description,
+              ``,
+              `---`,
+              ``,
+              `### Checklist for reviewers`,
+              `- [ ] Project meets submission criteria`,
+              `- [ ] Tags are appropriate`,
+              `- [ ] Logo displays correctly (if provided)`,
+              `- [ ] Links are valid`,
+              ``,
+              `Once merged, the GitHub Actions will fetch the latest stats and deploy the site.`,
+              ``,
+              `🤖 Generated automatically from issue #${issueNumber}`
+            ].filter(line => line !== null).join('\n');
 
             const { data: pr } = await github.rest.pulls.create({
               owner: context.repo.owner,
@@ -247,3 +251,21 @@ jobs:
             });
 
             console.log(`Created PR #${pr.number} for ${name}`);
+
+            } catch (error) {
+              console.error('Error processing submission:', error);
+
+              // Try to comment on the issue about the error
+              try {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `❌ **Automation Error**\n\nThere was an error processing your submission automatically:\n\n\`\`\`\n${error.message}\n\`\`\`\n\nA maintainer will process your submission manually. Sorry for the inconvenience!`
+                });
+              } catch (commentError) {
+                console.error('Failed to comment on issue:', commentError);
+              }
+
+              throw error;
+            }

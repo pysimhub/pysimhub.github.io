@@ -25,6 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/fetch-github-data.js
+        timeout-minutes: 5
 
       - name: Check for changes
         id: check_changes
@@ -42,4 +43,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add static/data/github-cache.json
           git commit -m "chore: update GitHub data cache"
+          git pull --rebase origin main
           git push

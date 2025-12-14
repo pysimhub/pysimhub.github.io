@@ -42,10 +42,15 @@ jobs:
             --verbose
             --no-progress
             --accept 100..=399
+            --timeout 30
+            --max-retries 2
             --exclude "^https://github\.com/pysimhub/pysimhub\.github\.io/issues/new"
+            --exclude "^https://anaconda\.org"
+            --exclude "^https://pypi\.org"
             './build/**/*.html'
             './static/data/projects.json'
           fail: true
+          jobSummary: true
 
       - name: Create issue on failure
         if: failure()
