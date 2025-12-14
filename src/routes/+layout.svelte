@@ -12,11 +12,11 @@
 	<!-- Open Graph / Social Media -->
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="PySimHub" />
-	<meta property="og:image" content="https://pysimhub.io/pysimhub_logo_text.png" />
+	<meta property="og:image" content="https://pysimhub.io/branding/og-image.png" />
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="https://pysimhub.io/pysimhub_logo_text.png" />
+	<meta name="twitter:image" content="https://pysimhub.io/branding/og-image.png" />
 </svelte:head>
 
 <div class="flex min-h-screen flex-col">
