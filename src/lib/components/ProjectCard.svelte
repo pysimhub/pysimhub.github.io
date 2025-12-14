@@ -68,7 +68,7 @@
 			<img
 				src={project.avatarUrl}
 				alt="{project.name} logo"
-				class="h-12 w-12 flex-shrink-0 rounded-lg object-cover bg-[var(--color-bg-hover)]"
+				class="h-14 w-auto max-w-24 flex-shrink-0 rounded-lg object-contain object-left bg-[var(--color-bg-hover)]"
 				loading="lazy"
 				onerror={(e) => {
 					const target = e.currentTarget as HTMLImageElement;
@@ -78,13 +78,13 @@
 				}}
 			/>
 			<div
-				class="hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg text-lg font-bold bg-[var(--color-accent)]/20 text-[var(--color-accent)]"
+				class="hidden h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg text-lg font-bold bg-[var(--color-accent)]/20 text-[var(--color-accent)]"
 			>
 				{project.name.slice(0, 2)}
 			</div>
 		{:else}
 			<div
-				class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg text-lg font-bold bg-[var(--color-accent)]/20 text-[var(--color-accent)]"
+				class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg text-lg font-bold bg-[var(--color-accent)]/20 text-[var(--color-accent)]"
 			>
 				{project.name.slice(0, 2)}
 			</div>

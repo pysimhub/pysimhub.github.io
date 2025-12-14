@@ -68,7 +68,7 @@
 				<img
 					src={project.avatarUrl}
 					alt="{project.name} logo"
-					class="h-16 w-16 flex-shrink-0 rounded-xl object-cover bg-[var(--color-bg-hover)]"
+					class="h-16 w-auto max-w-32 flex-shrink-0 rounded-xl object-contain object-left bg-[var(--color-bg-hover)]"
 					onerror={(e) => {
 						const target = e.currentTarget as HTMLImageElement;
 						target.style.display = 'none';
