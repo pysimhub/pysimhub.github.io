@@ -17,7 +17,7 @@
 		<!-- Mission -->
 		<section class="text-center">
 			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
-				About PySimHub
+				About Py<span class="text-[var(--color-accent)]">Sim</span>Hub
 			</h1>
 			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">
 				PySimHub is an open community catalog spanning all Python simulation domains. Our mission is

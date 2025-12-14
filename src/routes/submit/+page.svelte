@@ -19,7 +19,7 @@
 			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
 				Submit a Project
 			</h1>
-			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">
+			<p class="mt-6 text-lg text-[var(--color-text-secondary)]">
 				Have a Python simulation library? Add it to PySimHub and help others discover your work.
 			</p>
 
