@@ -89,6 +89,7 @@
 							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
 								<li>Project name</li>
 								<li>One-line tagline</li>
+								<li>About description (2-4 sentences)</li>
 								<li>GitHub/GitLab URL</li>
 								<li>3-5 tags (e.g., robotics, control)</li>
 							</ul>
@@ -97,7 +98,9 @@
 							<h3 class="font-medium text-[var(--color-text-primary)]">Optional</h3>
 							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
 								<li>Documentation URL</li>
-								<li>Logo (PNG/SVG, square)</li>
+								<li>PyPI / conda-forge URLs</li>
+								<li>Homepage / Example URLs</li>
+								<li>Logo (PNG/SVG, square) — stored in <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">/logos/</code></li>
 							</ul>
 						</div>
 					</div>
@@ -115,14 +118,19 @@
 				<pre class="mt-4 overflow-x-auto rounded-lg bg-[var(--color-bg-secondary)] p-4 text-sm"><code class="text-[var(--color-text-secondary)]">{`{
   "id": "your-project",
   "name": "Your Project",
-  "tagline": "Brief description",
-  "tags": ["robotics", "control", "dynamics"],
+  "tagline": "Brief one-line description",
+  "description": "Longer 2-4 sentence description for the detailed view.",
+  "tags": ["robotics", "control", "dynamic-systems"],
   "github": "https://github.com/...",
   "docs": "https://...",
+  "pypi": "https://pypi.org/project/...",
+  "condaForge": "https://anaconda.org/conda-forge/...",
+  "homepage": "https://...",
+  "example": "https://...",
   "logo": "/logos/your-project.png"
 }`}</code></pre>
 				<p class="mt-3 text-xs text-[var(--color-text-muted)]">
-					The <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">logo</code> field is optional - we'll use your GitHub org avatar as fallback.
+					Only <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">id</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">name</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">tagline</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">tags</code>, and <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">github</code> are required. All other fields are optional. Include your logo file in <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">static/logos/</code> if providing one.
 				</p>
 			</div>
 		</section>

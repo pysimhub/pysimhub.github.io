@@ -43,6 +43,14 @@
 			year: 'numeric'
 		});
 	}
+
+	// Count additional links not shown on card (pypi, condaForge, homepage, example)
+	const extraLinksCount = $derived(
+		(project.pypi ? 1 : 0) +
+		(project.condaForge ? 1 : 0) +
+		(project.homepage ? 1 : 0) +
+		(project.example ? 1 : 0)
+	);
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
@@ -155,6 +163,11 @@
 				</svg>
 				Docs
 			</a>
+		{/if}
+		{#if extraLinksCount > 0}
+			<span class="inline-flex items-center rounded-lg bg-[var(--color-accent)]/10 px-2.5 py-1.5 text-xs font-medium text-[var(--color-accent)]">
+				+{extraLinksCount}
+			</span>
 		{/if}
 	</div>
 </article>

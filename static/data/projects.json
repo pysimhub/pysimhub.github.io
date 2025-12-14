@@ -3,16 +3,22 @@
 		"id": "pathsim",
 		"name": "PathSim",
 		"tagline": "A dynamical system simulation framework in the block diagram paradigm",
-		"tags": ["block-diagram", "digital-twin", "dynamic-systems", "control", "system-modeling"],
+		"description": "PathSim is a Python-native framework for modeling and simulating dynamical systems using block diagrams. It provides an intuitive API for building complex system models from interconnected blocks, supporting both continuous-time and discrete-time simulations. Designed for control systems, digital twins, and system-level modeling with a focus on ease of use and extensibility.",
+		"tags": ["block-diagram", "digital-twin", "dynamic-systems", "control", "system-modeling", "transient"],
 		"github": "https://github.com/pathsim/pathsim",
-		"docs": "https://pathsim.readthedocs.io"
+		"docs": "https://docs.pathsim.org",
+		"pypi": "https://pypi.org/project/pathsim/",
+		"condaForge": "https://anaconda.org/channels/conda-forge/packages/pathsim/overview",
+		"example": "https://docs.pathsim.org/en/latest/examples/linear_feedback.html"
 	},
 	{
 		"id": "bdsim",
 		"name": "bdsim",
 		"tagline": "Block diagram simulation for robotics and control systems",
-		"tags": ["block-diagram", "robotics", "control", "dynamic-systems", "system-modeling"],
+		"description": "bdsim is a Python framework for simulating block diagram models, particularly suited for robotics and control systems. It supports a wide range of block types including sources, sinks, transfer functions, and custom blocks. Part of the Robotics Toolbox ecosystem, it integrates seamlessly with robot models for system-level simulation and analysis.",
+		"tags": ["block-diagram", "robotics", "control", "dynamic-systems", "system-modeling", "transient"],
 		"github": "https://github.com/petercorke/bdsim",
-		"docs": "https://petercorke.github.io/bdsim/"
+		"docs": "https://petercorke.github.io/bdsim/",
+		"pypi": "https://pypi.org/project/bdsim/"
 	}
 ]
