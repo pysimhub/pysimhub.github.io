@@ -1,0 +1,249 @@
+name: Process Project Submission
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-submission:
+    # Only run for new project submissions (not edits to avoid duplicate PRs)
+    if: startsWith(github.event.issue.title, '[Project]:') && !contains(github.event.issue.labels.*.name, 'pr-created')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse submission and create PR
+        uses: actions/github-script@v7
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const issueBody = process.env.ISSUE_BODY;
+            const issueNumber = process.env.ISSUE_NUMBER;
+            const issueAuthor = process.env.ISSUE_AUTHOR;
+
+            // Parse the issue body - GitHub forms create markdown with ### headers
+            function parseField(body, fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return null;
+              const value = match[1].trim();
+              // Handle "None" or "_No response_" as empty
+              if (value === '_No response_' || value.toLowerCase() === 'none') return null;
+              return value;
+            }
+
+            // Extract all fields
+            const name = parseField(issueBody, 'Project Name');
+            const tagline = parseField(issueBody, 'Tagline');
+            const github_url = parseField(issueBody, 'Repository URL');
+            const docs = parseField(issueBody, 'Documentation URL');
+            const pypi = parseField(issueBody, 'PyPI URL');
+            const condaForge = parseField(issueBody, 'conda-forge URL');
+            const homepage = parseField(issueBody, 'Homepage URL');
+            const example = parseField(issueBody, 'Example URL');
+            const description = parseField(issueBody, 'About');
+            const logoUrl = parseField(issueBody, 'Logo');
+
+            // Parse tags (they come as comma-separated from the dropdown)
+            const tagsRaw = parseField(issueBody, 'Tags');
+            const customTagsRaw = parseField(issueBody, 'Custom Tags');
+
+            let tags = [];
+            if (tagsRaw) {
+              tags = tagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(t => t && t !== 'other');
+            }
+            if (customTagsRaw) {
+              const customTags = customTagsRaw.split(',').map(t =>
+                t.trim().toLowerCase().replace(/\s+/g, '-')
+              ).filter(t => t);
+              tags = [...tags, ...customTags];
+            }
+
+            // Validate required fields
+            if (!name || !github_url || !tagline || !description) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `❌ **Submission Error**\n\nMissing required fields. Please ensure you've filled in:\n- Project Name\n- Tagline\n- Repository URL\n- About\n\nPlease edit your submission to add the missing information.`
+              });
+              return;
+            }
+
+            // Generate project ID from name
+            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+            // Check if project already exists
+            const projectsPath = 'static/data/projects.json';
+            const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf-8'));
+
+            if (projects.some(p => p.id === id)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `⚠️ **Project Already Exists**\n\nA project with ID \`${id}\` already exists in the catalog. If you're updating an existing project, please open a different type of issue or submit a PR directly.`
+              });
+              return;
+            }
+
+            // Build the project object
+            const project = { id, name, tagline, description, tags };
+
+            // Handle logo
+            let logoPath = null;
+            if (logoUrl) {
+              const ext = logoUrl.match(/\.(png|svg|jpg|jpeg|webp)(\?|$)/i)?.[1] || 'png';
+              logoPath = `/logos/${id}.${ext.toLowerCase()}`;
+              project.logo = logoPath;
+            }
+
+            // Add optional fields
+            if (github_url) project.github = github_url;
+            if (homepage) project.homepage = homepage;
+            if (docs) project.docs = docs;
+            if (pypi) project.pypi = pypi;
+            if (condaForge) project.condaForge = condaForge;
+            if (example) project.example = example;
+
+            // Add to projects array
+            projects.unshift(project);
+
+            // Create branch name
+            const branchName = `submission/${id}-${issueNumber}`;
+
+            // Get the default branch SHA
+            const { data: ref } = await github.rest.git.getRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/main'
+            });
+
+            // Create new branch
+            try {
+              await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/heads/${branchName}`,
+                sha: ref.object.sha
+              });
+            } catch (e) {
+              // Branch might already exist from a previous run
+              if (e.status !== 422) throw e;
+            }
+
+            // Update projects.json
+            const projectsContent = JSON.stringify(projects, null, '\t') + '\n';
+            const { data: projectsFile } = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: projectsPath,
+              ref: branchName
+            });
+
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: projectsPath,
+              message: `Add ${name} to projects`,
+              content: Buffer.from(projectsContent).toString('base64'),
+              sha: projectsFile.sha,
+              branch: branchName
+            });
+
+            // Download and add logo if provided
+            if (logoUrl && logoPath) {
+              try {
+                const response = await fetch(logoUrl);
+                if (response.ok) {
+                  const buffer = await response.arrayBuffer();
+                  const base64 = Buffer.from(buffer).toString('base64');
+
+                  await github.rest.repos.createOrUpdateFileContents({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    path: `static${logoPath}`,
+                    message: `Add logo for ${name}`,
+                    content: base64,
+                    branch: branchName
+                  });
+                }
+              } catch (e) {
+                console.log(`Failed to download logo: ${e.message}`);
+              }
+            }
+
+            // Create PR
+            const prBody = `## New Project Submission: ${name}
+
+            Submitted by @${issueAuthor} in #${issueNumber}
+
+            ### Project Details
+            - **Name:** ${name}
+            - **Tagline:** ${tagline}
+            - **Repository:** ${github_url}
+            - **Tags:** ${tags.join(', ')}
+            ${docs ? `- **Docs:** ${docs}` : ''}
+            ${pypi ? `- **PyPI:** ${pypi}` : ''}
+            ${condaForge ? `- **conda-forge:** ${condaForge}` : ''}
+            ${logoUrl ? `- **Logo:** ${logoUrl}` : ''}
+
+            ### Description
+            ${description}
+
+            ---
+
+            ### Checklist for reviewers
+            - [ ] Project meets submission criteria
+            - [ ] Tags are appropriate
+            - [ ] Logo displays correctly (if provided)
+            - [ ] Links are valid
+
+            Once merged, the GitHub Actions will fetch the latest stats and deploy the site.
+
+            🤖 Generated automatically from issue #${issueNumber}
+            `.split('\n').map(l => l.trim()).join('\n');
+
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Add ${name} to PySimHub`,
+              head: branchName,
+              base: 'main',
+              body: prBody
+            });
+
+            // Comment on the issue
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `🎉 **Thank you for your submission!**\n\nI've automatically created a pull request to add **${name}** to PySimHub:\n\n👉 ${pr.html_url}\n\nA maintainer will review your submission shortly. Once the PR is merged, your project will appear on the site!\n\n---\n*This is an automated message.*`
+            });
+
+            // Add label to issue
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              labels: ['pr-created']
+            });
+
+            console.log(`Created PR #${pr.number} for ${name}`);
