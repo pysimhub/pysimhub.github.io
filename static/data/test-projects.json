@@ -1,0 +1,1154 @@
+[
+	{
+		"id": "numhubsuite",
+		"name": "NumHubSuite",
+		"tagline": "A Python library for validating multi-physics simulation",
+		"tags": [
+			"battery",
+			"digital-twin",
+			"process",
+			"dynamic-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "numflow",
+		"name": "numflow",
+		"tagline": "A Python library for analyzing signal processing",
+		"tags": [
+			"supply-chain",
+			"renewable",
+			"grid"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultranetpro",
+		"name": "UltraNetPro",
+		"tagline": "A Python library for designing stochastic processes",
+		"tags": [
+			"discrete-event",
+			"manufacturing",
+			"oceanography"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultraspacesuite",
+		"name": "UltraSpaceSuite",
+		"tagline": "A Python library for simulating molecular simulation",
+		"tags": [
+			"discrete-event",
+			"molecular-dynamics",
+			"physics",
+			"steady-state"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "kit-py",
+		"name": "kit-py",
+		"tagline": "A Python library for computing electromagnetic simulation",
+		"tags": [
+			"neuroscience",
+			"visualization",
+			"thermodynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "autogrid",
+		"name": "autogrid",
+		"tagline": "A Python library for modeling fluid dynamics",
+		"tags": [
+			"logistics",
+			"agent-based",
+			"stochastic",
+			"fluid-dynamics",
+			"quantum"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "space-sim",
+		"name": "space-sim",
+		"tagline": "A Python library for validating climate modeling",
+		"tags": [
+			"materials",
+			"thermodynamics",
+			"steady-state",
+			"supply-chain"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "promodelml",
+		"name": "ProModelML",
+		"tagline": "A Python library for modeling molecular simulation",
+		"tags": [
+			"optimization",
+			"manufacturing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "simcalc",
+		"name": "simcalc",
+		"tagline": "A Python library for designing electromagnetic simulation",
+		"tags": [
+			"oceanography",
+			"ecology"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultrasolve",
+		"name": "ultrasolve",
+		"tagline": "A Python library for analyzing supply chain optimization",
+		"tags": [
+			"visualization",
+			"thermodynamics",
+			"time-series",
+			"neuroscience"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "simgrid",
+		"name": "simgrid",
+		"tagline": "A Python library for prototyping ecological modeling",
+		"tags": [
+			"real-time",
+			"game-theory",
+			"materials"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "engine-py",
+		"name": "engine-py",
+		"tagline": "A Python library for validating power grid analysis",
+		"tags": [
+			"network",
+			"signal-processing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "multigrid",
+		"name": "MultiGrid",
+		"tagline": "A Python library for computing control systems",
+		"tags": [
+			"grid",
+			"dynamic-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "scifieldplus",
+		"name": "SciFieldPlus",
+		"tagline": "A Python library for modeling financial modeling",
+		"tags": [
+			"fluid-dynamics",
+			"battery",
+			"agent-based",
+			"ecology"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "box-core",
+		"name": "box-core",
+		"tagline": "A Python library for computing acoustic simulation",
+		"tags": [
+			"robotics",
+			"energy",
+			"materials",
+			"molecular-dynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "space-core",
+		"name": "space-core",
+		"tagline": "A Python library for validating biological systems",
+		"tags": [
+			"visualization",
+			"game-theory",
+			"molecular-dynamics",
+			"signal-processing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "lab-sim",
+		"name": "lab-sim",
+		"tagline": "A Python library for optimizing multi-physics simulation",
+		"tags": [
+			"seismic",
+			"optimization",
+			"cfd",
+			"parallel"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "dyn-kit",
+		"name": "dyn-kit",
+		"tagline": "A Python library for computing signal processing",
+		"tags": [
+			"molecular-dynamics",
+			"neuroscience",
+			"climate",
+			"biology",
+			"gpu"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "hub-sim",
+		"name": "hub-sim",
+		"tagline": "A Python library for visualizing network analysis",
+		"tags": [
+			"renewable",
+			"industrial",
+			"seismic",
+			"neuroscience"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumcalcpro",
+		"name": "QuantumCalcPro",
+		"tagline": "A Python library for visualizing acoustic simulation",
+		"tags": [
+			"renewable",
+			"time-series",
+			"propulsion"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "wave-py",
+		"name": "wave-py",
+		"tagline": "A Python library for solving epidemiological modeling",
+		"tags": [
+			"traffic",
+			"finite-element",
+			"finance"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "model-core",
+		"name": "model-core",
+		"tagline": "A Python library for modeling seismic analysis",
+		"tags": [
+			"system-modeling",
+			"electromagnetics",
+			"neuroscience",
+			"finance",
+			"fem"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "pysolve",
+		"name": "pysolve",
+		"tagline": "A Python library for designing traffic simulation",
+		"tags": [
+			"visualization",
+			"signal-processing",
+			"network",
+			"transient",
+			"time-series"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "flexcalc3d",
+		"name": "FlexCalc3D",
+		"tagline": "A Python library for visualizing signal processing",
+		"tags": [
+			"agent-based",
+			"genomics",
+			"robotics",
+			"weather"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "dyn-sim",
+		"name": "dyn-sim",
+		"tagline": "A Python library for optimizing signal processing",
+		"tags": [
+			"industrial",
+			"optics",
+			"discrete-event",
+			"oceanography"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "automesh",
+		"name": "automesh",
+		"tagline": "A Python library for modeling traffic simulation",
+		"tags": [
+			"energy",
+			"reinforcement-learning",
+			"parallel",
+			"cfd"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "wave-core",
+		"name": "wave-core",
+		"tagline": "A Python library for validating network analysis",
+		"tags": [
+			"epidemiology",
+			"aerospace",
+			"real-time",
+			"steady-state"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "micromeshplus",
+		"name": "MicroMeshPlus",
+		"tagline": "A Python library for analyzing financial modeling",
+		"tags": [
+			"block-diagram",
+			"manufacturing",
+			"power-systems",
+			"process",
+			"traffic"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "openstudio",
+		"name": "openstudio",
+		"tagline": "A Python library for designing financial modeling",
+		"tags": [
+			"control",
+			"economics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "turbomodeltools",
+		"name": "TurboModelTools",
+		"tagline": "A Python library for optimizing network analysis",
+		"tags": [
+			"signal-processing",
+			"molecular-dynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "mesh-core",
+		"name": "mesh-core",
+		"tagline": "A Python library for visualizing multi-physics simulation",
+		"tags": [
+			"network",
+			"grid"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "turbolab",
+		"name": "turbolab",
+		"tagline": "A Python library for testing agent-based modeling",
+		"tags": [
+			"signal-processing",
+			"dynamic-systems",
+			"industrial"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "solve-lib",
+		"name": "solve-lib",
+		"tagline": "A Python library for optimizing optimization problems",
+		"tags": [
+			"system-modeling",
+			"renewable",
+			"geophysics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "mesh-sim",
+		"name": "mesh-sim",
+		"tagline": "A Python library for modeling signal processing",
+		"tags": [
+			"molecular-dynamics",
+			"multi-agent",
+			"real-time",
+			"weather"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumlabai",
+		"name": "QuantumLabAI",
+		"tagline": "A Python library for prototyping thermal analysis",
+		"tags": [
+			"industrial",
+			"biology"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "autocalc",
+		"name": "autocalc",
+		"tagline": "A Python library for predicting ecological modeling",
+		"tags": [
+			"neuroscience",
+			"fluid-dynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "multinet",
+		"name": "MultiNet",
+		"tagline": "A Python library for solving multi-physics simulation",
+		"tags": [
+			"steady-state",
+			"network",
+			"industrial"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultragrid",
+		"name": "ultragrid",
+		"tagline": "A Python library for designing traffic simulation",
+		"tags": [
+			"fem",
+			"cfd"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "fastbox",
+		"name": "fastbox",
+		"tagline": "A Python library for prototyping thermal analysis",
+		"tags": [
+			"network",
+			"manufacturing",
+			"noise"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "automesh2d",
+		"name": "AutoMesh2D",
+		"tagline": "A Python library for computing structural analysis",
+		"tags": [
+			"renewable",
+			"dynamic-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "core-py",
+		"name": "core-py",
+		"tagline": "A Python library for solving optimization problems",
+		"tags": [
+			"vibration",
+			"time-series",
+			"system-modeling"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "fastsolve",
+		"name": "fastsolve",
+		"tagline": "A Python library for modeling quantum systems",
+		"tags": [
+			"aerospace",
+			"control",
+			"graph",
+			"traffic",
+			"structural"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "simengine",
+		"name": "simengine",
+		"tagline": "A Python library for predicting traffic simulation",
+		"tags": [
+			"acoustics",
+			"control",
+			"reinforcement-learning"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "deepgrid",
+		"name": "DeepGrid",
+		"tagline": "A Python library for computing quantum systems",
+		"tags": [
+			"epidemiology",
+			"climate",
+			"discrete-event",
+			"fluid-dynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "flow-py",
+		"name": "flow-py",
+		"tagline": "A Python library for prototyping climate modeling",
+		"tags": [
+			"signal-processing",
+			"industrial",
+			"optimization",
+			"system-modeling",
+			"discrete-event"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "micromodel",
+		"name": "micromodel",
+		"tagline": "A Python library for testing supply chain optimization",
+		"tags": [
+			"electromagnetics",
+			"system-modeling",
+			"oceanography",
+			"agent-based",
+			"cfd"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "metaphyslib",
+		"name": "MetaPhysLib",
+		"tagline": "A Python library for prototyping robotics",
+		"tags": [
+			"system-modeling",
+			"reinforcement-learning",
+			"quantum",
+			"mechanics",
+			"neuroscience"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "hyperlab",
+		"name": "HyperLab",
+		"tagline": "A Python library for validating structural analysis",
+		"tags": [
+			"climate",
+			"robotics",
+			"oceanography",
+			"aerospace"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "numstudio",
+		"name": "numstudio",
+		"tagline": "A Python library for validating financial modeling",
+		"tags": [
+			"reinforcement-learning",
+			"weather",
+			"oceanography",
+			"system-modeling"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "wave-lib",
+		"name": "wave-lib",
+		"tagline": "A Python library for visualizing discrete event simulation",
+		"tags": [
+			"block-diagram",
+			"fem"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "autostudio",
+		"name": "AutoStudio",
+		"tagline": "A Python library for prototyping biological systems",
+		"tags": [
+			"chemical",
+			"orbital",
+			"logistics",
+			"power-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "kit-lib",
+		"name": "kit-lib",
+		"tagline": "A Python library for visualizing seismic analysis",
+		"tags": [
+			"genomics",
+			"optimization"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "opennet3d",
+		"name": "OpenNet3D",
+		"tagline": "A Python library for predicting discrete event simulation",
+		"tags": [
+			"orbital",
+			"agent-based",
+			"distributed",
+			"mechanics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultrastudio",
+		"name": "ultrastudio",
+		"tagline": "A Python library for modeling acoustic simulation",
+		"tags": [
+			"energy",
+			"robotics",
+			"reinforcement-learning",
+			"distributed"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "dyn-lib",
+		"name": "dyn-lib",
+		"tagline": "A Python library for optimizing agent-based modeling",
+		"tags": [
+			"supply-chain",
+			"dsp",
+			"dynamic-systems",
+			"grid",
+			"network"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "turbobox",
+		"name": "turbobox",
+		"tagline": "A Python library for designing climate modeling",
+		"tags": [
+			"battery",
+			"transient",
+			"manufacturing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "neofield",
+		"name": "neofield",
+		"tagline": "A Python library for simulating molecular simulation",
+		"tags": [
+			"traffic",
+			"system-modeling",
+			"structural",
+			"geophysics",
+			"noise"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "neonet",
+		"name": "neonet",
+		"tagline": "A Python library for simulating climate modeling",
+		"tags": [
+			"steady-state",
+			"mechanics",
+			"propulsion",
+			"finite-element",
+			"real-time"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumspaceml",
+		"name": "QuantumSpaceML",
+		"tagline": "A Python library for testing acoustic simulation",
+		"tags": [
+			"cfd",
+			"steady-state",
+			"robotics",
+			"economics",
+			"weather"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "smartspace",
+		"name": "smartspace",
+		"tagline": "A Python library for validating financial modeling",
+		"tags": [
+			"optimization",
+			"logistics",
+			"power-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "core-core",
+		"name": "core-core",
+		"tagline": "A Python library for analyzing network analysis",
+		"tags": [
+			"electromagnetics",
+			"network",
+			"biology"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "net-core",
+		"name": "net-core",
+		"tagline": "A Python library for designing acoustic simulation",
+		"tags": [
+			"control",
+			"digital-twin"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "flexenginepro",
+		"name": "FlexEnginePro",
+		"tagline": "A Python library for computing signal processing",
+		"tags": [
+			"agent-based",
+			"cfd",
+			"molecular-dynamics",
+			"orbital",
+			"real-time"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "sim-py",
+		"name": "sim-py",
+		"tagline": "A Python library for validating robotics",
+		"tags": [
+			"biology",
+			"ecology",
+			"stochastic"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultracalc",
+		"name": "ultracalc",
+		"tagline": "A Python library for prototyping seismic analysis",
+		"tags": [
+			"vibration",
+			"thermodynamics",
+			"fem",
+			"fluid-dynamics",
+			"agent-based"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumkit",
+		"name": "quantumkit",
+		"tagline": "A Python library for prototyping stochastic processes",
+		"tags": [
+			"finite-element",
+			"renewable"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "deepbox",
+		"name": "deepbox",
+		"tagline": "A Python library for solving epidemiological modeling",
+		"tags": [
+			"structural",
+			"noise",
+			"transient",
+			"electric-vehicle"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "superboxlib",
+		"name": "SuperBoxLib",
+		"tagline": "A Python library for validating network analysis",
+		"tags": [
+			"chemical",
+			"industrial",
+			"system-modeling"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "phys-py",
+		"name": "phys-py",
+		"tagline": "A Python library for simulating financial modeling",
+		"tags": [
+			"real-time",
+			"finite-element",
+			"graph",
+			"optics",
+			"robotics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "fastkitsuite",
+		"name": "FastKitSuite",
+		"tagline": "A Python library for prototyping signal processing",
+		"tags": [
+			"noise",
+			"cfd",
+			"robotics",
+			"discrete-event"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "wave-sim",
+		"name": "wave-sim",
+		"tagline": "A Python library for modeling biological systems",
+		"tags": [
+			"oceanography",
+			"steady-state",
+			"economics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumwave",
+		"name": "quantumwave",
+		"tagline": "A Python library for designing ecological modeling",
+		"tags": [
+			"robotics",
+			"chemical"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "superphys",
+		"name": "superphys",
+		"tagline": "A Python library for computing climate modeling",
+		"tags": [
+			"finite-element",
+			"signal-processing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "lab-kit",
+		"name": "lab-kit",
+		"tagline": "A Python library for simulating thermal analysis",
+		"tags": [
+			"cfd",
+			"multi-agent"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "simgridml",
+		"name": "SimGridML",
+		"tagline": "A Python library for testing discrete event simulation",
+		"tags": [
+			"epidemiology",
+			"cfd",
+			"graph"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "autohub",
+		"name": "autohub",
+		"tagline": "A Python library for solving signal processing",
+		"tags": [
+			"fluid-dynamics",
+			"acoustics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "net-kit",
+		"name": "net-kit",
+		"tagline": "A Python library for designing molecular simulation",
+		"tags": [
+			"robotics",
+			"optimization",
+			"gpu",
+			"cfd"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "deepspace",
+		"name": "deepspace",
+		"tagline": "A Python library for optimizing computational mechanics",
+		"tags": [
+			"time-series",
+			"transient"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "deepsolve",
+		"name": "deepsolve",
+		"tagline": "A Python library for computing financial modeling",
+		"tags": [
+			"stochastic",
+			"robotics",
+			"gpu",
+			"game-theory"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "hyperphyspro",
+		"name": "HyperPhysPro",
+		"tagline": "A Python library for simulating control systems",
+		"tags": [
+			"physics",
+			"visualization",
+			"seismic",
+			"real-time",
+			"genomics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "microstudio",
+		"name": "MicroStudio",
+		"tagline": "A Python library for computing molecular simulation",
+		"tags": [
+			"industrial",
+			"steady-state",
+			"dynamic-systems",
+			"signal-processing"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "neophys2d",
+		"name": "NeoPhys2D",
+		"tagline": "A Python library for visualizing discrete event simulation",
+		"tags": [
+			"multi-agent",
+			"dsp",
+			"dynamic-systems",
+			"vibration"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "phys-core",
+		"name": "phys-core",
+		"tagline": "A Python library for predicting signal processing",
+		"tags": [
+			"noise",
+			"gpu",
+			"reinforcement-learning"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "ultrastudio3d",
+		"name": "UltraStudio3D",
+		"tagline": "A Python library for designing fluid dynamics",
+		"tags": [
+			"biology",
+			"power-systems",
+			"transient"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "simdyn",
+		"name": "simdyn",
+		"tagline": "A Python library for modeling robotics",
+		"tags": [
+			"manufacturing",
+			"quantum",
+			"optics",
+			"agent-based",
+			"electromagnetics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "mesh-kit",
+		"name": "mesh-kit",
+		"tagline": "A Python library for prototyping control systems",
+		"tags": [
+			"climate",
+			"graph",
+			"discrete-event",
+			"orbital"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "sim-core",
+		"name": "sim-core",
+		"tagline": "A Python library for optimizing supply chain optimization",
+		"tags": [
+			"dsp",
+			"control",
+			"reinforcement-learning",
+			"epidemiology",
+			"thermodynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "superhub3d",
+		"name": "SuperHub3D",
+		"tagline": "A Python library for prototyping thermal analysis",
+		"tags": [
+			"reinforcement-learning",
+			"cfd",
+			"noise",
+			"ecology",
+			"mechanics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "neostudio2d",
+		"name": "NeoStudio2D",
+		"tagline": "A Python library for testing stochastic processes",
+		"tags": [
+			"seismic",
+			"molecular-dynamics",
+			"grid"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "procore",
+		"name": "ProCore",
+		"tagline": "A Python library for optimizing biological systems",
+		"tags": [
+			"process",
+			"robotics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "metamodel",
+		"name": "metamodel",
+		"tagline": "A Python library for computing network analysis",
+		"tags": [
+			"finance",
+			"electric-vehicle",
+			"control",
+			"optics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "numphyssuite",
+		"name": "NumPhysSuite",
+		"tagline": "A Python library for analyzing fluid dynamics",
+		"tags": [
+			"vibration",
+			"agent-based",
+			"fluid-dynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "hypersolve2d",
+		"name": "HyperSolve2D",
+		"tagline": "A Python library for modeling electromagnetic simulation",
+		"tags": [
+			"steady-state",
+			"manufacturing",
+			"signal-processing",
+			"traffic",
+			"power-systems"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "quantumstudiopro",
+		"name": "QuantumStudioPro",
+		"tagline": "A Python library for simulating stochastic processes",
+		"tags": [
+			"biology",
+			"battery"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "openspace",
+		"name": "openspace",
+		"tagline": "A Python library for optimizing seismic analysis",
+		"tags": [
+			"multi-agent",
+			"quantum",
+			"supply-chain"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "grid-py",
+		"name": "grid-py",
+		"tagline": "A Python library for visualizing structural analysis",
+		"tags": [
+			"traffic",
+			"time-series"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "kit-kit",
+		"name": "kit-kit",
+		"tagline": "A Python library for testing computational mechanics",
+		"tags": [
+			"logistics",
+			"weather",
+			"gpu",
+			"molecular-dynamics",
+			"genomics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "grid-kit",
+		"name": "grid-kit",
+		"tagline": "A Python library for predicting ecological modeling",
+		"tags": [
+			"agent-based",
+			"fem",
+			"distributed"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "fastkitlib",
+		"name": "FastKitLib",
+		"tagline": "A Python library for modeling seismic analysis",
+		"tags": [
+			"network",
+			"quantum",
+			"cfd",
+			"real-time",
+			"epidemiology"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	},
+	{
+		"id": "neowave",
+		"name": "NeoWave",
+		"tagline": "A Python library for prototyping quantum systems",
+		"tags": [
+			"system-modeling",
+			"real-time",
+			"parallel",
+			"thermodynamics"
+		],
+		"github": "https://github.com/pysimhub/pysimhub.github.io"
+	}
+]

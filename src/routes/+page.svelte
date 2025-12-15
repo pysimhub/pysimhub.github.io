@@ -1,18 +1,95 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import SearchBar from '$lib/components/SearchBar.svelte';
 	import TagFilter from '$lib/components/TagFilter.svelte';
 	import SortDropdown from '$lib/components/SortDropdown.svelte';
 	import StatsCounter from '$lib/components/StatsCounter.svelte';
 	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 	import { allProjects } from '$lib/stores/projects';
+	import type { Project, ProjectConfig } from '$lib/types/project';
+	import { parseGitHubUrl, getAvatarUrl } from '$lib/utils/github';
 
 	// Get data from server load
 	let { data } = $props();
 
-	// Initialize store with server data
+	// Test mode state
+	let testMode = $state(false);
+	let testDataLoaded = $state(false);
+
+	// Check for test mode on mount
+	$effect(() => {
+		if (browser) {
+			const urlParam = $page.url.searchParams.get('test');
+			const stored = localStorage.getItem('pysimhub-test-mode');
+
+			if (urlParam === 'true') {
+				localStorage.setItem('pysimhub-test-mode', 'true');
+				testMode = true;
+			} else if (urlParam === 'false') {
+				localStorage.removeItem('pysimhub-test-mode');
+				testMode = false;
+			} else if (stored === 'true') {
+				testMode = true;
+			}
+		}
+	});
+
+	// Load test data when test mode is enabled
+	$effect(() => {
+		if (browser && testMode && !testDataLoaded) {
+			loadTestData();
+		} else if (browser && !testMode && testDataLoaded) {
+			// Reset to real data only
+			allProjects.set(data.projects);
+			testDataLoaded = false;
+		}
+	});
+
+	async function loadTestData() {
+		try {
+			const [projectsRes, cacheRes] = await Promise.all([
+				fetch('/data/test-projects.json'),
+				fetch('/data/test-github-cache.json')
+			]);
+
+			if (projectsRes.ok && cacheRes.ok) {
+				const testConfigs: ProjectConfig[] = await projectsRes.json();
+				const testCache = await cacheRes.json();
+
+				// Enrich test projects with cache data
+				const testProjects: Project[] = testConfigs.map(config => {
+					const cached = testCache[config.id];
+					const parsed = parseGitHubUrl(config.github);
+					const owner = parsed?.owner;
+					const fallbackAvatar = owner ? getAvatarUrl(owner, 128) : undefined;
+
+					return {
+						...config,
+						stars: cached?.stars ?? 0,
+						forks: cached?.forks,
+						lastUpdate: cached?.lastUpdate,
+						lastRelease: cached?.lastRelease,
+						releaseVersion: cached?.releaseVersion,
+						license: cached?.license,
+						avatarUrl: config.logo || cached?.avatarUrl || fallbackAvatar,
+						description: config.description || cached?.description
+					};
+				});
+
+				// Merge with real projects
+				allProjects.set([...data.projects, ...testProjects]);
+				testDataLoaded = true;
+			}
+		} catch (e) {
+			console.warn('Failed to load test data:', e);
+		}
+	}
+
+// Initialize store with server data
 	// Using $effect.pre to run before DOM updates
 	$effect.pre(() => {
-		if (data?.projects?.length > 0) {
+		if (data?.projects?.length > 0 && !testDataLoaded) {
 			allProjects.set(data.projects);
 		}
 	});
@@ -82,7 +159,7 @@
 
 		<!-- Stats -->
 		<div class="mt-16">
-			<StatsCounter />
+			<StatsCounter stats={data.stats} />
 		</div>
 	</div>
 </section>

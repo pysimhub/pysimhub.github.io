@@ -44,6 +44,16 @@
 		});
 	}
 
+	function isRecentRelease(dateStr: string | undefined): boolean {
+		if (!dateStr) return false;
+		const releaseDate = new Date(dateStr);
+		const thirtyDaysAgo = new Date();
+		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+		return releaseDate > thirtyDaysAgo;
+	}
+
+	const hasRecentRelease = $derived(isRecentRelease(project.lastRelease));
+
 	// Count additional links not shown on card (pypi, condaForge, homepage, example)
 	const extraLinksCount = $derived(
 		(project.pypi ? 1 : 0) +
@@ -57,11 +67,20 @@
 <article
 	onclick={openModal}
 	onkeydown={handleKeydown}
-	class="card-glow group relative flex h-full w-full flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-lg"
+	class="card-glow group relative flex h-full w-full flex-col rounded-xl border bg-[var(--color-bg-card)] p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg {hasRecentRelease
+		? 'border-[var(--color-accent)]/50 hover:border-[var(--color-accent)]'
+		: 'border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}"
 	role="button"
 	tabindex="0"
 	aria-haspopup="dialog"
 >
+	<!-- New Release Badge -->
+	{#if hasRecentRelease}
+		<div class="absolute top-2 right-2 rounded-md bg-[var(--color-accent)]/15 px-1.5 py-0.5 text-[10px] font-medium text-[var(--color-accent)]">
+			New Release
+		</div>
+	{/if}
+
 	<!-- Logo and Name -->
 	<div class="flex items-start gap-3">
 		{#if project.avatarUrl}

@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { ProjectConfig, Project } from '$lib/types/project';
 import { parseGitHubUrl, getAvatarUrl } from '$lib/utils/github';
+import { env } from '$env/dynamic/private';
 
 interface GitHubCache {
 	[projectId: string]: {
@@ -63,13 +64,15 @@ function enrichProjectWithCache(config: ProjectConfig, cache: GitHubCache): Proj
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
+	const includeTestData = env.TEST_PROJECTS === 'true';
+
 	// Load project configs from static JSON
 	const [projectsResponse, cacheResponse] = await Promise.all([
 		fetch('/data/projects.json'),
 		fetch('/data/github-cache.json').catch(() => null)
 	]);
 
-	const configs: ProjectConfig[] = await projectsResponse.json();
+	let configs: ProjectConfig[] = await projectsResponse.json();
 
 	// Load cached GitHub data (may not exist on first build)
 	let cache: GitHubCache = {};
@@ -78,6 +81,26 @@ export const load: PageServerLoad = async ({ fetch }) => {
 			cache = await cacheResponse.json();
 		} catch {
 			console.warn('Failed to parse github-cache.json');
+		}
+	}
+
+	// Optionally load test projects for development
+	if (includeTestData) {
+		try {
+			const [testProjectsRes, testCacheRes] = await Promise.all([
+				fetch('/data/test-projects.json'),
+				fetch('/data/test-github-cache.json').catch(() => null)
+			]);
+			if (testProjectsRes.ok) {
+				const testConfigs: ProjectConfig[] = await testProjectsRes.json();
+				configs = [...configs, ...testConfigs];
+			}
+			if (testCacheRes?.ok) {
+				const testCache = await testCacheRes.json();
+				cache = { ...cache, ...testCache };
+			}
+		} catch {
+			console.warn('Failed to load test project data');
 		}
 	}
 
