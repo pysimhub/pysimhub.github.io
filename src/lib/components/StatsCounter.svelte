@@ -1,15 +1,24 @@
 <script lang="ts">
-	import { stats } from '$lib/stores/projects';
 	import { countUp, formatNumber } from '$lib/utils/countup';
 	import { browser } from '$app/environment';
+
+	interface Props {
+		stats: {
+			totalStars: number;
+			totalProjects: number;
+			totalTags: number;
+		};
+	}
+
+	let { stats }: Props = $props();
 
 	let containerEl: HTMLElement;
 	let hasAnimated = $state(false);
 
 	const statItems = $derived([
-		{ label: 'Total Stars', value: $stats.totalStars, suffix: '+' },
-		{ label: 'Projects', value: $stats.totalProjects, suffix: '' },
-		{ label: 'Tags', value: $stats.totalTags, suffix: '' }
+		{ label: 'Total Stars', value: stats.totalStars, suffix: '+' },
+		{ label: 'Projects', value: stats.totalProjects, suffix: '' },
+		{ label: 'Tags', value: stats.totalTags, suffix: '' }
 	]);
 
 	$effect(() => {
@@ -49,7 +58,7 @@
 	bind:this={containerEl}
 	class="grid grid-cols-3 gap-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 md:gap-8"
 >
-	{#each statItems as stat, index}
+	{#each statItems as stat}
 		<div class="text-center">
 			<div class="counter text-3xl font-bold text-[var(--color-accent)] md:text-4xl">
 				{#if hasAnimated || (browser && window.matchMedia('(prefers-reduced-motion: reduce)').matches)}

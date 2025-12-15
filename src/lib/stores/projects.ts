@@ -1,5 +1,5 @@
 import { writable, derived } from 'svelte/store';
-import type { Project, SortOption } from '$lib/types/project';
+import type { Project, SortOption, SortDirection } from '$lib/types/project';
 import { shuffle } from '$lib/utils/shuffle';
 import { searchProjects, initSearch } from '$lib/utils/search';
 
@@ -12,8 +12,9 @@ export const searchQuery = writable<string>('');
 // Selected tags filter (array for multi-select)
 export const selectedTags = writable<string[]>([]);
 
-// Sort option
+// Sort option and direction
 export const sortOption = writable<SortOption>('random');
+export const sortDirection = writable<SortDirection>('desc');
 
 // Initialize search when projects are loaded
 allProjects.subscribe((projects) => {
@@ -43,8 +44,8 @@ export const allTags = derived(allProjects, ($allProjects) => {
 
 // Filtered and sorted projects
 export const filteredProjects = derived(
-	[allProjects, searchQuery, selectedTags, sortOption],
-	([$allProjects, $searchQuery, $selectedTags, $sortOption]) => {
+	[allProjects, searchQuery, selectedTags, sortOption, sortDirection],
+	([$allProjects, $searchQuery, $selectedTags, $sortOption, $sortDirection]) => {
 		let result = $allProjects;
 
 		// Apply search
@@ -59,21 +60,29 @@ export const filteredProjects = derived(
 
 		// Apply sorting (skip if search is active - search results are already ranked)
 		if (!$searchQuery.trim()) {
+			const isAsc = $sortDirection === 'asc';
+
 			switch ($sortOption) {
 				case 'random':
 					result = shuffle(result);
 					break;
 				case 'alphabetical':
-					result = [...result].sort((a, b) => a.name.localeCompare(b.name));
+					result = [...result].sort((a, b) => {
+						const cmp = a.name.localeCompare(b.name);
+						return isAsc ? cmp : -cmp;
+					});
 					break;
 				case 'stars':
-					result = [...result].sort((a, b) => b.stars - a.stars);
+					result = [...result].sort((a, b) => {
+						return isAsc ? a.stars - b.stars : b.stars - a.stars;
+					});
 					break;
-				case 'recent':
+				case 'release':
 					result = [...result].sort((a, b) => {
 						if (!a.lastRelease) return 1;
 						if (!b.lastRelease) return -1;
-						return new Date(b.lastRelease).getTime() - new Date(a.lastRelease).getTime();
+						const diff = new Date(b.lastRelease).getTime() - new Date(a.lastRelease).getTime();
+						return isAsc ? -diff : diff;
 					});
 					break;
 			}

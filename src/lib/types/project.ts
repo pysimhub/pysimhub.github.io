@@ -48,16 +48,20 @@ export interface Project extends ProjectConfig {
 	license?: string;
 }
 
-export type SortOption = 'random' | 'alphabetical' | 'stars' | 'recent';
+export type SortOption = 'random' | 'alphabetical' | 'stars' | 'release';
+
+export type SortDirection = 'asc' | 'desc';
 
 export interface SortInfo {
 	id: SortOption;
 	name: string;
+	reverseName?: string; // Name when reversed (asc)
+	supportsDirection: boolean;
 }
 
 export const SORT_OPTIONS: SortInfo[] = [
-	{ id: 'random', name: 'Random' },
-	{ id: 'alphabetical', name: 'A-Z' },
-	{ id: 'stars', name: 'Most Stars' },
-	{ id: 'recent', name: 'Recently Updated' }
+	{ id: 'random', name: 'Random', supportsDirection: false },
+	{ id: 'alphabetical', name: 'A-Z', reverseName: 'Z-A', supportsDirection: true },
+	{ id: 'stars', name: 'Most Stars', reverseName: 'Least Stars', supportsDirection: true },
+	{ id: 'release', name: 'New Releases', reverseName: 'Oldest Releases', supportsDirection: true }
 ];
