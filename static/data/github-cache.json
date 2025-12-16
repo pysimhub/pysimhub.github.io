@@ -8,18 +8,18 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2025-12-15T06:46:22.974Z"
+		"fetchedAt": "2025-12-16T06:44:14.464Z"
 	},
 	"pathsim": {
 		"stars": 214,
 		"forks": 21,
-		"lastUpdate": "2025-12-11T09:50:14Z",
+		"lastUpdate": "2025-12-15T13:29:10Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2025-12-08T09:31:59Z",
 		"releaseVersion": "v0.14.0",
-		"fetchedAt": "2025-12-15T06:46:23.308Z"
+		"fetchedAt": "2025-12-16T06:44:14.885Z"
 	},
 	"bdsim": {
 		"stars": 230,
@@ -30,6 +30,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2025-12-15T06:46:23.664Z"
+		"fetchedAt": "2025-12-16T06:44:15.266Z"
 	}
 }
