@@ -1,6 +1,6 @@
 {
 	"scikit-rf": {
-		"stars": 829,
+		"stars": 830,
 		"forks": 321,
 		"lastUpdate": "2025-12-12T15:43:51Z",
 		"description": "RF and Microwave Engineering Scikit ",
@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2025-12-16T06:44:14.464Z"
+		"fetchedAt": "2025-12-17T06:43:07.479Z"
 	},
 	"pathsim": {
 		"stars": 214,
@@ -19,17 +19,17 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2025-12-08T09:31:59Z",
 		"releaseVersion": "v0.14.0",
-		"fetchedAt": "2025-12-16T06:44:14.885Z"
+		"fetchedAt": "2025-12-17T06:43:07.777Z"
 	},
 	"bdsim": {
 		"stars": 230,
 		"forks": 37,
-		"lastUpdate": "2024-08-06T21:23:51Z",
+		"lastUpdate": "2025-12-16T10:47:27Z",
 		"description": "Simulate dynamic systems expressed in block diagram form using Python",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2025-12-16T06:44:15.266Z"
+		"fetchedAt": "2025-12-17T06:43:08.059Z"
 	}
 }
