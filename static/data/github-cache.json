@@ -1,6 +1,6 @@
 {
 	"scikit-rf": {
-		"stars": 833,
+		"stars": 834,
 		"forks": 322,
 		"lastUpdate": "2025-12-12T15:43:51Z",
 		"description": "RF and Microwave Engineering Scikit ",
@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2025-12-24T06:44:56.075Z"
+		"fetchedAt": "2025-12-25T06:43:05.995Z"
 	},
 	"pathsim": {
 		"stars": 217,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2025-12-08T09:31:59Z",
 		"releaseVersion": "v0.14.0",
-		"fetchedAt": "2025-12-24T06:44:56.323Z"
+		"fetchedAt": "2025-12-25T06:43:06.334Z"
 	},
 	"bdsim": {
 		"stars": 231,
@@ -30,6 +30,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2025-12-24T06:44:56.587Z"
+		"fetchedAt": "2025-12-25T06:43:06.726Z"
 	}
 }
