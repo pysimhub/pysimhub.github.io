@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2025-12-27T06:40:36.133Z"
+		"fetchedAt": "2025-12-28T06:40:48.868Z"
 	},
 	"pathsim": {
 		"stars": 217,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2025-12-08T09:31:59Z",
 		"releaseVersion": "v0.14.0",
-		"fetchedAt": "2025-12-27T06:40:36.397Z"
+		"fetchedAt": "2025-12-28T06:40:49.201Z"
 	},
 	"bdsim": {
 		"stars": 231,
@@ -30,6 +30,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2025-12-27T06:40:36.693Z"
+		"fetchedAt": "2025-12-28T06:40:49.481Z"
 	}
 }
