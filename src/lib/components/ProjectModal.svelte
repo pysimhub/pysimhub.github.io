@@ -30,12 +30,6 @@
 			onclose();
 		}
 	}
-
-	function handleBackdropClick(e: MouseEvent) {
-		if (e.target === e.currentTarget) {
-			onclose();
-		}
-	}
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -44,10 +38,12 @@
 <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
 <div
 	class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-	onclick={handleBackdropClick}
 	transition:fade={{ duration: 200 }}
 >
-	<div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+	<div
+		class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+		onclick={onclose}
+	></div>
 
 	<!-- Modal -->
 	<div
