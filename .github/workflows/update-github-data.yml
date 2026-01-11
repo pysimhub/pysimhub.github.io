@@ -27,10 +27,13 @@ jobs:
         run: node scripts/fetch-github-data.js
         timeout-minutes: 5
 
+      - name: Sync tags to issue template
+        run: node scripts/sync-tags.js
+
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet static/data/github-cache.json; then
+          if git diff --quiet static/data/github-cache.json .github/ISSUE_TEMPLATE/project_submission.yml; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -41,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add static/data/github-cache.json
+          git add static/data/github-cache.json .github/ISSUE_TEMPLATE/project_submission.yml
           git commit -m "chore: update GitHub data cache"
           git pull --rebase origin main
           git push
