@@ -13,6 +13,10 @@
 
 	let { project }: Props = $props();
 	let showModal = $state(false);
+	let tagsContainer: HTMLElement | undefined = $state();
+	let linksContainer: HTMLElement | undefined = $state();
+	let maxVisibleTags = $state(100); // Will be calculated based on space
+	let maxVisibleLinks = $state(100); // Will be calculated based on space
 
 	function filterByTag(tag: string, e: MouseEvent) {
 		e.stopPropagation();
@@ -41,13 +45,96 @@
 
 	const hasRecentRelease = $derived(isRecentDate(project.lastRelease, 30));
 
-	// Count additional links not shown on card (pypi, condaForge, homepage, example)
-	const extraLinksCount = $derived(
-		(project.pypi ? 1 : 0) +
-		(project.condaForge ? 1 : 0) +
-		(project.homepage ? 1 : 0) +
-		(project.example ? 1 : 0)
-	);
+	// All available links
+	const allLinks = $derived([
+		{ key: 'github', href: project.github, icon: 'github' as const, label: 'GitHub' },
+		project.docs ? { key: 'docs', href: project.docs, icon: 'docs' as const, label: 'Docs' } : null,
+		project.pypi ? { key: 'pypi', href: project.pypi, icon: 'package' as const, label: 'PyPI' } : null,
+		project.condaForge ? { key: 'conda', href: project.condaForge, icon: 'package' as const, label: 'conda' } : null,
+		project.homepage ? { key: 'home', href: project.homepage, icon: 'globe' as const, label: 'Web' } : null,
+		project.example ? { key: 'example', href: project.example, icon: 'play' as const, label: 'Demo' } : null,
+	].filter(Boolean) as Array<{ key: string; href: string; icon: 'github' | 'docs' | 'package' | 'globe' | 'play'; label: string }>);
+
+	// Calculate visible items for single-line containers (links)
+	function calculateVisibleLinks(container: HTMLElement | undefined, setState: (count: number) => void) {
+		if (!container) return;
+
+		const items = container.querySelectorAll('[data-link]');
+		if (items.length === 0) return;
+
+		const containerRect = container.getBoundingClientRect();
+		const containerRight = containerRect.right;
+		const moreButtonWidth = 32;
+		const gap = 8;
+
+		let visibleCount = 0;
+		items.forEach((item, index) => {
+			const itemRect = item.getBoundingClientRect();
+			const isLast = index === items.length - 1;
+			const spaceNeeded = isLast ? 0 : moreButtonWidth + gap;
+
+			if (itemRect.right + spaceNeeded <= containerRight) {
+				visibleCount++;
+			}
+		});
+
+		setState(Math.max(1, visibleCount));
+	}
+
+	// Calculate visible items for multi-line containers (tags)
+	function calculateVisibleTags(container: HTMLElement | undefined, setState: (count: number) => void) {
+		if (!container) return;
+
+		const items = container.querySelectorAll('[data-tag]');
+		if (items.length === 0) return;
+
+		const containerRect = container.getBoundingClientRect();
+		const containerBottom = containerRect.bottom;
+
+		let visibleCount = 0;
+		items.forEach((item) => {
+			const itemRect = item.getBoundingClientRect();
+			// Item is visible if its bottom is within the container
+			if (itemRect.bottom <= containerBottom + 2) { // +2 for tolerance
+				visibleCount++;
+			}
+		});
+
+		setState(Math.max(1, visibleCount));
+	}
+
+	// Use effect to calculate on mount and resize
+	$effect(() => {
+		if (!tagsContainer || !linksContainer) return;
+
+		const calculate = () => {
+			calculateVisibleTags(tagsContainer, (count) => maxVisibleTags = count);
+			calculateVisibleLinks(linksContainer, (count) => maxVisibleLinks = count);
+		};
+
+		// Calculate after a small delay to ensure render is complete
+		const timeout = setTimeout(calculate, 10);
+
+		const resizeObserver = new ResizeObserver(() => {
+			// Reset to show all, then recalculate
+			maxVisibleTags = 100;
+			maxVisibleLinks = 100;
+			requestAnimationFrame(calculate);
+		});
+
+		resizeObserver.observe(tagsContainer);
+		resizeObserver.observe(linksContainer);
+
+		return () => {
+			clearTimeout(timeout);
+			resizeObserver.disconnect();
+		};
+	});
+
+	const visibleTagCount = $derived(Math.min(maxVisibleTags, project.tags.length));
+	const visibleLinkCount = $derived(Math.min(maxVisibleLinks, allLinks.length));
+	const hiddenTagCount = $derived(project.tags.length - visibleTagCount);
+	const hiddenLinkCount = $derived(allLinks.length - visibleLinkCount);
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
@@ -97,15 +184,15 @@
 	</p>
 
 	<!-- Tags -->
-	<div class="mt-3 flex flex-wrap gap-1">
-		{#each project.tags.slice(0, 4) as tag}
-			<Badge variant="muted" size="sm" rounded="md" interactive onclick={(e) => filterByTag(tag, e)}>
+	<div bind:this={tagsContainer} class="mt-3 flex flex-wrap items-start gap-1.5 max-h-[3.5rem] overflow-hidden">
+		{#each project.tags.slice(0, visibleTagCount) as tag}
+			<Badge data-tag variant="default" size="sm" interactive class="whitespace-nowrap" onclick={(e) => filterByTag(tag, e)}>
 				{tag}
 			</Badge>
 		{/each}
-		{#if project.tags.length > 4}
-			<Badge variant="accent" size="sm" rounded="md">
-				+{project.tags.length - 4}
+		{#if hiddenTagCount > 0}
+			<Badge variant="accent" size="sm" class="whitespace-nowrap">
+				+{hiddenTagCount}
 			</Badge>
 		{/if}
 	</div>
@@ -114,30 +201,22 @@
 	<div class="flex-1"></div>
 
 	<!-- Action Links -->
-	<div class="mt-4 flex flex-wrap gap-2">
-		<a
-			href={project.github}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
-		>
-			<Icon name="github" size="sm" />
-			GitHub
-		</a>
-		{#if project.docs}
+	<div bind:this={linksContainer} class="mt-4 flex flex-nowrap items-center gap-2 overflow-hidden">
+		{#each allLinks.slice(0, visibleLinkCount) as link (link.key)}
 			<a
-				href={project.docs}
+				data-link
+				href={link.href}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
+				class="inline-flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
 			>
-				<Icon name="docs" size="sm" />
-				Docs
+				<Icon name={link.icon} size="sm" />
+				{link.label}
 			</a>
-		{/if}
-		{#if extraLinksCount > 0}
-			<Badge variant="accent" size="sm" rounded="md">
-				+{extraLinksCount}
+		{/each}
+		{#if hiddenLinkCount > 0}
+			<Badge variant="accent" size="sm" rounded="md" class="flex-shrink-0 whitespace-nowrap">
+				+{hiddenLinkCount}
 			</Badge>
 		{/if}
 	</div>

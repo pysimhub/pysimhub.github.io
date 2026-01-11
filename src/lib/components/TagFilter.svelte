@@ -135,15 +135,15 @@
 		padding: 0.375rem 0.875rem;
 		font-size: 0.875rem;
 		font-weight: 600;
-		color: #ef4444;
-		background-color: color-mix(in srgb, #ef4444 10%, transparent);
-		border: 1px solid color-mix(in srgb, #ef4444 30%, transparent);
+		color: var(--color-accent);
+		background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
 		transition: all 150ms ease;
 	}
 
 	.clear-all-btn:hover {
-		background-color: color-mix(in srgb, #ef4444 20%, transparent);
-		border-color: #ef4444;
+		background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+		border-color: var(--color-accent);
 		transform: translateY(-1px);
 	}
 </style>

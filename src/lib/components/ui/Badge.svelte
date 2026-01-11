@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		variant?: 'default' | 'accent' | 'muted' | 'success' | 'danger';
 		size?: 'sm' | 'md';
 		rounded?: 'md' | 'full';
@@ -18,7 +19,8 @@
 		interactive = false,
 		class: className = '',
 		onclick,
-		children
+		children,
+		...restProps
 	}: Props = $props();
 
 	const baseClasses = 'inline-flex items-center font-medium transition-colors';
@@ -35,7 +37,7 @@
 
 	const variantClasses = {
 		default:
-			'bg-[var(--color-bg-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)]',
+			'bg-[var(--color-bg-card)] text-[var(--color-text-secondary)] border border-[var(--color-border)]',
 		accent: 'bg-[var(--color-accent)]/10 text-[var(--color-accent)]',
 		muted: 'bg-[var(--color-bg-hover)] text-[var(--color-text-muted)]',
 		success: 'bg-emerald-500/10 text-emerald-500',
@@ -43,9 +45,9 @@
 	};
 
 	const interactiveClasses = {
-		default: 'hover:bg-[var(--color-bg-hover)] hover:border-[var(--color-border-hover)]',
+		default: 'hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)] hover:-translate-y-0.5',
 		accent: 'hover:bg-[var(--color-accent)]/20',
-		muted: 'hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent)]',
+		muted: 'hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)] hover:-translate-y-0.5',
 		success: 'hover:bg-emerald-500/20',
 		danger: 'hover:bg-red-500/20'
 	};
@@ -56,11 +58,11 @@
 </script>
 
 {#if onclick || interactive}
-	<button type="button" class={classes} {onclick}>
+	<button type="button" class={classes} {onclick} {...restProps}>
 		{@render children()}
 	</button>
 {:else}
-	<span class={classes}>
+	<span class={classes} {...restProps}>
 		{@render children()}
 	</span>
 {/if}
