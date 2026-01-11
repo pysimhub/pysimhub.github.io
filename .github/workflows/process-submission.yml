@@ -59,6 +59,35 @@ jobs:
                 return;
               }
 
+              // URL validation helper
+              function isValidUrl(string) {
+                try {
+                  const url = new URL(string);
+                  return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch {
+                  return false;
+                }
+              }
+
+              // Validate URLs
+              const urlFields = ['github', 'docs', 'pypi', 'condaForge', 'homepage', 'example'];
+              const invalidUrls = [];
+              for (const field of urlFields) {
+                if (project[field] && !isValidUrl(project[field])) {
+                  invalidUrls.push(`- \`${field}\`: ${project[field]}`);
+                }
+              }
+
+              if (invalidUrls.length > 0) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `❌ **Invalid URLs**\n\nThe following URLs are not valid:\n${invalidUrls.join('\n')}\n\nPlease fix and resubmit.`
+                });
+                return;
+              }
+
               // Generate ID from name
               const id = project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
               project.id = id;
