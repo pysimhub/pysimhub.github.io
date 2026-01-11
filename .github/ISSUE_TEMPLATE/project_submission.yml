@@ -1,5 +1,6 @@
 name: Project Submission
 description: Submit a Python simulation library to PySimHub
+title: "New Project Submission"
 labels: ["submission"]
 body:
   - type: markdown
