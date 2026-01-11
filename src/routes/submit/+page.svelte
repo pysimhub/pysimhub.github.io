@@ -71,16 +71,24 @@
 				<!-- Information Needed -->
 				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6">
 					<h2 class="text-lg font-semibold text-[var(--color-text-primary)]">What We Need</h2>
-					<ul class="mt-4 space-y-2 text-sm text-[var(--color-text-secondary)]">
-						<li>Project name</li>
-						<li>One-line tagline</li>
-						<li>GitHub/GitLab URL</li>
-						<li>3-5 tags</li>
-						<li>Short description (2-4 sentences)</li>
-					</ul>
-					<p class="mt-4 text-xs text-[var(--color-text-muted)]">
-						We'll pull stars, avatar, and other metadata from your repository.
-					</p>
+					<div class="mt-4 space-y-4 text-sm">
+						<div>
+							<h3 class="font-medium text-[var(--color-text-primary)]">Required</h3>
+							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
+								<li>Project name & tagline</li>
+								<li>Repository URL</li>
+								<li>3-5 tags</li>
+								<li>Short description</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="font-medium text-[var(--color-text-primary)]">Optional</h3>
+							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
+								<li>Docs, PyPI, conda-forge URLs</li>
+								<li>Homepage, example links</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

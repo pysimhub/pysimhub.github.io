@@ -6,8 +6,8 @@ on:
 
 jobs:
   process-submission:
-    # Only run for new project submissions (not edits to avoid duplicate PRs)
-    if: startsWith(github.event.issue.title, '[Project]:') && !contains(github.event.issue.labels.*.name, 'pr-created')
+    # Only run for new project submissions with the submission label
+    if: contains(github.event.issue.labels.*.name, 'submission') && !contains(github.event.issue.labels.*.name, 'pr-created')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -56,11 +56,11 @@ jobs:
             const name = parseField(issueBody, 'Project Name');
             const tagline = parseField(issueBody, 'Tagline');
             const github_url = parseField(issueBody, 'Repository URL');
-            const docs = parseField(issueBody, 'Documentation URL');
-            const pypi = parseField(issueBody, 'PyPI URL');
-            const condaForge = parseField(issueBody, 'conda-forge URL');
-            const homepage = parseField(issueBody, 'Homepage URL');
-            const example = parseField(issueBody, 'Example URL');
+            const docs = parseField(issueBody, 'Documentation URL \\(optional\\)');
+            const pypi = parseField(issueBody, 'PyPI URL \\(optional\\)');
+            const condaForge = parseField(issueBody, 'conda-forge URL \\(optional\\)');
+            const homepage = parseField(issueBody, 'Homepage URL \\(optional\\)');
+            const example = parseField(issueBody, 'Example URL \\(optional\\)');
             const description = parseField(issueBody, 'About');
             const logoUrl = parseField(issueBody, 'Logo');
 
@@ -242,12 +242,19 @@ jobs:
               body: `🎉 **Thank you for your submission!**\n\nI've automatically created a pull request to add **${name}** to PySimHub:\n\n👉 ${pr.html_url}\n\nA maintainer will review your submission shortly. Once the PR is merged, your project will appear on the site!\n\n---\n*This is an automated message.*`
             });
 
-            // Add label to issue
+            // Update issue: add label and rename title
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
               labels: ['pr-created']
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              title: `[Project]: ${name}`
             });
 
             console.log(`Created PR #${pr.number} for ${name}`);

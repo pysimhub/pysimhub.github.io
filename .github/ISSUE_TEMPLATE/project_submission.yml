@@ -1,6 +1,5 @@
 name: Project Submission
 description: Submit a Python simulation library to PySimHub
-title: "[Project]: "
 labels: ["submission"]
 body:
   - type: input
@@ -64,3 +63,33 @@ body:
       placeholder: What does it do? What makes it useful?
     validations:
       required: true
+
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation URL (optional)
+      placeholder: https://project.readthedocs.io
+
+  - type: input
+    id: pypi
+    attributes:
+      label: PyPI URL (optional)
+      placeholder: https://pypi.org/project/your-package
+
+  - type: input
+    id: conda_forge
+    attributes:
+      label: conda-forge URL (optional)
+      placeholder: https://anaconda.org/conda-forge/your-package
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage URL (optional)
+      placeholder: https://your-project.org
+
+  - type: input
+    id: example
+    attributes:
+      label: Example URL (optional)
+      placeholder: https://github.com/.../examples/quickstart.ipynb
