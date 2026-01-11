@@ -46,7 +46,23 @@ jobs:
                 throw new Error('Could not find Project Data JSON in issue body');
               }
 
-              const project = JSON.parse(jsonMatch[1]);
+              // Clean up JSON (remove trailing commas which are common user errors)
+              let jsonStr = jsonMatch[1]
+                .replace(/,\s*}/g, '}')
+                .replace(/,\s*]/g, ']');
+
+              let project;
+              try {
+                project = JSON.parse(jsonStr);
+              } catch (parseError) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `❌ **Invalid JSON**\n\n\`\`\`\n${parseError.message}\n\`\`\`\n\nPlease check your JSON syntax and try again.`
+                });
+                return;
+              }
 
               // Validate required fields
               if (!project.name || !project.github || !project.tagline) {
