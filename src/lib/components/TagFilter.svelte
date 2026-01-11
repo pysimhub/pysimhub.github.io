@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { selectedTags, allTags, resetVisible } from '$lib/stores/projects';
+	import { Icon } from '$lib/components/icons';
 
 	function toggleTag(tag: string) {
 		selectedTags.update((tags) => {
@@ -48,14 +49,10 @@
 			class="show-more-btn"
 		>
 			{#if showAll}
-				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-				</svg>
+				<Icon name="chevron-up" size="sm" />
 				Show less
 			{:else}
-				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-				</svg>
+				<Icon name="plus" size="sm" />
 				{$allTags.length - MAX_VISIBLE_TAGS} more
 			{/if}
 		</button>
@@ -71,18 +68,14 @@
 				class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-accent)] px-3 py-1 text-sm font-medium text-white transition-all hover:bg-[var(--color-accent-hover)] hover:scale-105"
 			>
 				{tag}
-				<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-				</svg>
+				<Icon name="close" size="xs" strokeWidth={2.5} />
 			</button>
 		{/each}
 		<button
 			onclick={clearTags}
 			class="clear-all-btn"
 		>
-			<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-				<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-			</svg>
+			<Icon name="trash" size="sm" />
 			Clear all
 		</button>
 	</div>

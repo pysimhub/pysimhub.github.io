@@ -42,25 +42,3 @@ export function formatNumber(num: number): string {
 	}
 	return num.toLocaleString();
 }
-
-/**
- * Create an intersection observer for triggering animations
- */
-export function createScrollObserver(
-	callback: (entry: IntersectionObserverEntry) => void,
-	options: IntersectionObserverInit = {}
-): IntersectionObserver {
-	return new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					callback(entry);
-				}
-			});
-		},
-		{
-			threshold: 0.1,
-			...options
-		}
-	);
-}

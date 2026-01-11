@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { countUp, formatNumber } from '$lib/utils/countup';
 	import { browser } from '$app/environment';
+	import { prefersReducedMotion } from '$lib/utils/accessibility';
 
 	interface Props {
 		stats: {
@@ -24,15 +25,13 @@
 	$effect(() => {
 		if (!browser || hasAnimated || !containerEl) return;
 
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && !hasAnimated) {
 						hasAnimated = true;
 
-						if (!prefersReducedMotion) {
+						if (!$prefersReducedMotion) {
 							const counters = containerEl.querySelectorAll('.counter');
 							counters.forEach((counter, index) => {
 								const value = statItems[index].value;
@@ -61,7 +60,7 @@
 	{#each statItems as stat}
 		<div class="text-center">
 			<div class="counter text-3xl font-bold text-[var(--color-accent)] md:text-4xl">
-				{#if hasAnimated || (browser && window.matchMedia('(prefers-reduced-motion: reduce)').matches)}
+				{#if hasAnimated || $prefersReducedMotion}
 					{formatNumber(stat.value)}{stat.suffix}
 				{:else}
 					0

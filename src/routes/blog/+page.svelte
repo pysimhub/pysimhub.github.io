@@ -2,6 +2,9 @@
 	import type { BlogPostMeta } from './+page';
 	import Fuse from 'fuse.js';
 	import { debounce } from '$lib/utils/search';
+	import { formatDate } from '$lib/utils/format';
+	import { Icon } from '$lib/components/icons';
+	import { Badge, EmptyState } from '$lib/components/ui';
 
 	let { data } = $props();
 
@@ -87,14 +90,6 @@
 			sortDropdownOpen = false;
 		}
 	}
-
-	function formatDate(dateStr: string): string {
-		return new Date(dateStr).toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	}
 </script>
 
 <svelte:window onclick={handleClickOutside} />
@@ -132,19 +127,7 @@
 				<!-- Search bar -->
 				<div class="relative flex-1 sm:max-w-md">
 					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-						<svg
-							class="h-5 w-5 text-[var(--color-text-muted)]"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							stroke-width="2"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-							/>
-						</svg>
+						<Icon name="search" class="text-[var(--color-text-muted)]" />
 					</div>
 					<input
 						type="text"
@@ -159,9 +142,7 @@
 							class="absolute inset-y-0 right-0 flex items-center pr-4 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
 							aria-label="Clear search"
 						>
-							<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-							</svg>
+							<Icon name="close" />
 						</button>
 					{/if}
 				</div>
@@ -174,20 +155,13 @@
 						aria-expanded={sortDropdownOpen}
 						aria-haspopup="listbox"
 					>
-						<svg class="h-4 w-4 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
-						</svg>
+						<Icon name="sort" size="sm" class="text-[var(--color-text-muted)]" />
 						{currentSort.name}
-						<svg
-							class="h-4 w-4 transition-transform"
-							class:rotate-180={sortDropdownOpen}
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							stroke-width="2"
-						>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-						</svg>
+						<Icon
+							name="chevron-down"
+							size="sm"
+							class="transition-transform {sortDropdownOpen ? 'rotate-180' : ''}"
+						/>
 					</button>
 
 					{#if sortDropdownOpen}
@@ -205,9 +179,7 @@
 										aria-selected={sortBy === option.id}
 									>
 										{#if sortBy === option.id}
-											<svg class="h-4 w-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-												<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-											</svg>
+											<Icon name="check" size="sm" class="text-[var(--color-accent)]" />
 										{:else}
 											<span class="w-4"></span>
 										{/if}
@@ -282,51 +254,15 @@
 								class="mt-4 flex flex-wrap items-center gap-4 text-sm text-[var(--color-text-muted)]"
 							>
 								<span class="flex items-center gap-1">
-									<svg
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-										/>
-									</svg>
+									<Icon name="user" size="sm" />
 									{post.author}
 								</span>
 								<span class="flex items-center gap-1">
-									<svg
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-										/>
-									</svg>
+									<Icon name="calendar" size="sm" />
 									{formatDate(post.date)}
 								</span>
 								<span class="flex items-center gap-1">
-									<svg
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-										/>
-									</svg>
+									<Icon name="clock" size="sm" />
 									{post.readingTime}
 								</span>
 							</div>
@@ -338,42 +274,18 @@
 							class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)] sm:mt-0"
 						>
 							Read more
-							<svg
-								class="h-4 w-4"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								stroke-width="2"
-							>
-								<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-							</svg>
+							<Icon name="arrow-right" size="sm" />
 						</a>
 					</div>
 				</article>
 			{:else}
-				<div class="py-16 text-center">
-					<svg
-						class="mx-auto h-16 w-16 text-[var(--color-text-muted)]"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-						stroke-width="1"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-						/>
-					</svg>
-					<h2 class="mt-4 text-lg font-semibold text-[var(--color-text-primary)]">No posts found</h2>
-					<p class="mt-2 text-[var(--color-text-secondary)]">
-						{#if searchQuery || selectedTag}
-							Try adjusting your search or filters.
-						{:else}
-							Check back soon for articles and tutorials.
-						{/if}
-					</p>
-				</div>
+				<EmptyState
+					icon="document"
+					title="No posts found"
+					description={searchQuery || selectedTag
+						? 'Try adjusting your search or filters.'
+						: 'Check back soon for articles and tutorials.'}
+				/>
 			{/each}
 		</div>
 	</div>

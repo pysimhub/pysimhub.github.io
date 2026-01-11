@@ -10,11 +10,3 @@ export function shuffle<T>(array: T[]): T[] {
 	}
 	return result;
 }
-
-/**
- * Pick a random element from an array
- */
-export function pickRandom<T>(array: T[]): T | undefined {
-	if (array.length === 0) return undefined;
-	return array[Math.floor(Math.random() * array.length)];
-}

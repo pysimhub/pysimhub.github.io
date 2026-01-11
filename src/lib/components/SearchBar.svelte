@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { searchQuery, resetVisible } from '$lib/stores/projects';
 	import { debounce } from '$lib/utils/search';
+	import { Icon } from '$lib/components/icons';
 
 	let inputValue = $state('');
 
@@ -24,15 +25,7 @@
 
 <div class="relative">
 	<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-		<svg
-			class="h-5 w-5 text-[var(--color-text-muted)]"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			stroke-width="2"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-		</svg>
+		<Icon name="search" class="text-[var(--color-text-muted)]" />
 	</div>
 	<input
 		type="text"
@@ -47,9 +40,7 @@
 			class="absolute inset-y-0 right-0 flex items-center pr-4 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
 			aria-label="Clear search"
 		>
-			<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-			</svg>
+			<Icon name="close" />
 		</button>
 	{/if}
 </div>

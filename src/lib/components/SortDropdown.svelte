@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { sortOption, sortDirection, resetVisible } from '$lib/stores/projects';
 	import { SORT_OPTIONS, type SortOption } from '$lib/types/project';
+	import { Icon } from '$lib/components/icons';
 
 	let isOpen = $state(false);
 
@@ -45,20 +46,13 @@
 		aria-expanded={isOpen}
 		aria-haspopup="listbox"
 	>
-		<svg class="h-4 w-4 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
-		</svg>
+		<Icon name="sort" size="sm" class="text-[var(--color-text-muted)]" />
 		{displayName}
-		<svg
-			class="h-4 w-4 transition-transform"
-			class:rotate-180={isOpen}
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			stroke-width="2"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-		</svg>
+		<Icon
+			name="chevron-down"
+			size="sm"
+			class="transition-transform {isOpen ? 'rotate-180' : ''}"
+		/>
 	</button>
 
 	<!-- Direction toggle button -->
@@ -69,15 +63,7 @@
 			title={$sortDirection === 'desc' ? 'Switch to ascending' : 'Switch to descending'}
 			aria-label={$sortDirection === 'desc' ? 'Switch to ascending order' : 'Switch to descending order'}
 		>
-			{#if $sortDirection === 'desc'}
-				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-				</svg>
-			{:else}
-				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-				</svg>
-			{/if}
+			<Icon name={$sortDirection === 'desc' ? 'chevron-down' : 'chevron-up'} size="sm" />
 		</button>
 	{/if}
 
@@ -96,9 +82,7 @@
 						aria-selected={$sortOption === option.id}
 					>
 						{#if $sortOption === option.id}
-							<svg class="h-4 w-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-							</svg>
+							<Icon name="check" size="sm" class="text-[var(--color-accent)]" />
 						{:else}
 							<span class="w-4"></span>
 						{/if}
