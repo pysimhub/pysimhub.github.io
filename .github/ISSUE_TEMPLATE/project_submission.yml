@@ -2,101 +2,35 @@ name: Project Submission
 description: Submit a Python simulation library to PySimHub
 labels: ["submission"]
 body:
-  - type: input
-    id: name
+  - type: markdown
     attributes:
-      label: Project Name
-      placeholder: e.g., SimPy
-    validations:
-      required: true
-
-  - type: input
-    id: tagline
-    attributes:
-      label: Tagline
-      description: One-line description
-      placeholder: e.g., Process-based discrete-event simulation framework
-    validations:
-      required: true
-
-  - type: input
-    id: github
-    attributes:
-      label: Repository URL
-      placeholder: https://github.com/username/project
-    validations:
-      required: true
-
-  - type: dropdown
-    id: tags
-    attributes:
-      label: Tags
-      description: Select 3-5 tags
-      multiple: true
-      options:
-        - block-diagram
-        - control
-        - digital-twin
-        - dynamic-systems
-        - engineering
-        - microwave
-        - rf
-        - robotics
-        - system-modeling
-        - transient
-        - visualization
-    validations:
-      required: true
-
-  - type: input
-    id: custom_tags
-    attributes:
-      label: Suggest New Tags
-      description: Comma-separated if your project needs tags not listed above
-      placeholder: e.g., fluid-dynamics, fem-pde
+      value: |
+        Fill in the JSON below with your project details. We'll review and add it to PySimHub.
 
   - type: textarea
-    id: description
+    id: project_json
     attributes:
-      label: About
-      description: 2-4 sentences about your project
-      placeholder: What does it do? What makes it useful?
+      label: Project Data
+      description: Edit the JSON template below with your project info
+      render: json
+      value: |
+        {
+          "name": "",
+          "tagline": "",
+          "description": "",
+          "tags": [],
+          "github": "",
+          "docs": "",
+          "pypi": "",
+          "condaForge": "",
+          "homepage": "",
+          "example": ""
+        }
     validations:
       required: true
-
-  - type: input
-    id: docs
-    attributes:
-      label: Documentation URL (optional)
-      placeholder: https://project.readthedocs.io
-
-  - type: input
-    id: pypi
-    attributes:
-      label: PyPI URL (optional)
-      placeholder: https://pypi.org/project/your-package
-
-  - type: input
-    id: conda_forge
-    attributes:
-      label: conda-forge URL (optional)
-      placeholder: https://anaconda.org/conda-forge/your-package
-
-  - type: input
-    id: homepage
-    attributes:
-      label: Homepage URL (optional)
-      placeholder: https://your-project.org
-
-  - type: input
-    id: example
-    attributes:
-      label: Example URL (optional)
-      placeholder: https://github.com/.../examples/quickstart.ipynb
 
   - type: textarea
     id: logo
     attributes:
       label: Logo (optional)
-      description: Drag and drop a square logo image here, or paste a URL. We'll use your GitHub avatar as fallback.
-      placeholder: Drag image here or paste URL
+      description: Drag and drop a square logo image here. We'll use your GitHub avatar as fallback.
