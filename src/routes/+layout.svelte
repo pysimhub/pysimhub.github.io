@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>PySimHub - Python Simulation & Numerics Community</title>
+	<title>PySimHub</title>
 
 	<!-- Open Graph / Social Media -->
 	<meta property="og:type" content="website" />

@@ -95,7 +95,7 @@
 <svelte:window onclick={handleClickOutside} />
 
 <svelte:head>
-	<title>Blog - PySimHub</title>
+	<title>PySimHub - Blog</title>
 	<meta
 		name="description"
 		content="Articles, tutorials, and news from the PySimHub community."

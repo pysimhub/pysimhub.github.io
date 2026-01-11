@@ -33,7 +33,7 @@
 </script>
 
 <svelte:head>
-	<title>News - PySimHub</title>
+	<title>PySimHub - News</title>
 	<meta name="description" content="Latest updates and news from PySimHub, the Python simulation community hub." />
 
 	<!-- Open Graph -->

@@ -98,7 +98,7 @@
 </script>
 
 <svelte:head>
-	<title>PySimHub - Python Simulation & Numerics Community</title>
+	<title>PySimHub</title>
 	<meta
 		name="description"
 		content="Discover Python libraries for simulation and numerics. Robotics, fluid dynamics, discrete-event, agent-based modeling, and more."

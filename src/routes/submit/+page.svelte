@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Submit a Project - PySimHub</title>
+	<title>PySimHub - Submit</title>
 	<meta name="description" content="Submit your Python simulation library to PySimHub. Open to submissions from day one via GitHub Issues." />
 
 	<!-- Open Graph -->

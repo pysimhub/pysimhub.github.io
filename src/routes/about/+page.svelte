@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>About - PySimHub</title>
+	<title>PySimHub - About</title>
 	<meta name="description" content="Learn about PySimHub's mission to build an open community catalog for Python simulation tools." />
 
 	<!-- Open Graph -->
