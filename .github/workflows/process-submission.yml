@@ -169,13 +169,26 @@ jobs:
               // Handle logo
               let logoPath = null;
               if (logoUrl) {
-                const ext = logoUrl.match(/\.(png|svg|jpg|jpeg|webp)(\?|$)/i)?.[1] || 'png';
-                logoPath = `/logos/${id}.${ext.toLowerCase()}`;
-                project.logo = logoPath;
-
                 try {
                   const response = await fetch(logoUrl);
                   if (response.ok) {
+                    // Determine extension from URL or Content-Type
+                    let ext = logoUrl.match(/\.(png|svg|jpg|jpeg|webp|gif)(\?|$)/i)?.[1];
+                    if (!ext) {
+                      const contentType = response.headers.get('content-type');
+                      const typeMap = {
+                        'image/png': 'png',
+                        'image/svg+xml': 'svg',
+                        'image/jpeg': 'jpg',
+                        'image/webp': 'webp',
+                        'image/gif': 'gif'
+                      };
+                      ext = typeMap[contentType] || 'png';
+                    }
+
+                    logoPath = `/logos/${id}.${ext.toLowerCase()}`;
+                    project.logo = logoPath;
+
                     const buffer = await response.arrayBuffer();
                     await github.rest.repos.createOrUpdateFileContents({
                       owner: context.repo.owner,
