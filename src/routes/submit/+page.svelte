@@ -29,7 +29,7 @@
 			</p>
 
 			<!-- CTA Button - prominent placement -->
-			<Button variant="primary" size="lg" href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_submission.yml" target="_blank" class="mt-8 px-8 py-4 text-lg">
+			<Button variant="primary" size="lg" href="https://github.com/pysimhub/pysimhub.github.io/issues/new/choose" target="_blank" class="mt-8 px-8 py-4 text-lg">
 				<Icon name="github" size="lg" />
 				Submit via GitHub Issue
 			</Button>
