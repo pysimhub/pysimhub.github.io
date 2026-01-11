@@ -8,7 +8,8 @@
 			"harmonic-balance"
 		],
 		"github": "https://github.com/milanofthe/harmonicbalance",
-		"id": "harmonicbalance"
+		"id": "harmonicbalance",
+		"logo": "/logos/harmonicbalance.png"
 	},
 	{
 		"id": "scikit-rf",
