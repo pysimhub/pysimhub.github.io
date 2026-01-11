@@ -166,43 +166,9 @@ jobs:
                 if (e.status !== 422) throw e;
               }
 
-              // Handle logo
-              let logoPath = null;
+              // Use logo URL directly if provided
               if (logoUrl) {
-                try {
-                  const response = await fetch(logoUrl);
-                  if (response.ok) {
-                    // Determine extension from URL or Content-Type
-                    let ext = logoUrl.match(/\.(png|svg|jpg|jpeg|webp|gif)(\?|$)/i)?.[1];
-                    if (!ext) {
-                      const contentType = response.headers.get('content-type');
-                      const typeMap = {
-                        'image/png': 'png',
-                        'image/svg+xml': 'svg',
-                        'image/jpeg': 'jpg',
-                        'image/webp': 'webp',
-                        'image/gif': 'gif'
-                      };
-                      ext = typeMap[contentType] || 'png';
-                    }
-
-                    logoPath = `/logos/${id}.${ext.toLowerCase()}`;
-                    project.logo = logoPath;
-
-                    const buffer = await response.arrayBuffer();
-                    await github.rest.repos.createOrUpdateFileContents({
-                      owner: context.repo.owner,
-                      repo: context.repo.repo,
-                      path: `static${logoPath}`,
-                      message: `Add logo for ${project.name}`,
-                      content: Buffer.from(buffer).toString('base64'),
-                      branch: branchName
-                    });
-                  }
-                } catch (e) {
-                  console.log(`Failed to download logo: ${e.message}`);
-                  delete project.logo;
-                }
+                project.logo = logoUrl;
               }
 
               // Add project and update file
