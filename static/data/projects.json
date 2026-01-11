@@ -1,5 +1,16 @@
 [
 	{
+		"name": "harmonicbalance",
+		"tagline": "Minimalistic framework for calculating nonlinear periodic strady state responses using an object based harmonic balance",
+		"description": "A minimalistic, object-oriented framework for solving periodic steady states and limit cycles of nonlinear dynamic systems using the Alternating Frequency-Time (AFT) Harmonic Balance Method.",
+		"tags": [
+			"dynamic-systems",
+			"harmonic-balance"
+		],
+		"github": "https://github.com/milanofthe/harmonicbalance",
+		"id": "harmonicbalance"
+	},
+	{
 		"id": "scikit-rf",
 		"name": "scikit-rf",
 		"tagline": "Open Source Python package for RF/Microwave engineering",
