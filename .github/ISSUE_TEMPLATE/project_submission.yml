@@ -93,3 +93,10 @@ body:
     attributes:
       label: Example URL (optional)
       placeholder: https://github.com/.../examples/quickstart.ipynb
+
+  - type: textarea
+    id: logo
+    attributes:
+      label: Logo (optional)
+      description: Drag and drop a square logo image here, or paste a URL. We'll use your GitHub avatar as fallback.
+      placeholder: Drag image here or paste URL

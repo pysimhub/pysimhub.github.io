@@ -62,7 +62,7 @@ jobs:
             const homepage = parseField(issueBody, 'Homepage URL \\(optional\\)');
             const example = parseField(issueBody, 'Example URL \\(optional\\)');
             const description = parseField(issueBody, 'About');
-            const logoUrl = parseField(issueBody, 'Logo');
+            const logoUrl = parseField(issueBody, 'Logo \\(optional\\)');
 
             // Parse tags (they come as comma-separated from the dropdown)
             const tagsRaw = parseField(issueBody, 'Tags');

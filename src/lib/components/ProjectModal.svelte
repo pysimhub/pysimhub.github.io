@@ -6,6 +6,7 @@
 	import { fade, scale } from 'svelte/transition';
 	import { Icon } from '$lib/components/icons';
 	import { Avatar, Badge, Button } from '$lib/components/ui';
+	import { marked } from 'marked';
 
 	interface Props {
 		project: Project;
@@ -13,6 +14,14 @@
 	}
 
 	let { project, onclose }: Props = $props();
+
+	// Configure marked for safe rendering
+	marked.setOptions({
+		breaks: true,
+		gfm: true
+	});
+
+	const descriptionHtml = $derived(project.description ? marked.parse(project.description) : '');
 
 	function filterByTag(tag: string) {
 		selectedTags.update((tags) => {
@@ -114,9 +123,9 @@
 			{#if project.description}
 				<div>
 					<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">About</h3>
-					<p class="mt-2 text-[var(--color-text-secondary)] leading-relaxed">
-						{project.description}
-					</p>
+					<div class="mt-2 prose prose-sm text-[var(--color-text-secondary)]">
+						{@html descriptionHtml}
+					</div>
 				</div>
 			{/if}
 
