@@ -3,10 +3,17 @@ name: Process Project Submission
 on:
   issues:
     types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to process'
+        required: true
 
 jobs:
   process-submission:
-    if: github.event.label.name == 'submission' && !contains(github.event.issue.labels.*.name, 'pr-created')
+    if: >
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.label.name == 'submission' && !contains(github.event.issue.labels.*.name, 'pr-created'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,222 +24,87 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Get issue data
+        id: issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.payload.inputs?.issue_number || context.payload.issue.number;
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: parseInt(issueNumber)
+            });
+            core.setOutput('number', issue.number);
+            core.setOutput('author', issue.user.login);
+            core.setOutput('body', issue.body);
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Parse submission and create PR
-        uses: actions/github-script@v7
+      - name: Process submission
+        id: process
         env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_BODY: ${{ steps.issue.outputs.body }}
+        run: node scripts/process-submission.js
+
+      - name: Create Pull Request
+        id: pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: submission/${{ steps.process.outputs.id }}-${{ steps.issue.outputs.number }}
+          delete-branch: true
+          title: "Add ${{ steps.process.outputs.name }} to PySimHub"
+          body: |
+            ## New Project: ${{ steps.process.outputs.name }}
+
+            Submitted by @${{ steps.issue.outputs.author }} in #${{ steps.issue.outputs.number }}
+
+            **Tagline:** ${{ steps.process.outputs.tagline }}
+            **Tags:** ${{ steps.process.outputs.tags }}
+            **Repository:** ${{ steps.process.outputs.github }}
+
+            ---
+            🤖 Auto-generated from issue #${{ steps.issue.outputs.number }}
+          commit-message: "Add ${{ steps.process.outputs.name }} to projects"
+
+      - name: Comment on issue (success)
+        if: steps.pr.outputs.pull-request-number
+        uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `🎉 **Thanks for your submission!**\n\nPR created: ${{ steps.pr.outputs.pull-request-url }}\n\nA maintainer will review it shortly.`
+            });
 
-            const issueBody = process.env.ISSUE_BODY;
-            const issueNumber = parseInt(process.env.ISSUE_NUMBER, 10);
-            const issueTitle = process.env.ISSUE_TITLE;
-            const issueAuthor = process.env.ISSUE_AUTHOR;
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              labels: ['pr-created']
+            });
 
-            try {
-              // Extract JSON from the issue body
-              // The JSON is in a code block after "### Project Data"
-              const jsonMatch = issueBody.match(/### Project Data\s*\n```json\s*\n([\s\S]*?)\n```/);
-              if (!jsonMatch) {
-                throw new Error('Could not find Project Data JSON in issue body');
-              }
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              title: `[Submission] ${{ steps.process.outputs.name }}`
+            });
 
-              // Clean up JSON (remove trailing commas which are common user errors)
-              let jsonStr = jsonMatch[1]
-                .replace(/,\s*}/g, '}')
-                .replace(/,\s*]/g, ']');
-
-              let project;
-              try {
-                project = JSON.parse(jsonStr);
-              } catch (parseError) {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `❌ **Invalid JSON**\n\n\`\`\`\n${parseError.message}\n\`\`\`\n\nPlease check your JSON syntax and try again.`
-                });
-                return;
-              }
-
-              // Validate required fields
-              if (!project.name || !project.github || !project.tagline) {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `❌ **Missing required fields**\n\nPlease ensure your JSON includes:\n- name\n- tagline\n- github`
-                });
-                return;
-              }
-
-              // URL validation helper
-              function isValidUrl(string) {
-                try {
-                  const url = new URL(string);
-                  return url.protocol === 'http:' || url.protocol === 'https:';
-                } catch {
-                  return false;
-                }
-              }
-
-              // Validate URLs
-              const urlFields = ['github', 'docs', 'pypi', 'condaForge', 'homepage', 'example'];
-              const invalidUrls = [];
-              for (const field of urlFields) {
-                if (project[field] && !isValidUrl(project[field])) {
-                  invalidUrls.push(`- \`${field}\`: ${project[field]}`);
-                }
-              }
-
-              if (invalidUrls.length > 0) {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `❌ **Invalid URLs**\n\nThe following URLs are not valid:\n${invalidUrls.join('\n')}\n\nPlease fix and resubmit.`
-                });
-                return;
-              }
-
-              // Generate ID from name
-              const id = project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-              project.id = id;
-
-              // Remove empty optional fields
-              for (const key of ['docs', 'pypi', 'condaForge', 'homepage', 'example']) {
-                if (!project[key]) delete project[key];
-              }
-
-              // Check for logo upload
-              const logoMatch = issueBody.match(/### Logo \(optional\)\s*\n\s*([\s\S]*?)(?=\n###|$)/);
-              let logoUrl = null;
-              if (logoMatch) {
-                const logoContent = logoMatch[1].trim();
-                // Skip if empty or "No response"
-                if (logoContent && logoContent !== '_No response_') {
-                  // Check for markdown image: ![alt](url)
-                  const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
-                  // Check for plain URL
-                  const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
-                  // Check for GitHub user-attachments URL (may not have extension)
-                  const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
-
-                  logoUrl = mdMatch?.[1] || urlMatch?.[1] || ghMatch?.[1];
-                  console.log('Logo content:', logoContent);
-                  console.log('Logo URL found:', logoUrl);
-                }
-              }
-
-              // Load existing projects
-              const projectsPath = 'static/data/projects.json';
-              const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf-8'));
-
-              if (projects.some(p => p.id === id)) {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `⚠️ **Project already exists**\n\nA project with ID \`${id}\` is already in the catalog.`
-                });
-                return;
-              }
-
-              // Create branch
-              const branchName = `submission/${id}-${issueNumber}`;
-              const { data: ref } = await github.rest.git.getRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: 'heads/main'
-              });
-
-              try {
-                await github.rest.git.createRef({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  ref: `refs/heads/${branchName}`,
-                  sha: ref.object.sha
-                });
-              } catch (e) {
-                if (e.status !== 422) throw e;
-              }
-
-              // Use logo URL directly if provided
-              if (logoUrl) {
-                project.logo = logoUrl;
-              }
-
-              // Add project and update file
-              projects.unshift(project);
-              const projectsContent = JSON.stringify(projects, null, '\t') + '\n';
-
-              const { data: projectsFile } = await github.rest.repos.getContent({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                path: projectsPath,
-                ref: branchName
-              });
-
-              await github.rest.repos.createOrUpdateFileContents({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                path: projectsPath,
-                message: `Add ${project.name} to projects`,
-                content: Buffer.from(projectsContent).toString('base64'),
-                sha: projectsFile.sha,
-                branch: branchName
-              });
-
-              // Create PR
-              const { data: pr } = await github.rest.pulls.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: `Add ${project.name} to PySimHub`,
-                head: branchName,
-                base: 'main',
-                body: `## New Project: ${project.name}\n\nSubmitted by @${issueAuthor} in #${issueNumber}\n\n**Tagline:** ${project.tagline}\n**Tags:** ${project.tags.join(', ')}\n**Repository:** ${project.github}\n\n---\n\n🤖 Auto-generated from issue #${issueNumber}`
-              });
-
-              // Comment on issue
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: `🎉 **Thanks for your submission!**\n\nPR created: ${pr.html_url}\n\nA maintainer will review it shortly.`
-              });
-
-              // Add label and update title
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                labels: ['pr-created']
-              });
-
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                title: `[Submission] ${project.name}`
-              });
-
-              console.log(`Created PR #${pr.number} for ${project.name}`);
-
-            } catch (error) {
-              console.error('Error:', error);
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: `❌ **Error processing submission**\n\n\`\`\`\n${error.message}\n\`\`\`\n\nPlease check your JSON format and try again.`
-              });
-            }
+      - name: Comment on issue (failure)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `❌ **Error processing submission**\n\nPlease check your JSON format and try again.\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
+            });

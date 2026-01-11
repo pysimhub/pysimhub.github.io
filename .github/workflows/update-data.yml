@@ -1,17 +1,23 @@
-name: Update GitHub Data
+name: Update Data
 
 on:
   schedule:
     # Run daily at 6 AM UTC
     - cron: '0 6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'static/data/projects.json'
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   update-data:
+    # Skip if triggered by bot to prevent loops
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,24 +33,16 @@ jobs:
         run: node scripts/fetch-github-data.js
         timeout-minutes: 5
 
+      - name: Download external logos
+        run: node scripts/download-logos.js
+
       - name: Sync tags to issue template
         run: node scripts/sync-tags.js
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          if git diff --quiet static/data/github-cache.json .github/ISSUE_TEMPLATE/project_submission.yml; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
-
       - name: Commit and push changes
-        if: steps.check_changes.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add static/data/github-cache.json .github/ISSUE_TEMPLATE/project_submission.yml
-          git commit -m "chore: update GitHub data cache"
-          git pull --rebase origin main
+          git add static/data/github-cache.json static/data/projects.json static/logos/ .github/ISSUE_TEMPLATE/project_submission.yml
+          git diff --staged --quiet || git commit -m "chore: update GitHub data cache"
           git push
