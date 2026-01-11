@@ -5,13 +5,37 @@ body:
   - type: markdown
     attributes:
       value: |
-        Fill in the JSON below with your project details. We'll review and add it to PySimHub.
+        ## Submit your project to PySimHub
+
+        Fill in the JSON below with your project details. A maintainer will review and add it to the catalog.
+
+        ### Available Tags
+        `block-diagram` `control` `digital-twin` `dynamic-systems` `engineering` `microwave` `rf` `robotics` `system-modeling` `transient` `visualization`
+
+        *Don't see a fitting tag? Add your own - we'll review and add it to the list.*
+
+        ### Example
+        ```json
+        {
+          "name": "PathSim",
+          "tagline": "A dynamical system simulation framework in the block diagram paradigm",
+          "description": "PathSim is a Python-native framework for modeling and simulating dynamical systems using block diagrams. It provides an intuitive API for building complex system models from interconnected blocks.",
+          "tags": ["block-diagram", "digital-twin", "dynamic-systems", "control"],
+          "github": "https://github.com/pathsim/pathsim",
+          "docs": "https://docs.pathsim.org",
+          "pypi": "https://pypi.org/project/pathsim/"
+        }
+        ```
 
   - type: textarea
     id: project_json
     attributes:
       label: Project Data
-      description: Edit the JSON template below with your project info
+      description: |
+        **Required fields:** `name`, `tagline`, `description`, `tags`, `github`
+        **Optional fields:** `docs`, `pypi`, `condaForge`, `homepage`, `example`
+
+        The `description` field supports Markdown formatting.
       render: json
       value: |
         {
@@ -33,4 +57,4 @@ body:
     id: logo
     attributes:
       label: Logo (optional)
-      description: Drag and drop a square logo image here. We'll use your GitHub avatar as fallback.
+      description: Drag and drop a square logo image (PNG/SVG). We'll use your GitHub organization avatar as fallback.
