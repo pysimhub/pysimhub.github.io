@@ -1,5 +1,20 @@
 [
 	{
+		"name": "PathSasdddfim",
+		"tagline": "A dynamical system simulation framework in the block diagram paradigm",
+		"description": "PathSim is a Python-native framework for modeling and simulating dynamical systems using block diagrams. It provides an intuitive API for building complex system models from interconnected blocks.",
+		"tags": [
+			"block-diagram",
+			"digital-twin",
+			"dynamic-systems",
+			"control"
+		],
+		"github": "https://github.com/pathsim/pathsim",
+		"docs": "https://docs.pathsim.org",
+		"pypi": "https://pypi.org/project/pathsim/",
+		"id": "pathsasdddfim"
+	},
+	{
 		"id": "scikit-rf",
 		"name": "scikit-rf",
 		"tagline": "Open Source Python package for RF/Microwave engineering",
