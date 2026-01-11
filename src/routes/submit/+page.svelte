@@ -70,28 +70,17 @@
 
 				<!-- Information Needed -->
 				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6">
-					<h2 class="text-lg font-semibold text-[var(--color-text-primary)]">Information Needed</h2>
-					<div class="mt-4 space-y-4 text-sm">
-						<div>
-							<h3 class="font-medium text-[var(--color-text-primary)]">Required</h3>
-							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
-								<li>Project name</li>
-								<li>One-line tagline</li>
-								<li>About description (2-4 sentences)</li>
-								<li>GitHub/GitLab URL</li>
-								<li>3-5 tags (e.g., robotics, control)</li>
-							</ul>
-						</div>
-						<div>
-							<h3 class="font-medium text-[var(--color-text-primary)]">Optional</h3>
-							<ul class="mt-2 space-y-1 text-[var(--color-text-secondary)]">
-								<li>Documentation URL</li>
-								<li>PyPI / conda-forge URLs</li>
-								<li>Homepage / Example URLs</li>
-								<li>Logo (PNG/SVG, square) — stored in <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">/logos/</code></li>
-							</ul>
-						</div>
-					</div>
+					<h2 class="text-lg font-semibold text-[var(--color-text-primary)]">What We Need</h2>
+					<ul class="mt-4 space-y-2 text-sm text-[var(--color-text-secondary)]">
+						<li>Project name</li>
+						<li>One-line tagline</li>
+						<li>GitHub/GitLab URL</li>
+						<li>3-5 tags</li>
+						<li>Short description (2-4 sentences)</li>
+					</ul>
+					<p class="mt-4 text-xs text-[var(--color-text-muted)]">
+						We'll pull stars, avatar, and other metadata from your repository.
+					</p>
 				</div>
 			</div>
 		</section>
@@ -107,19 +96,10 @@
   "id": "your-project",
   "name": "Your Project",
   "tagline": "Brief one-line description",
-  "description": "Longer 2-4 sentence description for the detailed view.",
+  "description": "2-4 sentence description.",
   "tags": ["robotics", "control", "dynamic-systems"],
-  "github": "https://github.com/...",
-  "docs": "https://...",
-  "pypi": "https://pypi.org/project/...",
-  "condaForge": "https://anaconda.org/conda-forge/...",
-  "homepage": "https://...",
-  "example": "https://...",
-  "logo": "/logos/your-project.png"
+  "github": "https://github.com/..."
 }`}</code></pre>
-				<p class="mt-3 text-xs text-[var(--color-text-muted)]">
-					Only <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">id</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">name</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">tagline</code>, <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">tags</code>, and <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">github</code> are required. All other fields are optional. Include your logo file in <code class="rounded bg-[var(--color-bg-hover)] px-1 py-0.5">static/logos/</code> if providing one.
-				</p>
 			</div>
 		</section>
 	</div>

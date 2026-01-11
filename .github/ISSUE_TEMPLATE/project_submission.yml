@@ -3,27 +3,19 @@ description: Submit a Python simulation library to PySimHub
 title: "[Project]: "
 labels: ["submission"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for submitting your project to PySimHub! We're excited to help the community discover your work.
-
-        Please fill out the information below. We'll review your submission and add it to the catalog.
-
   - type: input
     id: name
     attributes:
       label: Project Name
-      description: The name of your library
       placeholder: e.g., SimPy
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: tagline
     attributes:
       label: Tagline
-      description: A brief one-line description (max ~100 characters)
+      description: One-line description
       placeholder: e.g., Process-based discrete-event simulation framework
     validations:
       required: true
@@ -32,120 +24,43 @@ body:
     id: github
     attributes:
       label: Repository URL
-      description: GitHub or GitLab URL
       placeholder: https://github.com/username/project
     validations:
       required: true
-
-  - type: input
-    id: docs
-    attributes:
-      label: Documentation URL
-      description: Link to documentation (optional)
-      placeholder: https://project.readthedocs.io
-
-  - type: input
-    id: pypi
-    attributes:
-      label: PyPI URL
-      description: Link to PyPI package page (optional)
-      placeholder: https://pypi.org/project/your-package/
-
-  - type: input
-    id: conda_forge
-    attributes:
-      label: conda-forge URL
-      description: Link to conda-forge package (optional)
-      placeholder: https://anaconda.org/conda-forge/your-package
-
-  - type: input
-    id: homepage
-    attributes:
-      label: Homepage URL
-      description: Project website or landing page if different from docs (optional)
-      placeholder: https://your-project.org
-
-  - type: input
-    id: example
-    attributes:
-      label: Example URL
-      description: Link to a tutorial, notebook, or example code (optional)
-      placeholder: https://github.com/username/project/blob/main/examples/quickstart.ipynb
 
   - type: dropdown
     id: tags
     attributes:
       label: Tags
-      description: Select 3-5 tags that best describe your project
+      description: Select 3-5 tags
       multiple: true
       options:
-        - robotics
-        - control
         - block-diagram
-        - dynamic-systems
-        - system-modeling
-        - discrete-event
-        - agent-based
-        - fluid-dynamics
-        - fem-pde
-        - molecular-dynamics
-        - optimization
-        - machine-learning
+        - control
         - digital-twin
-        - real-time
+        - dynamic-systems
+        - engineering
+        - microwave
+        - rf
+        - robotics
+        - system-modeling
+        - transient
         - visualization
-        - other
     validations:
       required: true
 
   - type: input
     id: custom_tags
     attributes:
-      label: Custom Tags
-      description: If you selected "other" above, suggest additional tags (comma-separated)
-      placeholder: e.g., quantum-simulation, climate-modeling
-
-  - type: checkboxes
-    id: requirements
-    attributes:
-      label: Requirements Checklist
-      description: Please confirm your project meets these criteria
-      options:
-        - label: Open-source license (MIT, Apache, GPL, BSD, etc.)
-          required: true
-        - label: Available on PyPI or conda-forge
-          required: true
-        - label: Updated within the last 2 years
-          required: true
-        - label: Has documentation or README with examples
-          required: true
-        - label: Related to simulation or scientific computing
-          required: true
+      label: Suggest New Tags
+      description: Comma-separated if your project needs tags not listed above
+      placeholder: e.g., fluid-dynamics, fem-pde
 
   - type: textarea
     id: description
     attributes:
       label: About
-      description: |
-        A 2-4 sentence description of your project for the detailed view. Include:
-        - What problems does it solve?
-        - What are its key features?
-        - What makes it unique?
-      placeholder: "Example: MySimLib is a Python framework for simulating X systems. It provides Y and Z capabilities, with a focus on ease of use and performance. Used by researchers in A, B, and C domains."
+      description: 2-4 sentences about your project
+      placeholder: What does it do? What makes it useful?
     validations:
       required: true
-
-  - type: input
-    id: logo
-    attributes:
-      label: Logo
-      description: URL to a square logo image (PNG or SVG), or attach the file to this issue. Optional - we'll use your GitHub org avatar as fallback.
-      placeholder: https://raw.githubusercontent.com/username/project/main/logo.png (or attach below)
-
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Confirmation
-      options:
-        - label: I am the maintainer or have permission to submit this project
-          required: true
