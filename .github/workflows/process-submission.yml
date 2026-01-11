@@ -118,10 +118,18 @@ jobs:
               let logoUrl = null;
               if (logoMatch) {
                 const logoContent = logoMatch[1].trim();
-                // Check for uploaded image (GitHub attachment URL)
-                const imgMatch = logoContent.match(/!\[.*?\]\((https:\/\/[^)]+)\)|^(https:\/\/\S+)/);
-                if (imgMatch) {
-                  logoUrl = imgMatch[1] || imgMatch[2];
+                // Skip if empty or "No response"
+                if (logoContent && logoContent !== '_No response_') {
+                  // Check for markdown image: ![alt](url)
+                  const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+                  // Check for plain URL
+                  const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
+                  // Check for GitHub user-attachments URL (may not have extension)
+                  const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
+
+                  logoUrl = mdMatch?.[1] || urlMatch?.[1] || ghMatch?.[1];
+                  console.log('Logo content:', logoContent);
+                  console.log('Logo URL found:', logoUrl);
                 }
               }
 
