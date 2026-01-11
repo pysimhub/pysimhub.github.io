@@ -1,0 +1,88 @@
+name: Download Logos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'static/data/projects.json'
+
+jobs:
+  download-logos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download external logos
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const projectsPath = 'static/data/projects.json';
+            const logosDir = 'static/logos';
+            const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf-8'));
+
+            let updated = false;
+
+            for (const project of projects) {
+              // Skip if no logo or already local
+              if (!project.logo || project.logo.startsWith('/logos/')) {
+                continue;
+              }
+
+              // Check if it's an external URL
+              if (project.logo.startsWith('http')) {
+                console.log(`Downloading logo for ${project.name}: ${project.logo}`);
+
+                try {
+                  const response = await fetch(project.logo);
+                  if (!response.ok) {
+                    console.log(`  Failed to fetch: ${response.status}`);
+                    continue;
+                  }
+
+                  // Determine extension from Content-Type
+                  const contentType = response.headers.get('content-type');
+                  const typeMap = {
+                    'image/png': 'png',
+                    'image/svg+xml': 'svg',
+                    'image/jpeg': 'jpg',
+                    'image/webp': 'webp',
+                    'image/gif': 'gif'
+                  };
+                  const ext = typeMap[contentType] || 'png';
+
+                  const filename = `${project.id}.${ext}`;
+                  const filepath = path.join(logosDir, filename);
+
+                  const buffer = Buffer.from(await response.arrayBuffer());
+                  fs.writeFileSync(filepath, buffer);
+
+                  project.logo = `/logos/${filename}`;
+                  updated = true;
+                  console.log(`  Saved to ${filepath}`);
+                } catch (e) {
+                  console.log(`  Error: ${e.message}`);
+                }
+              }
+            }
+
+            if (updated) {
+              fs.writeFileSync(projectsPath, JSON.stringify(projects, null, '\t') + '\n');
+              console.log('Updated projects.json with local logo paths');
+            } else {
+              console.log('No logos to download');
+            }
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add static/logos/ static/data/projects.json
+          git diff --staged --quiet || git commit -m "chore: download logos to local storage"
+          git push
