@@ -2,7 +2,7 @@
 
 /**
  * Script to sync tags from projects.json to the issue template.
- * Keeps the submission form's tag dropdown in sync with actual tags used.
+ * Updates the Available Tags list in the markdown section.
  */
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -29,50 +29,19 @@ function main() {
 
 	// Read issue template
 	const templatePath = join(__dirname, '..', '.github', 'ISSUE_TEMPLATE', 'project_submission.yml');
-	const lines = readFileSync(templatePath, 'utf-8').split('\n');
+	let template = readFileSync(templatePath, 'utf-8');
 
-	// Find the tags dropdown options section and replace it
-	let inTagsDropdown = false;
-	let inOptions = false;
-	let optionsIndent = '';
-	const newLines = [];
+	// Build the new tags line with backticks
+	const tagsLine = tags.map(t => `\`${t}\``).join(' ');
 
-	for (let i = 0; i < lines.length; i++) {
-		const line = lines[i];
-
-		// Detect entering the tags dropdown
-		if (line.includes('id: tags')) {
-			inTagsDropdown = true;
-		}
-
-		// Detect options start within tags dropdown
-		if (inTagsDropdown && line.trim().startsWith('options:')) {
-			inOptions = true;
-			optionsIndent = line.match(/^(\s*)/)[1] + '  '; // indent for option items
-			newLines.push(line);
-			// Add all tags
-			for (const tag of tags) {
-				newLines.push(`${optionsIndent}- ${tag}`);
-			}
-			continue;
-		}
-
-		// Skip old option lines
-		if (inOptions && line.trim().startsWith('- ') && !line.trim().startsWith('- type:')) {
-			continue;
-		}
-
-		// Detect end of options (validations section)
-		if (inOptions && line.trim().startsWith('validations:')) {
-			inOptions = false;
-			inTagsDropdown = false;
-		}
-
-		newLines.push(line);
-	}
+	// Replace the Available Tags line (matches line starting with backtick after "### Available Tags")
+	template = template.replace(
+		/(### Available Tags\n\s+)`[^`]+`(?:\s+`[^`]+`)*/,
+		`$1${tagsLine}`
+	);
 
 	// Write updated template
-	writeFileSync(templatePath, newLines.join('\n'));
+	writeFileSync(templatePath, template);
 	console.log(`Updated issue template with ${tags.length} tags`);
 }
 
