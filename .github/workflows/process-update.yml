@@ -1,4 +1,4 @@
-name: Process Project Submission
+name: Process Project Update
 
 on:
   issues:
@@ -10,10 +10,10 @@ on:
         required: true
 
 jobs:
-  process-submission:
+  process-update:
     if: >
       (github.event_name == 'workflow_dispatch') ||
-      (github.event.label.name == 'submission' && !contains(github.event.issue.labels.*.name, 'pr-created'))
+      (github.event.label.name == 'update' && !contains(github.event.issue.labels.*.name, 'pr-created'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -44,33 +44,34 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Process submission
+      - name: Process update
         id: process
         env:
           ISSUE_BODY: ${{ steps.issue.outputs.body }}
           ISSUE_AUTHOR: ${{ steps.issue.outputs.author }}
-        run: node scripts/process-submission.js
+        run: node scripts/process-update.js
 
       - name: Create Pull Request
         id: pr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: submission/${{ steps.process.outputs.id }}-${{ steps.issue.outputs.number }}
+          branch: update/${{ steps.process.outputs.id }}-${{ steps.issue.outputs.number }}
           delete-branch: true
-          title: "Add ${{ steps.process.outputs.name }} to PySimHub"
+          title: "Update ${{ steps.process.outputs.name }}"
           body: |
-            ## New Project: ${{ steps.process.outputs.name }}
+            ## Project Update: ${{ steps.process.outputs.name }}
 
-            Submitted by @${{ steps.issue.outputs.author }} in #${{ steps.issue.outputs.number }}
+            Requested by @${{ steps.issue.outputs.author }} in #${{ steps.issue.outputs.number }}
 
-            **Tagline:** ${{ steps.process.outputs.tagline }}
-            **Tags:** ${{ steps.process.outputs.tags }}
-            **Repository:** ${{ steps.process.outputs.github }}
+            **Reason:** ${{ steps.process.outputs.reason }}
+            **Updated fields:** ${{ steps.process.outputs.updated_fields }}
+
+            ${{ steps.process.outputs.is_original_submitter == 'false' && format('> **Note:** This update was submitted by someone other than the original submitter (@{0}).', steps.process.outputs.original_submitter) || '' }}
 
             ---
-            🤖 Auto-generated from issue #${{ steps.issue.outputs.number }}
-          commit-message: "Add ${{ steps.process.outputs.name }} to projects"
+            Please review the changes to ensure they are correct.
+          commit-message: "Update ${{ steps.process.outputs.name }} project data"
 
       - name: Comment on issue (success)
         if: steps.pr.outputs.pull-request-number
@@ -81,7 +82,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ steps.issue.outputs.number }},
-              body: `🎉 **Thanks for your submission!**\n\nPR created: ${{ steps.pr.outputs.pull-request-url }}\n\nA maintainer will review it shortly.`
+              body: `**Update request received!**\n\nPR created: ${{ steps.pr.outputs.pull-request-url }}\n\nA maintainer will review the changes shortly.`
             });
 
             await github.rest.issues.addLabels({
@@ -95,7 +96,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ steps.issue.outputs.number }},
-              title: `[Submission] ${{ steps.process.outputs.name }}`
+              title: `[Update] ${{ steps.process.outputs.name }}`
             });
 
       - name: Comment on issue (failure)
@@ -107,5 +108,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ steps.issue.outputs.number }},
-              body: `❌ **Error processing submission**\n\nPlease check your JSON format and try again.\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
+              body: `**Error processing update**\n\nPlease check your JSON format and ensure you're only updating allowed fields.\n\n**Protected fields (cannot be changed):** \`id\`, \`name\`, \`github\`, \`submittedBy\`\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
             });

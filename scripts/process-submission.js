@@ -110,6 +110,7 @@ function addProjectToFile(project, projectsPath) {
 
 // Main execution
 const issueBody = process.env.ISSUE_BODY;
+const issueAuthor = process.env.ISSUE_AUTHOR;
 const projectsPath = join(__dirname, '..', 'static', 'data', 'projects.json');
 
 if (!issueBody) {
@@ -119,6 +120,12 @@ if (!issueBody) {
 
 try {
 	const project = parseSubmission(issueBody);
+
+	// Store the submitter's GitHub handle
+	if (issueAuthor) {
+		project.submittedBy = issueAuthor;
+	}
+
 	addProjectToFile(project, projectsPath);
 
 	// Output for GitHub Actions

@@ -1,0 +1,52 @@
+name: Project Update
+description: Update an existing project's information
+title: "Update Project"
+labels: ["update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Update project information
+
+        Use this form to fix broken URLs, update descriptions, or modify other project details.
+
+        **Protected fields (cannot be changed):** `id`, `name`, `github`, `submittedBy`
+
+        If you need to change the project name or GitHub URL, please submit a new project instead.
+
+  - type: dropdown
+    id: project_id
+    attributes:
+      label: Project
+      description: Select the project to update
+      options:
+        - bdsim
+        - pathsim
+        - scikit-rf
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for update
+      description: Briefly explain why this update is needed (e.g., "Fix broken docs link", "Add conda-forge package")
+      placeholder: "Fix broken documentation URL"
+    validations:
+      required: true
+
+  - type: textarea
+    id: update_json
+    attributes:
+      label: Updated Data
+      description: |
+        Only include the fields you want to change.
+        **Updatable fields:** `tagline`, `description`, `tags`, `docs`, `pypi`, `condaForge`, `homepage`, `example`, `logo`
+      render: json
+      placeholder: |
+        {
+          "docs": "https://new-docs-url.com",
+          "homepage": "https://new-homepage.com"
+        }
+    validations:
+      required: true
