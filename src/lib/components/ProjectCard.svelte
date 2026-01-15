@@ -143,7 +143,7 @@
 <article
 	onclick={openModal}
 	onkeydown={handleKeydown}
-	class="card-glow group relative flex h-full w-full flex-col rounded-xl border bg-[var(--color-bg-card)] p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg {hasRecentRelease
+	class="card-glow group relative flex h-full w-full flex-col rounded-lg lg:rounded-xl border bg-[var(--color-bg-card)] p-3 lg:p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg {hasRecentRelease
 		? 'border-[var(--color-accent)]/50 hover:border-[var(--color-accent)]'
 		: 'border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}"
 	role="button"
@@ -158,10 +158,15 @@
 	{/if}
 
 	<!-- Logo and Name -->
-	<div class="flex items-start gap-3">
-		<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="md" />
+	<div class="flex items-start gap-2 lg:gap-3">
+		<div class="hidden lg:block">
+			<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="md" />
+		</div>
+		<div class="lg:hidden">
+			<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="sm" />
+		</div>
 		<div class="min-w-0 flex-1">
-			<h3 class="truncate text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+			<h3 class="truncate text-sm lg:text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
 				{project.name}
 			</h3>
 			<!-- Stats Row -->
@@ -171,7 +176,7 @@
 					{formatNumber(project.stars)}
 				</span>
 				{#if project.lastRelease}
-					<span class="flex items-center gap-1">
+					<span class="hidden lg:flex items-center gap-1">
 						<Icon name="calendar" size="xs" class="h-3.5 w-3.5" />
 						{formatDate(project.lastRelease, 'short')}
 					</span>
@@ -180,13 +185,13 @@
 		</div>
 	</div>
 
-	<!-- Tagline -->
-	<p class="mt-3 line-clamp-2 text-sm text-[var(--color-text-secondary)]">
+	<!-- Tagline (hidden on compact) -->
+	<p class="hidden lg:block mt-3 line-clamp-2 text-sm text-[var(--color-text-secondary)]">
 		{project.tagline}
 	</p>
 
 	<!-- Tags -->
-	<div bind:this={tagsContainer} class="mt-3 flex flex-wrap items-start gap-1.5 max-h-[3.5rem] overflow-hidden">
+	<div bind:this={tagsContainer} class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5 max-h-[3.5rem] overflow-hidden">
 		{#each project.tags.slice(0, visibleTagCount) as tag}
 			<Badge data-tag variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}
@@ -202,8 +207,8 @@
 	<!-- Spacer -->
 	<div class="flex-1"></div>
 
-	<!-- Action Links -->
-	<div bind:this={linksContainer} class="mt-4 flex flex-nowrap items-center gap-2 overflow-hidden">
+	<!-- Action Links (hidden on compact) -->
+	<div bind:this={linksContainer} class="hidden lg:flex mt-4 flex-nowrap items-center gap-2 overflow-hidden">
 		{#each allLinks.slice(0, visibleLinkCount) as link (link.key)}
 			<a
 				data-link

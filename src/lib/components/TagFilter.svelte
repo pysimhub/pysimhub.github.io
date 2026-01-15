@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { selectedTags, allTags, resetVisible } from '$lib/stores/projects';
 	import { Icon } from '$lib/components/icons';
+	import { browser } from '$app/environment';
 
 	function toggleTag(tag: string) {
 		selectedTags.update((tags) => {
@@ -19,11 +20,23 @@
 	}
 
 	// Show top tags first (by frequency), limit display
-	const MAX_VISIBLE_TAGS = 15;
+	// Fewer tags on smaller screens
+	let isCompact = $state(false);
 	let showAll = $state(false);
 
-	const visibleTags = $derived(showAll ? $allTags : $allTags.slice(0, MAX_VISIBLE_TAGS));
-	const hasMoreTags = $derived($allTags.length > MAX_VISIBLE_TAGS);
+	$effect(() => {
+		if (!browser) return;
+		const mediaQuery = window.matchMedia('(max-width: 1023px)');
+		isCompact = mediaQuery.matches;
+
+		const handler = (e: MediaQueryListEvent) => isCompact = e.matches;
+		mediaQuery.addEventListener('change', handler);
+		return () => mediaQuery.removeEventListener('change', handler);
+	});
+
+	const maxVisibleTags = $derived(isCompact ? 6 : 15);
+	const visibleTags = $derived(showAll ? $allTags : $allTags.slice(0, maxVisibleTags));
+	const hasMoreTags = $derived($allTags.length > maxVisibleTags);
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

@@ -37,7 +37,7 @@
 		description="Try adjusting your search or filter to find what you're looking for."
 	/>
 {:else}
-	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
 		{#each $visibleProjects as project (project.id)}
 			<div
 				class="flex"
