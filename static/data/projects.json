@@ -1,5 +1,18 @@
 [
 	{
+		"name": "hb",
+		"tagline": "Minimalistic framework for calculating nonlinear periodic strady state responses using an object based harmonic balance.",
+		"description": "Minimalistic framework for calculating nonlinear periodic strady state responses using an object based harmonic balance.",
+		"tags": [
+			"system-modeling",
+			"nonlinear"
+		],
+		"github": "https://github.com/milanofthe/harmonicbalance",
+		"id": "hb",
+		"logo": "https://github.com/user-attachments/assets/d3fea3ca-4e3c-4cfd-af58-9c8e5a32b143\"",
+		"submittedBy": "milanofthe"
+	},
+	{
 		"id": "scikit-rf",
 		"name": "scikit-rf",
 		"tagline": "Open Source Python package for RF/Microwave engineering",
