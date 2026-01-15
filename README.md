@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/branding/logo-with-text.svg" alt="PySimHub" width="400">
+  <img src="static/branding/logo-with-text.svg" alt="PySimHub" width="600">
 </p>
 
 ## About
