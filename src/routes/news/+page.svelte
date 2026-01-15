@@ -49,7 +49,7 @@
 <div class="px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-3xl">
 		<div class="text-center">
-			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
+			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl md:text-6xl">
 				News & Updates
 			</h1>
 			<p class="mt-6 text-lg text-[var(--color-text-secondary)]">
@@ -88,7 +88,7 @@
 									<div class="flex items-start justify-between gap-4">
 										<div>
 											<span
-												class="inline-block rounded-full px-2.5 py-0.5 text-xs font-medium capitalize"
+												class="inline-block rounded-full px-2 py-0.5 text-xs font-medium capitalize"
 												style="background-color: color-mix(in srgb, {getTypeColor(item.type)} 15%, transparent); color: {getTypeColor(item.type)};"
 											>
 												{item.type}

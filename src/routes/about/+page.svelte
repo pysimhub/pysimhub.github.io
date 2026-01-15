@@ -22,7 +22,7 @@
 	<div class="mx-auto max-w-4xl">
 		<!-- Mission -->
 		<section class="text-center">
-			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
+			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl md:text-6xl">
 				About Py<span class="text-[var(--color-accent)]">Sim</span>Hub
 			</h1>
 			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">

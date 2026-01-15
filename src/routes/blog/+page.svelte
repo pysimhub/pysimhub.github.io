@@ -114,7 +114,7 @@
 <div class="px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-4xl">
 		<div class="text-center">
-			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">Blog</h1>
+			<h1 class="text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl md:text-6xl">Blog</h1>
 			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">
 				Articles, tutorials, and updates from the Python simulation community.
 			</p>
@@ -228,7 +228,7 @@
 								{#each post.tags as tag}
 									<button
 										onclick={() => (selectedTag = tag)}
-										class="rounded-full bg-[var(--color-accent)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/20"
+										class="rounded-full bg-[var(--color-accent)]/10 px-2 py-0.5 text-xs font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/20"
 									>
 										{tag}
 									</button>

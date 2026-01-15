@@ -38,7 +38,7 @@
 			{#if tags.length > 0}
 				<div class="mb-4 flex flex-wrap justify-center gap-2">
 					{#each tags as tag}
-						<span class="rounded-full bg-[var(--color-accent)]/10 px-3 py-1 text-sm text-[var(--color-accent)]">
+						<span class="rounded-full bg-[var(--color-accent)]/10 px-3 py-1.5 text-sm text-[var(--color-accent)]">
 							{tag}
 						</span>
 					{/each}
