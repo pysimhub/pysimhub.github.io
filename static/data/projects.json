@@ -32,7 +32,7 @@
 			"system-modeling",
 			"transient"
 		],
-		"logo": "https://github.com/user-attachments/assets/43f0cbcf-b5d5-4294-8256-b3a590aaf3ef",
+		"logo": "/logos/pathsim.png",
 		"github": "https://github.com/pathsim/pathsim",
 		"docs": "https://docs.pathsim.org",
 		"pypi": "https://pypi.org/project/pathsim/",
