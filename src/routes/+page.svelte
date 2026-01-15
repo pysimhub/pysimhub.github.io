@@ -129,8 +129,9 @@
 				Py<span class="text-[var(--color-accent)]">Sim</span>Hub
 			</h1>
 			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">
-				Community hub for Python simulation and numerics tools. Discover libraries for robotics,
-				fluid dynamics, discrete-event simulation, agent-based modeling, and more.
+				Community hub for Python simulation and numerics tools - an awesome list that's also
+				awesome to use. Discover libraries for robotics, fluid dynamics, discrete-event simulation,
+				agent-based modeling, and more.
 			</p>
 			<div class="mt-8 flex flex-wrap justify-center gap-4">
 				<Button variant="primary" size="lg" href="/submit">
