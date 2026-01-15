@@ -1,8 +1,19 @@
-# PySimHub
+<p align="center">
+  <img src="static/branding/logo-with-text.svg" alt="PySimHub" width="400">
+</p>
 
-Community hub for Python simulation and numerics tools.
+<p align="center">
+  <strong>Community hub for Python simulation and numerics tools</strong>
+</p>
 
-**Website:** [pysimhub.io](https://pysimhub.io)
+<p align="center">
+  <a href="https://pysimhub.io">Website</a> •
+  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_submission.yml">Submit Project</a> •
+  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_update.yml">Update Project</a> •
+  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_removal.yml">Remove Project</a>
+</p>
+
+---
 
 ## About
 
@@ -27,6 +38,12 @@ Use our [submission form](https://github.com/pysimhub/pysimhub.github.io/issues/
 Need to fix a broken link or update project information?
 
 Use our [update form](https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_update.yml) - a PR will be created automatically.
+
+## Remove a Project
+
+Need to remove a project (abandoned, duplicate, author request)?
+
+Use our [removal form](https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_removal.yml) - a PR will be created for maintainer review.
 
 ## Development
 
@@ -62,6 +79,7 @@ GitHub Actions handle:
 - **Daily data updates** - Fetches GitHub stats at 6 AM UTC
 - **Project submissions** - Converts issue forms to PRs
 - **Project updates** - Converts update forms to PRs
+- **Project removals** - Converts removal requests to PRs
 - **Link checking** - Weekly validation with submitter notifications
 - **Deployment** - Auto-deploys to GitHub Pages on changes
 
