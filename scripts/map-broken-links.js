@@ -102,6 +102,7 @@ function generateIssueBody(brokenLinks, projects, workflowUrl) {
 	// Build the issue body
 	let body = `# Broken Links Detected\n\n`;
 	body += `The scheduled link check found broken links in project data.\n\n`;
+	body += `**To fix a broken link:** Use the [Project Update form](../../issues/new?template=project_update.yml) to submit corrected URLs.\n\n`;
 	body += `See the [workflow run](${workflowUrl}) for full details.\n\n`;
 
 	// Group by submitter with @mentions
