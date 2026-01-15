@@ -67,7 +67,7 @@ jobs:
             **Reason:** ${{ steps.process.outputs.reason }}
             **Updated fields:** ${{ steps.process.outputs.updated_fields }}
 
-            ${{ steps.process.outputs.is_original_submitter == 'false' && format('> **Note:** This update was submitted by someone other than the original submitter (@{0}).', steps.process.outputs.original_submitter) || '' }}
+            ${{ steps.process.outputs.is_original_submitter == 'false' && steps.process.outputs.original_submitter != 'unknown' && format('> **Note:** This update was submitted by someone other than the original submitter (@{0}).', steps.process.outputs.original_submitter) || '' }}
 
             ---
             Closes #${{ steps.issue.outputs.number }}
