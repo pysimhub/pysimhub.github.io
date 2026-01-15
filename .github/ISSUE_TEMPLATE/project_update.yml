@@ -7,18 +7,21 @@ body:
     attributes:
       value: |
         ## Update project information
-
         Use this form to fix broken URLs, update descriptions, or modify other project details.
 
-        **Protected fields (cannot be changed):** `id`, `name`, `github`, `submittedBy`
+  - type: markdown
+    attributes:
+      value: "---"
 
-        If you need to change the project name or GitHub URL, please submit a new project instead.
+  - type: markdown
+    attributes:
+      value: "### Project Selection"
 
   - type: dropdown
     id: project_id
     attributes:
       label: Project
-      description: Select the project to update
+      description: Select the project to update.
       options:
         - bdsim
         - pathsim
@@ -26,27 +29,118 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: reason
     attributes:
-      label: Reason for update
-      description: Briefly explain why this update is needed (e.g., "Fix broken docs link", "Add conda-forge package")
+      label: Reason for Update
+      description: Briefly explain why this update is needed.
       placeholder: "Fix broken documentation URL"
     validations:
       required: true
 
-  - type: textarea
-    id: update_json
+  - type: markdown
     attributes:
-      label: Updated Data
-      description: |
-        Only include the fields you want to change.
-        **Updatable fields:** `tagline`, `description`, `tags`, `docs`, `pypi`, `condaForge`, `homepage`, `example`, `logo`
-      render: json
-      placeholder: |
-        {
-          "docs": "https://new-docs-url.com",
-          "homepage": "https://new-homepage.com"
-        }
-    validations:
-      required: true
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: |
+        ### Updated Information
+        Only fill in the fields you want to change. Leave others blank.
+
+  - type: input
+    id: tagline
+    attributes:
+      label: Tagline
+      placeholder: "Leave blank to keep current"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: "Leave blank to keep current"
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Updated Tags"
+
+  - type: checkboxes
+    id: tags
+    attributes:
+      label: Select new tags
+      description: Only check if you want to replace the current tags. Leave all unchecked to keep current tags.
+      options:
+        - label: block-diagram
+        - label: control
+        - label: digital-twin
+        - label: dynamic-systems
+        - label: engineering
+        - label: microwave
+        - label: rf
+        - label: robotics
+        - label: system-modeling
+        - label: transient
+        - label: visualization
+
+  - type: input
+    id: custom_tags
+    attributes:
+      label: Additional Tags
+      description: Suggest new tags if needed, comma-separated.
+      placeholder: "physics, thermal"
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Updated Links"
+
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation
+      placeholder: "Leave blank to keep current"
+
+  - type: input
+    id: pypi
+    attributes:
+      label: PyPI
+      placeholder: "Leave blank to keep current"
+
+  - type: input
+    id: conda_forge
+    attributes:
+      label: Conda-Forge
+      placeholder: "Leave blank to keep current"
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage
+      placeholder: "Leave blank to keep current"
+
+  - type: input
+    id: example
+    attributes:
+      label: Example or Tutorial
+      placeholder: "Leave blank to keep current"
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Updated Logo"
+
+  - type: textarea
+    id: logo
+    attributes:
+      label: Logo
+      description: Drag and drop a new image, or paste a URL. Leave blank to keep current.

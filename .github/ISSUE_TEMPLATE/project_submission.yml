@@ -7,57 +7,132 @@ body:
     attributes:
       value: |
         ## Submit your project to PySimHub
+        Fill in the details below. A maintainer will review and add it to the catalog.
 
-        Fill in the JSON below with your project details. A maintainer will review and add it to the catalog.
-
-        ### Available Tags
-        `block-diagram` `control` `digital-twin` `dynamic-systems` `engineering` `microwave` `rf` `robotics` `system-modeling` `transient` `visualization`
-
-        *Don't see a fitting tag? Add your own - we'll review and add it to the list.*
-
-        ### Example
-        ```json
-        {
-          "name": "PathSim",
-          "tagline": "A dynamical system simulation framework in the block diagram paradigm",
-          "description": "PathSim is a Python-native framework for modeling and simulating dynamical systems using block diagrams.",
-          "tags": ["block-diagram", "digital-twin", "dynamic-systems", "control"],
-          "github": "https://github.com/pathsim/pathsim",
-          "docs": "https://docs.pathsim.org",
-          "pypi": "https://pypi.org/project/pathsim/"
-        }
-        ```
-
-        *The project `id` is auto-generated from the name.*
-
-  - type: textarea
-    id: project_json
+  - type: markdown
     attributes:
-      label: Project Data
-      description: |
-        **Required fields:** `name`, `tagline`, `description`, `tags`, `github`
-        **Optional fields:** `docs`, `pypi`, `condaForge`, `homepage`, `example`
+      value: "---"
 
-        The `description` field supports Markdown formatting.
-      render: json
-      value: |
-        {
-          "name": "",
-          "tagline": "",
-          "description": "",
-          "tags": [],
-          "github": "",
-          "docs": "",
-          "pypi": "",
-          "condaForge": "",
-          "homepage": "",
-          "example": ""
-        }
+  - type: markdown
+    attributes:
+      value: "### Basic Information"
+
+  - type: input
+    id: name
+    attributes:
+      label: Project Name
+      placeholder: "PathSim"
+    validations:
+      required: true
+
+  - type: input
+    id: tagline
+    attributes:
+      label: Tagline
+      description: A short one-line description of your project.
+      placeholder: "A dynamical system simulation framework in the block diagram paradigm"
     validations:
       required: true
 
   - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A longer description. Markdown is supported.
+      placeholder: "PathSim is a Python-native framework for modeling and simulating dynamical systems..."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Tags"
+
+  - type: checkboxes
+    id: tags
+    attributes:
+      label: Select all tags that apply
+      description: Pick at least one. You can suggest new tags in the additional tags field below.
+      options:
+        - label: block-diagram
+        - label: control
+        - label: digital-twin
+        - label: dynamic-systems
+        - label: engineering
+        - label: microwave
+        - label: rf
+        - label: robotics
+        - label: system-modeling
+        - label: transient
+        - label: visualization
+
+  - type: input
+    id: custom_tags
+    attributes:
+      label: Additional Tags
+      description: Suggest new tags if needed, comma-separated.
+      placeholder: "physics, thermal"
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Links"
+
+  - type: input
+    id: github
+    attributes:
+      label: GitHub Repository
+      placeholder: "https://github.com/pathsim/pathsim"
+    validations:
+      required: true
+
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation
+      placeholder: "https://docs.pathsim.org"
+
+  - type: input
+    id: pypi
+    attributes:
+      label: PyPI
+      placeholder: "https://pypi.org/project/pathsim/"
+
+  - type: input
+    id: conda_forge
+    attributes:
+      label: Conda-Forge
+      placeholder: "https://anaconda.org/conda-forge/pathsim"
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage
+      description: If different from docs or GitHub.
+      placeholder: "https://pathsim.org"
+
+  - type: input
+    id: example
+    attributes:
+      label: Example or Tutorial
+      placeholder: "https://docs.pathsim.org/examples/getting-started"
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Logo"
+
+  - type: textarea
     id: logo
     attributes:
-      label: Logo (optional)
-      description: Drag and drop a square logo image (PNG/SVG). We'll use your GitHub organization avatar as fallback.
+      label: Logo
+      description: Drag and drop a square image (PNG/SVG), or paste a URL. Falls back to GitHub avatar.

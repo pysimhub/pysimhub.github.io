@@ -2,7 +2,7 @@
 
 /**
  * Process a project submission from a GitHub issue.
- * Parses the JSON, validates it, and outputs the project data.
+ * Parses individual form fields, validates them, and outputs the project data.
  * Used by the process-submission GitHub Action.
  */
 
@@ -22,36 +22,98 @@ function isValidUrl(string) {
 	}
 }
 
+function extractField(issueBody, label) {
+	// Match "### Label\n\nvalue" or "### Label\n\nvalue\n\n### Next"
+	const regex = new RegExp(`### ${label}\\s*\\n\\n([\\s\\S]*?)(?=\\n\\n###|$)`, 'i');
+	const match = issueBody.match(regex);
+	if (!match) return null;
+
+	const value = match[1].trim();
+	if (value === '_No response_' || value === '') return null;
+	return value;
+}
+
+function extractCheckedTags(issueBody, label) {
+	const regex = new RegExp(`### ${label}\\s*\\n\\n([\\s\\S]*?)(?=\\n\\n###|$)`, 'i');
+	const match = issueBody.match(regex);
+	if (!match) return [];
+
+	const checkboxSection = match[1];
+	const tags = [];
+
+	// Match checked checkboxes: "- [X] tag-name" or "- [x] tag-name"
+	const checkboxRegex = /- \[[xX]\] (.+)/g;
+	let checkboxMatch;
+	while ((checkboxMatch = checkboxRegex.exec(checkboxSection)) !== null) {
+		tags.push(checkboxMatch[1].trim());
+	}
+
+	return tags;
+}
+
+function extractLogoUrl(logoContent) {
+	if (!logoContent) return null;
+
+	// Check for markdown image
+	const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+	if (mdMatch) return mdMatch[1];
+
+	// Check for GitHub user attachment
+	const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
+	if (ghMatch) return ghMatch[1];
+
+	// Check for direct image URL
+	const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
+	if (urlMatch) return urlMatch[1];
+
+	return null;
+}
+
 function parseSubmission(issueBody) {
-	// Extract JSON from the issue body
-	const jsonMatch = issueBody.match(/### Project Data\s*\n```json\s*\n([\s\S]*?)\n```/);
-	if (!jsonMatch) {
-		throw new Error('Could not find Project Data JSON in issue body');
-	}
+	const project = {};
 
-	// Clean up JSON (remove trailing commas)
-	let jsonStr = jsonMatch[1]
-		.replace(/,\s*}/g, '}')
-		.replace(/,\s*]/g, ']');
-
-	let project;
-	try {
-		project = JSON.parse(jsonStr);
-	} catch (parseError) {
-		throw new Error(`Invalid JSON: ${parseError.message}`);
-	}
+	// Extract basic fields
+	project.name = extractField(issueBody, 'Project Name');
+	project.tagline = extractField(issueBody, 'Tagline');
+	project.description = extractField(issueBody, 'Description');
 
 	// Validate required fields
-	const required = ['name', 'tagline', 'description', 'github'];
+	const required = ['name', 'tagline', 'description'];
 	const missing = required.filter(f => !project[f]);
 	if (missing.length > 0) {
 		throw new Error(`Missing required fields: ${missing.join(', ')}`);
 	}
 
-	// Validate tags
-	if (!project.tags || !Array.isArray(project.tags) || project.tags.length === 0) {
+	// Extract tags from checkboxes
+	const checkedTags = extractCheckedTags(issueBody, 'Select all tags that apply');
+	const customTagsRaw = extractField(issueBody, 'Additional Tags');
+	const customTags = customTagsRaw
+		? customTagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
+		: [];
+
+	project.tags = [...checkedTags, ...customTags];
+
+	if (project.tags.length === 0) {
 		throw new Error('At least one tag is required');
 	}
+
+	// Extract URLs
+	project.github = extractField(issueBody, 'GitHub Repository');
+	if (!project.github) {
+		throw new Error('GitHub Repository is required');
+	}
+
+	const docs = extractField(issueBody, 'Documentation');
+	const pypi = extractField(issueBody, 'PyPI');
+	const condaForge = extractField(issueBody, 'Conda-Forge');
+	const homepage = extractField(issueBody, 'Homepage');
+	const example = extractField(issueBody, 'Example or Tutorial');
+
+	if (docs) project.docs = docs;
+	if (pypi) project.pypi = pypi;
+	if (condaForge) project.condaForge = condaForge;
+	if (homepage) project.homepage = homepage;
+	if (example) project.example = example;
 
 	// Validate URLs
 	const urlFields = ['github', 'docs', 'pypi', 'condaForge', 'homepage', 'example'];
@@ -66,29 +128,13 @@ function parseSubmission(issueBody) {
 	}
 
 	// Generate ID from name
-	const id = project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-	project.id = id;
+	project.id = project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-	// Remove empty optional fields
-	for (const key of ['docs', 'pypi', 'condaForge', 'homepage', 'example', 'description']) {
-		if (project[key] === '') delete project[key];
-	}
-
-	// Check for logo
-	const logoMatch = issueBody.match(/### Logo \(optional\)\s*\n\s*([\s\S]*?)(?=\n###|$)/);
-	if (logoMatch) {
-		const logoContent = logoMatch[1].trim();
-		if (logoContent && logoContent !== '_No response_') {
-			// Check for markdown image or URL
-			const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
-			const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
-			const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
-
-			const logoUrl = mdMatch?.[1] || urlMatch?.[1] || ghMatch?.[1];
-			if (logoUrl) {
-				project.logo = logoUrl;
-			}
-		}
+	// Extract logo
+	const logoContent = extractField(issueBody, 'Logo');
+	const logoUrl = extractLogoUrl(logoContent);
+	if (logoUrl) {
+		project.logo = logoUrl;
 	}
 
 	return project;

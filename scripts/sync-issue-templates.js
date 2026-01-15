@@ -2,8 +2,8 @@
 
 /**
  * Script to sync data from projects.json to issue templates.
- * - Syncs tags to project_submission.yml
- * - Syncs project IDs to project_update.yml
+ * - Syncs tags (as checkboxes) to both templates
+ * - Syncs project IDs (as dropdown) to project_update.yml
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -18,76 +18,86 @@ function loadProjects() {
 	return JSON.parse(readFileSync(projectsPath, 'utf-8'));
 }
 
-function syncTags(projects) {
-	const templatePath = join(__dirname, '..', '.github', 'ISSUE_TEMPLATE', 'project_submission.yml');
-
-	if (!existsSync(templatePath)) {
-		console.log('Skipping tags sync: project_submission.yml not found');
-		return;
-	}
-
-	// Extract all unique tags
+function getUniqueTags(projects) {
 	const tagsSet = new Set();
 	for (const project of projects) {
 		if (project.tags) {
 			project.tags.forEach(tag => tagsSet.add(tag));
 		}
 	}
-	const tags = Array.from(tagsSet).sort();
-	console.log(`Found ${tags.length} unique tags: ${tags.join(', ')}`);
-
-	// Read issue template
-	let template = readFileSync(templatePath, 'utf-8');
-
-	// Build the new tags line with backticks
-	const tagsLine = tags.map(t => `\`${t}\``).join(' ');
-
-	// Replace the Available Tags line (matches line starting with backtick after "### Available Tags")
-	template = template.replace(
-		/(### Available Tags\n\s+)`[^`]+`(?:\s+`[^`]+`)*/,
-		`$1${tagsLine}`
-	);
-
-	// Write updated template
-	writeFileSync(templatePath, template);
-	console.log(`Updated project_submission.yml with ${tags.length} tags`);
+	return Array.from(tagsSet).sort();
 }
 
-function syncProjectIds(projects) {
+function syncTagCheckboxes(templatePath, tags) {
+	if (!existsSync(templatePath)) {
+		return false;
+	}
+
+	let template = readFileSync(templatePath, 'utf-8');
+
+	// Build checkbox options YAML
+	const checkboxOptions = tags.map(tag => `        - label: ${tag}`).join('\n');
+
+	// Replace the options under "id: tags" checkbox section
+	template = template.replace(
+		/(id: tags\n[\s\S]*?options:\n)([\s\S]*?)(\n\n  - type:)/,
+		`$1${checkboxOptions}$3`
+	);
+
+	writeFileSync(templatePath, template);
+	return true;
+}
+
+function syncSubmissionTemplate(tags) {
+	const templatePath = join(__dirname, '..', '.github', 'ISSUE_TEMPLATE', 'project_submission.yml');
+
+	if (syncTagCheckboxes(templatePath, tags)) {
+		console.log(`Updated project_submission.yml with ${tags.length} tag checkboxes`);
+	} else {
+		console.log('Skipping: project_submission.yml not found');
+	}
+}
+
+function syncUpdateTemplate(projects, tags) {
 	const templatePath = join(__dirname, '..', '.github', 'ISSUE_TEMPLATE', 'project_update.yml');
 
 	if (!existsSync(templatePath)) {
-		console.log('Skipping project IDs sync: project_update.yml not found');
+		console.log('Skipping: project_update.yml not found');
 		return;
 	}
 
-	// Extract all project IDs and sort alphabetically
-	const projectIds = projects.map(p => p.id).sort();
-	console.log(`Found ${projectIds.length} projects`);
-
-	// Read issue template
 	let template = readFileSync(templatePath, 'utf-8');
 
-	// Build the new options list with proper YAML indentation
-	const optionsYaml = projectIds.map(id => `        - ${id}`).join('\n');
+	// Sync project IDs dropdown
+	const projectIds = projects.map(p => p.id).sort();
+	const dropdownOptions = projectIds.map(id => `        - ${id}`).join('\n');
 
-	// Replace the options section under the project_id dropdown
-	// Match from "options:" to the next field (validations:)
 	template = template.replace(
 		/(id: project_id\n[\s\S]*?options:\n)([\s\S]*?)(\n\s+validations:)/,
-		`$1${optionsYaml}$3`
+		`$1${dropdownOptions}$3`
 	);
 
-	// Write updated template
+	// Sync tag checkboxes
+	const checkboxOptions = tags.map(tag => `        - label: ${tag}`).join('\n');
+
+	template = template.replace(
+		/(id: tags\n[\s\S]*?options:\n)([\s\S]*?)(\n\n  - type:)/,
+		`$1${checkboxOptions}$3`
+	);
+
 	writeFileSync(templatePath, template);
-	console.log(`Updated project_update.yml with ${projectIds.length} project options`);
+	console.log(`Updated project_update.yml with ${projectIds.length} projects and ${tags.length} tag checkboxes`);
 }
 
 function main() {
 	const projects = loadProjects();
+	const tags = getUniqueTags(projects);
 
-	syncTags(projects);
-	syncProjectIds(projects);
+	console.log(`Found ${tags.length} unique tags: ${tags.join(', ')}`);
+	console.log(`Found ${projects.length} projects`);
+
+	syncSubmissionTemplate(tags);
+	syncUpdateTemplate(projects, tags);
 
 	console.log('Issue templates sync complete');
 }
