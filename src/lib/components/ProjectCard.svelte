@@ -191,7 +191,7 @@
 	</p>
 
 	<!-- Tags -->
-	<div bind:this={tagsContainer} class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5 max-h-[3.5rem] overflow-hidden">
+	<div bind:this={tagsContainer} class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5 lg:max-h-[3.5rem] lg:overflow-hidden">
 		{#each project.tags.slice(0, visibleTagCount) as tag}
 			<Badge data-tag variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}

@@ -66,7 +66,7 @@
 				Show less
 			{:else}
 				<Icon name="plus" size="sm" />
-				{$allTags.length - MAX_VISIBLE_TAGS} more
+				{$allTags.length - maxVisibleTags} more
 			{/if}
 		</button>
 	{/if}

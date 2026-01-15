@@ -22,7 +22,7 @@
 	const icon = $derived(icons[name]);
 </script>
 
-{#if icon.paths}
+{#if 'paths' in icon && icon.paths}
 	<svg
 		class="{sizeClass} {className}"
 		viewBox={icon.viewBox}
