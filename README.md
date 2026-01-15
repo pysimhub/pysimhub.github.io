@@ -2,19 +2,6 @@
   <img src="static/branding/logo-with-text.svg" alt="PySimHub" width="400">
 </p>
 
-<p align="center">
-  <strong>Community hub for Python simulation and numerics tools</strong>
-</p>
-
-<p align="center">
-  <a href="https://pysimhub.io">Website</a> •
-  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_submission.yml">Submit Project</a> •
-  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_update.yml">Update Project</a> •
-  <a href="https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_removal.yml">Remove Project</a>
-</p>
-
----
-
 ## About
 
 PySimHub is an open community catalog for Python simulation tools. We help researchers, engineers, and developers discover libraries across all simulation domains - from robotics and control systems to fluid dynamics and agent-based modeling.
