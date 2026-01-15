@@ -1,22 +1,24 @@
-<svg width="110" height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PySimHub">
-  <title>PySimHub</title>
-  <!-- Background -->
-  <rect width="110" height="32" rx="6" fill="#0a0a0f"/>
-  <!-- Logo icon -->
-  <circle cx="18" cy="16" r="10" stroke="#6366f1" stroke-width="2"/>
-  <!-- 8 rays from center -->
+<svg width="130" height="20" viewBox="0 0 130 20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="listed on PySimHub">
+  <title>listed on PySimHub</title>
+  <!-- Left side - listed (rounded left corners) -->
+  <path d="M0 3a3 3 0 013-3h37v20H3a3 3 0 01-3-3V3z" fill="#555"/>
+  <!-- Right side - PySimHub (rounded right corners) -->
+  <path d="M40 0h87a3 3 0 013 3v14a3 3 0 01-3 3H40V0z" fill="#0a0a0f"/>
+  <!-- Icon (scaled from original) -->
+  <circle cx="50" cy="10" r="6" stroke="#6366f1" stroke-width="1.2"/>
   <path d="
-    M18 16 L22 16
-    M18 16 L21 19
-    M18 16 L18 21
-    M18 16 L15 19
-    M18 16 L13 16
-    M18 16 L15 13
-    M18 16 L18 10
-    M18 16 L22 12
-  " stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Text: PySimHub -->
-  <text x="34" y="21" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">
+    M50 10 L52.1 10
+    M50 10 L51.7 11.7
+    M50 10 L50 12.7
+    M50 10 L47.9 12.1
+    M50 10 L46.6 10
+    M50 10 L47.4 7.4
+    M50 10 L50 6
+    M50 10 L53 7
+  " stroke="#6366f1" stroke-width="1" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="20" y="14" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fff">listed</text>
+  <text x="90" y="14" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">
     <tspan fill="#f5f5f7">Py</tspan><tspan fill="#6366f1">Sim</tspan><tspan fill="#f5f5f7">Hub</tspan>
   </text>
 </svg>
