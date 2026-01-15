@@ -16,9 +16,11 @@ export const selectedTags = writable<string[]>([]);
 export const sortOption = writable<SortOption>('random');
 export const sortDirection = writable<SortDirection>('desc');
 
-// Initialize search when projects are loaded
+// Initialize search when projects are loaded (only if changed)
+let lastProjectsRef: Project[] = [];
 allProjects.subscribe((projects) => {
-	if (projects.length > 0) {
+	if (projects.length > 0 && projects !== lastProjectsRef) {
+		lastProjectsRef = projects;
 		initSearch(projects);
 	}
 });

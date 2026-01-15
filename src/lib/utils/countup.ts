@@ -1,20 +1,25 @@
 /**
  * Animated counter that counts up from 0 to target value
+ * Returns a cancel function to stop the animation
  */
 export function countUp(
 	element: HTMLElement,
 	target: number,
 	duration: number = 2000,
 	suffix: string = ''
-): void {
+): () => void {
 	const startTime = performance.now();
 	const startValue = 0;
+	let rafId: number;
+	let cancelled = false;
 
 	function easeOutExpo(x: number): number {
 		return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 	}
 
 	function update(currentTime: number): void {
+		if (cancelled) return;
+
 		const elapsed = currentTime - startTime;
 		const progress = Math.min(elapsed / duration, 1);
 		const easedProgress = easeOutExpo(progress);
@@ -23,11 +28,16 @@ export function countUp(
 		element.textContent = formatNumber(currentValue) + suffix;
 
 		if (progress < 1) {
-			requestAnimationFrame(update);
+			rafId = requestAnimationFrame(update);
 		}
 	}
 
-	requestAnimationFrame(update);
+	rafId = requestAnimationFrame(update);
+
+	return () => {
+		cancelled = true;
+		cancelAnimationFrame(rafId);
+	};
 }
 
 /**

@@ -47,15 +47,16 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <!-- Backdrop -->
-<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
 <div
 	class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
 	transition:fade={{ duration: 200 }}
 >
-	<div
-		class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+	<button
+		type="button"
+		class="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-default border-none"
 		onclick={onclose}
-	></div>
+		aria-label="Close modal"
+	></button>
 
 	<!-- Modal -->
 	<div

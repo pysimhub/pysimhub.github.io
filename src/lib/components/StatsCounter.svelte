@@ -25,6 +25,8 @@
 	$effect(() => {
 		if (!browser || hasAnimated || !containerEl) return;
 
+		const cancelFns: (() => void)[] = [];
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
@@ -36,7 +38,8 @@
 							counters.forEach((counter, index) => {
 								const value = statItems[index].value;
 								const suffix = statItems[index].suffix;
-								countUp(counter as HTMLElement, value, 2000, suffix);
+								const cancel = countUp(counter as HTMLElement, value, 2000, suffix);
+								cancelFns.push(cancel);
 							});
 						}
 
@@ -49,7 +52,10 @@
 
 		observer.observe(containerEl);
 
-		return () => observer.disconnect();
+		return () => {
+			observer.disconnect();
+			cancelFns.forEach((cancel) => cancel());
+		};
 	});
 </script>
 

@@ -23,20 +23,19 @@
 </script>
 
 {#if 'paths' in icon && icon.paths}
+	<!-- Multi-path icon (currently only stroke-type icons use this) -->
 	<svg
 		class="{sizeClass} {className}"
 		viewBox={icon.viewBox}
-		fill={icon.type === 'fill' ? 'currentColor' : 'none'}
-		stroke={icon.type === 'stroke' ? 'currentColor' : undefined}
-		stroke-width={icon.type === 'stroke' ? strokeWidth : undefined}
+		fill="none"
+		stroke="currentColor"
+		stroke-width={strokeWidth}
 	>
 		{#each icon.paths as path}
 			<path
 				d={path}
-				stroke-linecap={icon.type === 'stroke' ? 'round' : undefined}
-				stroke-linejoin={icon.type === 'stroke' ? 'round' : undefined}
-				fill-rule={icon.type === 'fill' ? 'evenodd' : undefined}
-				clip-rule={icon.type === 'fill' ? 'evenodd' : undefined}
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			/>
 		{/each}
 	</svg>

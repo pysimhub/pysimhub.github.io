@@ -21,29 +21,33 @@
 
 	// Check for test mode on mount
 	$effect(() => {
-		if (browser) {
-			const urlParam = $page.url.searchParams.get('test');
-			const stored = localStorage.getItem('pysimhub-test-mode');
+		if (!browser) return;
 
-			if (urlParam === 'true') {
-				localStorage.setItem('pysimhub-test-mode', 'true');
-				testMode = true;
-			} else if (urlParam === 'false') {
-				localStorage.removeItem('pysimhub-test-mode');
-				testMode = false;
-			} else if (stored === 'true') {
-				testMode = true;
-			}
+		const urlParam = $page.url.searchParams.get('test');
+		const stored = localStorage.getItem('pysimhub-test-mode');
+
+		if (urlParam === 'true') {
+			localStorage.setItem('pysimhub-test-mode', 'true');
+			testMode = true;
+		} else if (urlParam === 'false') {
+			localStorage.removeItem('pysimhub-test-mode');
+			testMode = false;
+		} else if (stored === 'true') {
+			testMode = true;
 		}
 	});
 
-	// Load test data when test mode is enabled
+	// Load data based on test mode
 	$effect(() => {
-		if (browser && testMode && !testDataLoaded) {
+		if (!browser) return;
+
+		if (testMode && !testDataLoaded) {
 			loadTestData();
-		} else if (browser && !testMode && testDataLoaded) {
-			// Reset to real data only
-			allProjects.set(data.projects);
+		} else if (!testMode) {
+			// Load real data (handles both initial load and switching out of test mode)
+			if (data?.projects?.length > 0) {
+				allProjects.set(data.projects);
+			}
 			testDataLoaded = false;
 		}
 	});
@@ -88,13 +92,6 @@
 		}
 	}
 
-// Initialize store with server data
-	// Using $effect.pre to run before DOM updates
-	$effect.pre(() => {
-		if (data?.projects?.length > 0 && !testDataLoaded) {
-			allProjects.set(data.projects);
-		}
-	});
 </script>
 
 <svelte:head>
