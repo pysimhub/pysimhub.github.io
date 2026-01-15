@@ -36,13 +36,13 @@ jobs:
       - name: Download external logos
         run: node scripts/download-logos.js
 
-      - name: Sync tags to issue template
-        run: node scripts/sync-tags.js
+      - name: Sync issue templates
+        run: node scripts/sync-issue-templates.js
 
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add static/data/github-cache.json static/data/projects.json static/logos/ .github/ISSUE_TEMPLATE/project_submission.yml
+          git add static/data/github-cache.json static/data/projects.json static/logos/ .github/ISSUE_TEMPLATE/
           git diff --staged --quiet || git commit -m "chore: update GitHub data cache"
           git push

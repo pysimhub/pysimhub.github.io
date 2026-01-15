@@ -1,0 +1,112 @@
+name: Process Project Update
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to process'
+        required: true
+
+jobs:
+  process-update:
+    if: >
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.label.name == 'update' && !contains(github.event.issue.labels.*.name, 'pr-created'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get issue data
+        id: issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.payload.inputs?.issue_number || context.payload.issue.number;
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: parseInt(issueNumber)
+            });
+            core.setOutput('number', issue.number);
+            core.setOutput('author', issue.user.login);
+            core.setOutput('body', issue.body);
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Process update
+        id: process
+        env:
+          ISSUE_BODY: ${{ steps.issue.outputs.body }}
+          ISSUE_AUTHOR: ${{ steps.issue.outputs.author }}
+        run: node scripts/process-update.js
+
+      - name: Create Pull Request
+        id: pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/${{ steps.process.outputs.id }}-${{ steps.issue.outputs.number }}
+          delete-branch: true
+          title: "Update ${{ steps.process.outputs.name }}"
+          body: |
+            ## Project Update: ${{ steps.process.outputs.name }}
+
+            Requested by @${{ steps.issue.outputs.author }} in #${{ steps.issue.outputs.number }}
+
+            **Reason:** ${{ steps.process.outputs.reason }}
+            **Updated fields:** ${{ steps.process.outputs.updated_fields }}
+
+            ${{ steps.process.outputs.is_original_submitter == 'false' && format('> **Note:** This update was submitted by someone other than the original submitter (@{0}).', steps.process.outputs.original_submitter) || '' }}
+
+            ---
+            Please review the changes to ensure they are correct.
+          commit-message: "Update ${{ steps.process.outputs.name }} project data"
+
+      - name: Comment on issue (success)
+        if: steps.pr.outputs.pull-request-number
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `**Update request received!**\n\nPR created: ${{ steps.pr.outputs.pull-request-url }}\n\nA maintainer will review the changes shortly.`
+            });
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              labels: ['pr-created']
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              title: `[Update] ${{ steps.process.outputs.name }}`
+            });
+
+      - name: Comment on issue (failure)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `**Error processing update**\n\nPlease check your JSON format and ensure you're only updating allowed fields.\n\n**Protected fields (cannot be changed):** \`id\`, \`name\`, \`github\`, \`submittedBy\`\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
+            });
