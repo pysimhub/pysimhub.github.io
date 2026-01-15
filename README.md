@@ -10,7 +10,7 @@ PySimHub is an open community catalog for Python simulation tools. We help resea
 
 ## Submit a Project
 
-Have a Python simulation library you'd like to add? We're open to submissions!
+Have a Python simulation library you'd like to add?
 
 **Requirements:**
 - Open source with a recognized license
@@ -19,21 +19,29 @@ Have a Python simulation library you'd like to add? We're open to submissions!
 - Documentation available
 
 **How to submit:**
-1. [Open a GitHub Issue](https://github.com/pysimhub/pysimhub.github.io/issues/new) with project details
-2. Or submit a PR adding your project to `static/data/projects.json`
+
+Use our [submission form](https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_submission.yml) - a PR will be created automatically.
+
+## Update a Project
+
+Need to fix a broken link or update project information?
+
+Use our [update form](https://github.com/pysimhub/pysimhub.github.io/issues/new?template=project_update.yml) - a PR will be created automatically.
 
 ## Development
 
-### Setup
-
 ```bash
+# Install dependencies
 npm install
-```
 
-### Development server
-
-```bash
+# Start dev server
 npm run dev
+
+# Build
+npm run build
+
+# Type check
+npm run check
 ```
 
 ### Update GitHub data
@@ -44,29 +52,27 @@ Fetch live stats (stars, releases) from GitHub:
 # With a GitHub token (recommended - 5000 req/hr)
 GITHUB_TOKEN=your_token npm run fetch-github
 
-# Or edit scripts/fetch-github-data.js with your token
+# Without token (60 req/hr)
 npm run fetch-github
 ```
 
-### Build
+## Automation
 
-```bash
-npm run build
-```
-
-### Type checking
-
-```bash
-npm run check
-```
+GitHub Actions handle:
+- **Daily data updates** - Fetches GitHub stats at 6 AM UTC
+- **Project submissions** - Converts issue forms to PRs
+- **Project updates** - Converts update forms to PRs
+- **Link checking** - Weekly validation with submitter notifications
+- **Deployment** - Auto-deploys to GitHub Pages on changes
 
 ## Tech Stack
 
 - [SvelteKit](https://kit.svelte.dev/) with static adapter
+- [Svelte 5](https://svelte.dev/) with runes
 - [Tailwind CSS](https://tailwindcss.com/) v4
 - [Fuse.js](https://fusejs.io/) for fuzzy search
-- [MDsveX](https://mdsvex.pngwn.io/) for blog posts
-- GitHub Actions for deployment and data updates
+- [MDsveX](https://mdsvex.pngwn.io/) for markdown content
+- GitHub Actions for CI/CD
 
 ## License
 
