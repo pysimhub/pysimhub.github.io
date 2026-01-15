@@ -1,0 +1,23 @@
+<svg width="150" height="48" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PySimHub">
+  <title>PySimHub</title>
+  <!-- Background and border -->
+  <rect x="1.5" y="1.5" width="147" height="45" rx="8" fill="#fff" stroke="#6366f1" stroke-width="3"/>
+  <!-- Logo icon -->
+  <circle cx="26" cy="24" r="14" stroke="#6366f1" stroke-width="2.5"/>
+  <!-- 8 rays from center -->
+  <path d="
+    M26 24 L31 24
+    M26 24 L30 28
+    M26 24 L26 30.4
+    M26 24 L21 29
+    M26 24 L18 24
+    M26 24 L20 18
+    M26 24 L26 14.7
+    M26 24 L33 17
+  " stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Text: PySimHub -->
+  <text x="50" y="30" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">
+    <tspan fill="#111827">Py</tspan><tspan fill="#6366f1">Sim</tspan><tspan fill="#111827">Hub</tspan>
+  </text>
+</svg>
