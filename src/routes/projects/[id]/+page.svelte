@@ -142,7 +142,7 @@
 			{#if project.example}
 				<Button variant="secondary" size="md" href={project.example} target="_blank">
 					<Icon name="play" size="sm" />
-					Demo
+					Example
 				</Button>
 			{/if}
 
@@ -169,11 +169,9 @@
 			<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">Tags</h2>
 			<div class="mt-4 flex flex-wrap gap-2">
 				{#each project.tags as tag}
-					<a href="/tags/{encodeURIComponent(tag)}">
-						<Badge variant="default" size="md" interactive>
-							{tag}
-						</Badge>
-					</a>
+					<Badge variant="default" size="md">
+						{tag}
+					</Badge>
 				{/each}
 			</div>
 		</section>
