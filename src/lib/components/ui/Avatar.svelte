@@ -3,7 +3,7 @@
 		src?: string;
 		alt: string;
 		fallback?: string;
-		size?: 'sm' | 'md' | 'lg' | 'xl';
+		size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 		class?: string;
 	}
 
@@ -23,14 +23,16 @@
 		sm: 'h-10 w-10 text-sm',
 		md: 'h-14 w-14 text-lg',
 		lg: 'h-16 w-16 text-2xl',
-		xl: 'h-20 w-20 text-3xl'
+		xl: 'h-20 w-20 text-3xl',
+		'2xl': 'h-28 w-28 text-4xl'
 	};
 
 	const imgSizeClasses = {
 		sm: 'h-10 w-auto max-w-16',
 		md: 'h-14 w-auto max-w-24',
 		lg: 'h-16 w-auto max-w-32',
-		xl: 'h-20 w-auto max-w-40'
+		xl: 'h-20 w-auto max-w-40',
+		'2xl': 'h-28 w-auto max-w-48'
 	};
 
 	// Generate initials from alt text or fallback

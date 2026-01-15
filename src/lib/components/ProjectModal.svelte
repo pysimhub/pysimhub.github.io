@@ -107,13 +107,23 @@
 				</div>
 			</div>
 
-			<button
-				onclick={onclose}
-				class="flex-shrink-0 rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
-				aria-label="Close modal"
-			>
-				<Icon name="close" size="lg" />
-			</button>
+			<div class="flex-shrink-0 flex items-center gap-1">
+				<a
+					href="/projects/{project.id}"
+					class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+					title="Open project page"
+				>
+					<Icon name="arrow-right" size="lg" class="-rotate-45" />
+				</a>
+				<button
+					onclick={onclose}
+					class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+					aria-label="Close modal"
+					title="Close"
+				>
+					<Icon name="close" size="lg" />
+				</button>
+			</div>
 		</div>
 
 		<!-- Content -->
