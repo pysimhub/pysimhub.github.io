@@ -23,15 +23,18 @@
 
 	const descriptionHtml = $derived(project.description ? marked.parse(project.description) : '');
 
-	function filterByTag(tag: string) {
+	function toggleTag(tag: string) {
 		selectedTags.update((tags) => {
-			if (!tags.includes(tag)) {
-				return [...tags, tag];
+			if (tags.includes(tag)) {
+				return tags.filter((t) => t !== tag);
 			}
-			return tags;
+			return [...tags, tag];
 		});
 		resetVisible();
-		onclose();
+	}
+
+	function isTagSelected(tag: string): boolean {
+		return $selectedTags.includes(tag);
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -134,7 +137,7 @@
 				<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Tags</h3>
 				<div class="mt-2 flex flex-wrap gap-2">
 					{#each project.tags as tag}
-						<Badge variant="default" size="md" interactive onclick={() => filterByTag(tag)}>
+						<Badge variant={isTagSelected(tag) ? 'accent' : 'default'} size="md" interactive onclick={() => toggleTag(tag)}>
 							{tag}
 						</Badge>
 					{/each}

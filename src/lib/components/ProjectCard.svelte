@@ -18,15 +18,19 @@
 	let maxVisibleTags = $state(100); // Will be calculated based on space
 	let maxVisibleLinks = $state(100); // Will be calculated based on space
 
-	function filterByTag(tag: string, e: MouseEvent) {
+	function toggleTag(tag: string, e: MouseEvent) {
 		e.stopPropagation();
 		selectedTags.update((tags) => {
-			if (!tags.includes(tag)) {
-				return [...tags, tag];
+			if (tags.includes(tag)) {
+				return tags.filter((t) => t !== tag);
 			}
-			return tags;
+			return [...tags, tag];
 		});
 		resetVisible();
+	}
+
+	function isTagSelected(tag: string): boolean {
+		return $selectedTags.includes(tag);
 	}
 
 	function openModal(e: MouseEvent) {
@@ -186,7 +190,7 @@
 	<!-- Tags -->
 	<div bind:this={tagsContainer} class="mt-3 flex flex-wrap items-start gap-1.5 max-h-[3.5rem] overflow-hidden">
 		{#each project.tags.slice(0, visibleTagCount) as tag}
-			<Badge data-tag variant="default" size="sm" interactive class="whitespace-nowrap" onclick={(e) => filterByTag(tag, e)}>
+			<Badge data-tag variant={isTagSelected(tag) ? 'accent' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}
 			</Badge>
 		{/each}
