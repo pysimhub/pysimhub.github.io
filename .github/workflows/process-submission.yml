@@ -69,7 +69,7 @@ jobs:
             **Repository:** ${{ steps.process.outputs.github }}
 
             ---
-            🤖 Auto-generated from issue #${{ steps.issue.outputs.number }}
+            Closes #${{ steps.issue.outputs.number }}
           commit-message: "Add ${{ steps.process.outputs.name }} to projects"
 
       - name: Comment on issue (success)

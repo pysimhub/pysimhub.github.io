@@ -70,7 +70,7 @@ jobs:
             ${{ steps.process.outputs.is_original_submitter == 'false' && format('> **Note:** This update was submitted by someone other than the original submitter (@{0}).', steps.process.outputs.original_submitter) || '' }}
 
             ---
-            Please review the changes to ensure they are correct.
+            Closes #${{ steps.issue.outputs.number }}
           commit-message: "Update ${{ steps.process.outputs.name }} project data"
 
       - name: Comment on issue (success)

@@ -19,16 +19,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  # Check if we should skip deploy on push (when projects.json changed)
+  check:
     runs-on: ubuntu-latest
-    # Skip if triggered by bot push or failed workflow_run
-    if: >
-      (github.event_name == 'workflow_dispatch') ||
-      (github.event_name == 'push' && github.actor != 'github-actions[bot]') ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    if: github.event_name == 'push'
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if projects.json changed
+        id: check
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q "^static/data/projects.json$"; then
+            echo "projects.json changed - skipping deploy (update-data will handle it)"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [check]
+    # Run if:
+    # - workflow_dispatch (manual trigger)
+    # - workflow_run from Update Data succeeded
+    # - push by non-bot AND projects.json didn't change
+    if: |
+      always() &&
+      (
+        (github.event_name == 'workflow_dispatch') ||
+        (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+        (github.event_name == 'push' && github.actor != 'github-actions[bot]' && needs.check.outputs.skip != 'true')
+      )
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        # For workflow_run, we need to checkout the latest main
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && 'main' || github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
