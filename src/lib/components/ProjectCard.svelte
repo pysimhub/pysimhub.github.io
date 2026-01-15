@@ -143,20 +143,13 @@
 <article
 	onclick={openModal}
 	onkeydown={handleKeydown}
-	class="card-glow group relative flex h-full w-full flex-col rounded-lg lg:rounded-xl border bg-[var(--color-bg-card)] p-3 lg:p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg {hasRecentRelease
-		? 'border-[var(--color-accent)]/50 hover:border-[var(--color-accent)]'
-		: 'border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}"
+	class="card-glow group relative flex h-full w-full flex-col rounded-lg lg:rounded-xl bg-[var(--color-bg-card)] p-3 lg:p-5 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg {hasRecentRelease
+		? 'border-2 border-[var(--color-accent)]/80 hover:border-[var(--color-accent)]'
+		: 'border border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}"
 	role="button"
 	tabindex="0"
 	aria-haspopup="dialog"
 >
-	<!-- New Release Badge -->
-	{#if hasRecentRelease}
-		<Badge variant="accent" size="sm" rounded="md" class="absolute top-2 right-2 text-[10px]">
-			New Release
-		</Badge>
-	{/if}
-
 	<!-- Logo and Name -->
 	<div class="flex items-start gap-2 lg:gap-3">
 		<div class="hidden lg:block">
@@ -176,7 +169,7 @@
 					{formatNumber(project.stars)}
 				</span>
 				{#if project.lastRelease}
-					<span class="hidden lg:flex items-center gap-1">
+					<span class="hidden lg:flex items-center gap-1 {hasRecentRelease ? 'text-[var(--color-accent)] font-medium' : ''}">
 						<Icon name="calendar" size="xs" class="h-3.5 w-3.5" />
 						{formatDate(project.lastRelease, 'short')}
 					</span>
