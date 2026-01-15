@@ -64,13 +64,6 @@
 
 <div class="px-4 py-8 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-5xl">
-		<!-- Breadcrumb -->
-		<nav class="mb-6 text-sm text-[var(--color-text-muted)]">
-			<a href="/" class="hover:text-[var(--color-accent)]">Projects</a>
-			<span class="mx-2">/</span>
-			<span class="text-[var(--color-text-primary)]">{project.name}</span>
-		</nav>
-
 		<!-- Header -->
 		<header class="flex flex-col sm:flex-row items-start gap-6">
 			<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="2xl" class="flex-shrink-0" />
