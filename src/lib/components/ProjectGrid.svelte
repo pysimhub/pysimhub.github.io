@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { visibleProjects, hasMore, loadMore, filteredProjects } from '$lib/stores/projects';
+	import { visibleProjects, hasMore, loadMore, filteredProjects, activeModalProject, closeProjectModal } from '$lib/stores/projects';
 	import ProjectCard from './ProjectCard.svelte';
+	import ProjectModal from './ProjectModal.svelte';
 	import { browser } from '$app/environment';
 	import { flip } from 'svelte/animate';
 	import { fade, scale } from 'svelte/transition';
@@ -59,4 +60,9 @@
 			Showing all {$filteredProjects.length} projects
 		</p>
 	{/if}
+{/if}
+
+<!-- Modal rendered at grid level to survive card re-renders -->
+{#if $activeModalProject}
+	<ProjectModal project={$activeModalProject} onclose={closeProjectModal} />
 {/if}

@@ -132,3 +132,14 @@ export function loadMore(): void {
 export function resetVisible(): void {
 	visibleCount.set(20);
 }
+
+// Active modal project (lifted from individual cards to prevent losing state on grid re-render)
+export const activeModalProject = writable<Project | null>(null);
+
+export function openProjectModal(project: Project): void {
+	activeModalProject.set(project);
+}
+
+export function closeProjectModal(): void {
+	activeModalProject.set(null);
+}

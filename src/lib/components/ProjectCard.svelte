@@ -1,18 +1,16 @@
 <script lang="ts">
 	import type { Project } from '$lib/types/project';
 	import { formatNumber } from '$lib/utils/countup';
-	import { selectedTags, resetVisible } from '$lib/stores/projects';
+	import { selectedTags, resetVisible, openProjectModal } from '$lib/stores/projects';
 	import { formatDate, isRecentDate } from '$lib/utils/format';
 	import { Icon } from '$lib/components/icons';
 	import { Avatar, Badge } from '$lib/components/ui';
-	import ProjectModal from './ProjectModal.svelte';
 
 	interface Props {
 		project: Project;
 	}
 
 	let { project }: Props = $props();
-	let showModal = $state(false);
 	let tagsContainer: HTMLElement | undefined = $state();
 	let linksContainer: HTMLElement | undefined = $state();
 	let maxVisibleTags = $state(100); // Will be calculated based on space
@@ -37,13 +35,13 @@
 		// Don't open if clicking a link or button inside
 		const target = e.target as HTMLElement;
 		if (target.closest('a') || target.closest('button')) return;
-		showModal = true;
+		openProjectModal(project);
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-			showModal = true;
+			openProjectModal(project);
 		}
 	}
 
@@ -190,7 +188,7 @@
 	<!-- Tags -->
 	<div bind:this={tagsContainer} class="mt-3 flex flex-wrap items-start gap-1.5 max-h-[3.5rem] overflow-hidden">
 		{#each project.tags.slice(0, visibleTagCount) as tag}
-			<Badge data-tag variant={isTagSelected(tag) ? 'accent' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
+			<Badge data-tag variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}
 			</Badge>
 		{/each}
@@ -225,7 +223,3 @@
 		{/if}
 	</div>
 </article>
-
-{#if showModal}
-	<ProjectModal {project} onclose={() => showModal = false} />
-{/if}
