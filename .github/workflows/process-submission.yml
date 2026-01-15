@@ -48,6 +48,7 @@ jobs:
         id: process
         env:
           ISSUE_BODY: ${{ steps.issue.outputs.body }}
+          ISSUE_AUTHOR: ${{ steps.issue.outputs.author }}
         run: node scripts/process-submission.js
 
       - name: Create Pull Request
