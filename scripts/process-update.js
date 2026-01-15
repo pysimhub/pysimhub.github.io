@@ -51,20 +51,26 @@ function extractCheckedTags(issueBody, label) {
 	return tags;
 }
 
+function cleanUrl(url) {
+	if (!url) return null;
+	// Remove trailing quotes, brackets, and other invalid URL characters
+	return url.replace(/["'<>\]\)]+$/, '').trim();
+}
+
 function extractLogoUrl(logoContent) {
 	if (!logoContent) return null;
 
 	// Check for markdown image
 	const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
-	if (mdMatch) return mdMatch[1];
+	if (mdMatch) return cleanUrl(mdMatch[1]);
 
-	// Check for GitHub user attachment
-	const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
-	if (ghMatch) return ghMatch[1];
+	// Check for GitHub user attachment (UUID format)
+	const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[a-f0-9-]+)/i);
+	if (ghMatch) return cleanUrl(ghMatch[1]);
 
 	// Check for direct image URL
 	const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
-	if (urlMatch) return urlMatch[1];
+	if (urlMatch) return cleanUrl(urlMatch[1]);
 
 	return null;
 }
