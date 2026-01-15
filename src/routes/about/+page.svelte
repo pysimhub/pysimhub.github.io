@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Icon } from '$lib/components/icons';
-	import { Button, Avatar } from '$lib/components/ui';
+	import { Avatar } from '$lib/components/ui';
 
 	let { data } = $props();
 </script>
@@ -52,23 +51,6 @@
 					we aim to host a small conference bringing together Python simulation practitioners from all
 					domains.
 				</p>
-			</div>
-		</section>
-
-		<!-- CTA -->
-		<section class="mt-16 text-center">
-			<p class="text-lg text-[var(--color-text-secondary)]">
-				Want to contribute to PySimHub?
-			</p>
-			<div class="mt-4 flex flex-wrap justify-center gap-4">
-				<Button variant="primary" size="md" href="/submit">
-					<Icon name="plus" />
-					Submit a Project
-				</Button>
-				<Button variant="outline" size="md" href="https://github.com/pysimhub" target="_blank">
-					<Icon name="github" />
-					View on GitHub
-				</Button>
 			</div>
 		</section>
 
