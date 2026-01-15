@@ -25,7 +25,6 @@ body:
       description: Select the project to remove.
       options:
         - bdsim
-        - hb
         - pathsim
         - scikit-rf
     validations:

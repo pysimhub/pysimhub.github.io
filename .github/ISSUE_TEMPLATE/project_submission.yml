@@ -63,7 +63,6 @@ body:
         - label: dynamic-systems
         - label: engineering
         - label: microwave
-        - label: nonlinear
         - label: rf
         - label: robotics
         - label: system-modeling

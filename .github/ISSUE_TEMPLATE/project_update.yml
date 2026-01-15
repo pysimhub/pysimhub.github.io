@@ -24,7 +24,6 @@ body:
       description: Select the project to update.
       options:
         - bdsim
-        - hb
         - pathsim
         - scikit-rf
     validations:
@@ -81,7 +80,6 @@ body:
         - label: dynamic-systems
         - label: engineering
         - label: microwave
-        - label: nonlinear
         - label: rf
         - label: robotics
         - label: system-modeling
