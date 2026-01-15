@@ -2,8 +2,8 @@
 
 /**
  * Script to sync data from projects.json to issue templates.
- * - Syncs tags (as checkboxes) to both templates
- * - Syncs project IDs (as dropdown) to project_update.yml
+ * - Syncs tags (as checkboxes) to submission and update templates
+ * - Syncs project IDs (as dropdown) to update and removal templates
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -89,6 +89,29 @@ function syncUpdateTemplate(projects, tags) {
 	console.log(`Updated project_update.yml with ${projectIds.length} projects and ${tags.length} tag checkboxes`);
 }
 
+function syncRemovalTemplate(projects) {
+	const templatePath = join(__dirname, '..', '.github', 'ISSUE_TEMPLATE', 'project_removal.yml');
+
+	if (!existsSync(templatePath)) {
+		console.log('Skipping: project_removal.yml not found');
+		return;
+	}
+
+	let template = readFileSync(templatePath, 'utf-8');
+
+	// Sync project IDs dropdown
+	const projectIds = projects.map(p => p.id).sort();
+	const dropdownOptions = projectIds.map(id => `        - ${id}`).join('\n');
+
+	template = template.replace(
+		/(id: project_id\n[\s\S]*?options:\n)([\s\S]*?)(\n\s+validations:)/,
+		`$1${dropdownOptions}$3`
+	);
+
+	writeFileSync(templatePath, template);
+	console.log(`Updated project_removal.yml with ${projectIds.length} projects`);
+}
+
 function main() {
 	const projects = loadProjects();
 	const tags = getUniqueTags(projects);
@@ -98,6 +121,7 @@ function main() {
 
 	syncSubmissionTemplate(tags);
 	syncUpdateTemplate(projects, tags);
+	syncRemovalTemplate(projects);
 
 	console.log('Issue templates sync complete');
 }

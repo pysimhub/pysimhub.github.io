@@ -1,0 +1,66 @@
+name: Project Removal
+description: Request removal of a project from PySimHub
+title: "Remove Project"
+labels: ["removal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Request project removal
+        Use this form to request the removal of a project from PySimHub.
+        A maintainer will review your request before the project is removed.
+
+  - type: markdown
+    attributes:
+      value: "---"
+
+  - type: markdown
+    attributes:
+      value: "### Project Selection"
+
+  - type: dropdown
+    id: project_id
+    attributes:
+      label: Project
+      description: Select the project to remove.
+      options:
+        - bdsim
+        - hb
+        - pathsim
+        - scikit-rf
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reason_type
+    attributes:
+      label: Reason for Removal
+      description: Select the primary reason for this removal request.
+      options:
+        - Author/maintainer request
+        - Repository deleted or archived
+        - Project abandoned (no updates for 2+ years)
+        - Duplicate of another listing
+        - Not a simulation library
+        - Spam or inappropriate content
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason_details
+    attributes:
+      label: Additional Details
+      description: Provide any additional context for this removal request.
+      placeholder: "Please explain why this project should be removed..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I understand this will permanently remove the project from PySimHub
+          required: true
