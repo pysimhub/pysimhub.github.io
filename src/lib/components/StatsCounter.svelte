@@ -55,7 +55,7 @@
 
 <div
 	bind:this={containerEl}
-	class="grid grid-cols-3 gap-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 md:gap-8"
+	class="grid grid-cols-3 gap-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] px-6 py-4 md:gap-8"
 >
 	{#each statItems as stat}
 		<div class="text-center">

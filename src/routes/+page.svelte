@@ -115,7 +115,7 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
 	<!-- Background gradient -->
 	<div
 		class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -131,11 +131,11 @@
 			<h1 class="text-4xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-5xl md:text-6xl">
 				Py<span class="text-[var(--color-accent)]">Sim</span>Hub
 			</h1>
-			<p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-secondary)] sm:text-xl">
+			<p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-secondary)]">
 				Community hub for Python simulation and numerics tools. Discover libraries for robotics,
 				fluid dynamics, discrete-event simulation, agent-based modeling, and more.
 			</p>
-			<div class="mt-6 flex flex-wrap justify-center gap-4">
+			<div class="mt-8 flex flex-wrap justify-center gap-4">
 				<Button variant="primary" size="lg" href="/submit">
 					<Icon name="plus" />
 					Submit a Project
@@ -148,7 +148,7 @@
 		</div>
 
 		<!-- Stats -->
-		<div class="mt-16">
+		<div class="mt-10">
 			<StatsCounter stats={data.stats} />
 		</div>
 	</div>
