@@ -113,9 +113,9 @@
 
 		<!-- Action Buttons -->
 		<div class="mt-8 flex flex-wrap gap-2">
-			<Button variant="primary" size="md" href={project.github} target="_blank">
+			<Button variant="secondary" size="md" href={project.github} target="_blank">
 				<Icon name="github" size="sm" />
-				View on GitHub
+				GitHub
 			</Button>
 
 			{#if project.docs}
