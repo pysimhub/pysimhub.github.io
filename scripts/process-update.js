@@ -2,7 +2,7 @@
 
 /**
  * Process a project update from a GitHub issue.
- * Parses the update JSON, validates it, and applies changes to the project.
+ * Parses individual form fields, validates them, and applies changes to the project.
  * Used by the process-update GitHub Action.
  */
 
@@ -13,12 +13,6 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Fields that cannot be changed via update
-const PROTECTED_FIELDS = ['id', 'name', 'github', 'submittedBy'];
-
-// Fields that can be updated
-const UPDATABLE_FIELDS = ['tagline', 'description', 'tags', 'docs', 'pypi', 'condaForge', 'homepage', 'example', 'logo'];
-
 function isValidUrl(string) {
 	try {
 		const url = new URL(string);
@@ -28,46 +22,101 @@ function isValidUrl(string) {
 	}
 }
 
+function extractField(issueBody, label) {
+	// Match "### Label\n\nvalue" or "### Label\n\nvalue\n\n### Next"
+	const regex = new RegExp(`### ${label}\\s*\\n\\n([\\s\\S]*?)(?=\\n\\n###|$)`, 'i');
+	const match = issueBody.match(regex);
+	if (!match) return null;
+
+	const value = match[1].trim();
+	if (value === '_No response_' || value === '') return null;
+	return value;
+}
+
+function extractCheckedTags(issueBody, label) {
+	const regex = new RegExp(`### ${label}\\s*\\n\\n([\\s\\S]*?)(?=\\n\\n###|$)`, 'i');
+	const match = issueBody.match(regex);
+	if (!match) return [];
+
+	const checkboxSection = match[1];
+	const tags = [];
+
+	// Match checked checkboxes: "- [X] tag-name" or "- [x] tag-name"
+	const checkboxRegex = /- \[[xX]\] (.+)/g;
+	let checkboxMatch;
+	while ((checkboxMatch = checkboxRegex.exec(checkboxSection)) !== null) {
+		tags.push(checkboxMatch[1].trim());
+	}
+
+	return tags;
+}
+
+function extractLogoUrl(logoContent) {
+	if (!logoContent) return null;
+
+	// Check for markdown image
+	const mdMatch = logoContent.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+	if (mdMatch) return mdMatch[1];
+
+	// Check for GitHub user attachment
+	const ghMatch = logoContent.match(/(https:\/\/github\.com\/user-attachments\/assets\/[^\s)]+)/);
+	if (ghMatch) return ghMatch[1];
+
+	// Check for direct image URL
+	const urlMatch = logoContent.match(/(https?:\/\/\S+\.(png|svg|jpg|jpeg|webp|gif)(\?[^\s]*)?)/i);
+	if (urlMatch) return urlMatch[1];
+
+	return null;
+}
+
 function parseUpdate(issueBody) {
 	// Extract project ID from dropdown
-	const projectMatch = issueBody.match(/### Project\s*\n\s*(\S+)/);
+	const projectMatch = issueBody.match(/### Project\s*\n\n(\S+)/);
 	if (!projectMatch) {
 		throw new Error('Could not find project selection in issue body');
 	}
 	const projectId = projectMatch[1].trim();
 
 	// Extract reason
-	const reasonMatch = issueBody.match(/### Reason for update\s*\n\s*([\s\S]*?)(?=\n###|$)/);
-	const reason = reasonMatch ? reasonMatch[1].trim() : 'No reason provided';
+	const reason = extractField(issueBody, 'Reason for Update') || 'No reason provided';
 
-	// Extract JSON from the issue body
-	const jsonMatch = issueBody.match(/### Updated Data\s*\n```json\s*\n([\s\S]*?)\n```/);
-	if (!jsonMatch) {
-		throw new Error('Could not find Updated Data JSON in issue body');
+	// Build updates object from individual fields
+	const updates = {};
+
+	// Text fields
+	const tagline = extractField(issueBody, 'Tagline');
+	const description = extractField(issueBody, 'Description');
+	const docs = extractField(issueBody, 'Documentation');
+	const pypi = extractField(issueBody, 'PyPI');
+	const condaForge = extractField(issueBody, 'Conda-Forge');
+	const homepage = extractField(issueBody, 'Homepage');
+	const example = extractField(issueBody, 'Example or Tutorial');
+
+	if (tagline) updates.tagline = tagline;
+	if (description) updates.description = description;
+	if (docs) updates.docs = docs;
+	if (pypi) updates.pypi = pypi;
+	if (condaForge) updates.condaForge = condaForge;
+	if (homepage) updates.homepage = homepage;
+	if (example) updates.example = example;
+
+	// Tags from checkboxes
+	const checkedTags = extractCheckedTags(issueBody, 'Select new tags');
+	const customTagsRaw = extractField(issueBody, 'Additional Tags');
+	const customTags = customTagsRaw
+		? customTagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
+		: [];
+
+	const allTags = [...checkedTags, ...customTags];
+	if (allTags.length > 0) {
+		updates.tags = allTags;
 	}
 
-	// Clean up JSON (remove trailing commas)
-	let jsonStr = jsonMatch[1]
-		.replace(/,\s*}/g, '}')
-		.replace(/,\s*]/g, ']');
-
-	let updates;
-	try {
-		updates = JSON.parse(jsonStr);
-	} catch (parseError) {
-		throw new Error(`Invalid JSON: ${parseError.message}`);
-	}
-
-	// Check for protected fields
-	const protectedAttempts = Object.keys(updates).filter(key => PROTECTED_FIELDS.includes(key));
-	if (protectedAttempts.length > 0) {
-		throw new Error(`Cannot update protected fields: ${protectedAttempts.join(', ')}`);
-	}
-
-	// Check for unknown fields
-	const unknownFields = Object.keys(updates).filter(key => !UPDATABLE_FIELDS.includes(key));
-	if (unknownFields.length > 0) {
-		throw new Error(`Unknown fields: ${unknownFields.join(', ')}`);
+	// Logo
+	const logoContent = extractField(issueBody, 'Logo');
+	const logoUrl = extractLogoUrl(logoContent);
+	if (logoUrl) {
+		updates.logo = logoUrl;
 	}
 
 	// Validate URLs
@@ -82,11 +131,8 @@ function parseUpdate(issueBody) {
 		throw new Error(`Invalid URLs:\n${invalidUrls.join('\n')}`);
 	}
 
-	// Validate tags if provided
-	if (updates.tags) {
-		if (!Array.isArray(updates.tags) || updates.tags.length === 0) {
-			throw new Error('Tags must be a non-empty array');
-		}
+	if (Object.keys(updates).length === 0) {
+		throw new Error('No updates provided. Please fill in at least one field to update.');
 	}
 
 	return { projectId, updates, reason };
@@ -106,7 +152,6 @@ function applyUpdate(projectId, updates, projectsPath) {
 	// Apply updates
 	for (const [key, value] of Object.entries(updates)) {
 		if (value === '' || value === null) {
-			// Remove field if empty
 			delete project[key];
 		} else {
 			project[key] = value;
