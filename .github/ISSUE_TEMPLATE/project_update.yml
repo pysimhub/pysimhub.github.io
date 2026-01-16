@@ -24,6 +24,7 @@ body:
       description: Select the project to update.
       options:
         - bdsim
+        - heavi
         - pathsim
         - scikit-rf
     validations:
