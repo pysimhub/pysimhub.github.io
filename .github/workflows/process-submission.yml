@@ -49,7 +49,36 @@ jobs:
         env:
           ISSUE_BODY: ${{ steps.issue.outputs.body }}
           ISSUE_AUTHOR: ${{ steps.issue.outputs.author }}
-        run: node scripts/process-submission.js
+        run: |
+          node scripts/process-submission.js 2>&1 | tee process-output.txt
+          exit ${PIPESTATUS[0]}
+        continue-on-error: true
+
+      - name: Check for processing errors
+        id: check-error
+        if: steps.process.outcome == 'failure'
+        run: |
+          ERROR_MSG=$(cat process-output.txt | grep -E "^ERROR=" | sed 's/ERROR=//' || echo "Unknown error occurred")
+          echo "error_message<<EOF" >> $GITHUB_OUTPUT
+          echo "$ERROR_MSG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Comment on issue (processing error)
+        if: steps.process.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const errorMsg = `${{ steps.check-error.outputs.error_message }}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `❌ **Error processing submission**\n\n**Issue:** ${errorMsg}\n\nPlease fix the issue and a maintainer will re-trigger the submission process.`
+            });
+
+      - name: Fail if processing error
+        if: steps.process.outcome == 'failure'
+        run: exit 1
 
       - name: Create Pull Request
         id: pr
@@ -98,8 +127,8 @@ jobs:
               title: `[Submission] ${{ steps.process.outputs.name }}`
             });
 
-      - name: Comment on issue (failure)
-        if: failure()
+      - name: Comment on issue (unexpected failure)
+        if: failure() && steps.process.outcome == 'success'
         uses: actions/github-script@v7
         with:
           script: |
@@ -107,5 +136,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ steps.issue.outputs.number }},
-              body: `❌ **Error processing submission**\n\nPlease check your JSON format and try again.\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
+              body: `❌ **Unexpected error**\n\nSomething went wrong while creating the PR.\n\nSee the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
             });
