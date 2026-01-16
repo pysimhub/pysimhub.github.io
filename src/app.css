@@ -214,6 +214,37 @@ code {
 	line-height: 1.75;
 }
 
+.prose a {
+	color: var(--color-accent);
+	text-decoration: none;
+	transition: opacity 0.15s ease;
+}
+
+.prose a:hover {
+	opacity: 0.8;
+	text-decoration: underline;
+}
+
+.prose code {
+	background: var(--color-bg-secondary);
+	padding: 0.125em 0.375em;
+	border-radius: 0.25rem;
+	font-size: 0.875em;
+}
+
+.prose pre {
+	background: var(--color-bg-secondary);
+	padding: 1em;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin: 1.5em 0;
+}
+
+.prose pre code {
+	background: none;
+	padding: 0;
+}
+
 .prose ul,
 .prose ol {
 	margin-bottom: 1.25em;
