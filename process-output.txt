@@ -1,0 +1,5 @@
+PROJECT_ID=heavi
+PROJECT_NAME=Heavi
+PROJECT_TAGLINE=A python based circuit simulator for linear devices only (frequency domain)
+PROJECT_TAGS=engineering, microwave, rf
+PROJECT_GITHUB=https://github.com/FennisRobert/heavi
