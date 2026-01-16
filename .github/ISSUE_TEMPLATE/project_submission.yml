@@ -58,6 +58,7 @@ body:
       description: Pick at least one. You can suggest new tags in the additional tags field below.
       options:
         - label: block-diagram
+        - label: circuit
         - label: control
         - label: digital-twin
         - label: dynamic-systems
