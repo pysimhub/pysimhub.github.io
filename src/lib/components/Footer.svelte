@@ -1,14 +1,23 @@
 <script lang="ts">
 	import Logo from './Logo.svelte';
 	import { IconButton } from '$lib/components/ui';
-	import cacheData from '../../../static/data/github-cache.json';
+	import { onMount } from 'svelte';
 
-	// Get the most recent fetchedAt timestamp from the cache
-	const lastDataUpdate = Object.values(cacheData)
-		.map((p) => p.fetchedAt)
-		.filter(Boolean)
-		.sort()
-		.pop();
+	let lastDataUpdate: string | undefined = $state(undefined);
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/data/github-cache.json');
+			const cacheData: Record<string, { fetchedAt?: string }> = await res.json();
+			lastDataUpdate = Object.values(cacheData)
+				.map((p) => p.fetchedAt)
+				.filter(Boolean)
+				.sort()
+				.pop();
+		} catch {
+			// Ignore fetch errors
+		}
+	});
 
 	function formatRelativeTime(isoString: string | undefined): string {
 		if (!isoString) return 'Unknown';

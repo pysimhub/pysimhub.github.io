@@ -25,6 +25,8 @@
 	$effect(() => {
 		if (!browser || hasAnimated || !containerEl) return;
 
+		// Capture current values synchronously for use in async callback
+		const items = [...statItems];
 		const cancelFns: (() => void)[] = [];
 
 		const observer = new IntersectionObserver(
@@ -32,18 +34,22 @@
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && !hasAnimated) {
 						hasAnimated = true;
+						observer.disconnect();
 
 						if (!$prefersReducedMotion) {
-							const counters = containerEl.querySelectorAll('.counter');
-							counters.forEach((counter, index) => {
-								const value = statItems[index].value;
-								const suffix = statItems[index].suffix;
-								const cancel = countUp(counter as HTMLElement, value, 2000, suffix);
-								cancelFns.push(cancel);
+							// Small delay to let Svelte render final values first
+							requestAnimationFrame(() => {
+								const counters = containerEl.querySelectorAll('.counter');
+								counters.forEach((counter, index) => {
+									const value = items[index].value;
+									const suffix = items[index].suffix;
+									// Reset to 0 and animate
+									(counter as HTMLElement).textContent = '0';
+									const cancel = countUp(counter as HTMLElement, value, 2000, suffix);
+									cancelFns.push(cancel);
+								});
 							});
 						}
-
-						observer.disconnect();
 					}
 				});
 			},
