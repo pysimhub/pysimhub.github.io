@@ -1,5 +1,28 @@
 [
 	{
+		"name": "EMerge",
+		"tagline": "EMerge is a Python based finite element solver for electromagnetic waves",
+		"description": "EMerge is a purely Python based finite element simulation library for electromagnetic waves. It offers similar features to software like CST, HFSS and Comsol Multiphysics. The entire process from geometry creation, meshing, boundary-condition setup, solving and post-processing can all be done in one and the same Python script.\n\nIt leverages fast C-optimized libraries like GMSH (OCC Geometry kernal), Scipy/Numpy for sparse data formatting, Numba for parallel accellerated assembly and SuperLU, UMFPACK, CuDSS for sparse linear solves.",
+		"tags": [
+			"engineering",
+			"microwave",
+			"rf",
+			"system-modeling",
+			"radio frequency",
+			"physics",
+			"finite-element",
+			"rf"
+		],
+		"github": "https://github.com/FennisRobert/EMerge",
+		"docs": "https://emerge-software.com/resources",
+		"pypi": "https://pypi.org/project/emerge",
+		"homepage": "https://www.emerge-software.com",
+		"example": "https://github.com/FennisRobert/EMerge/tree/main/examples",
+		"id": "emerge",
+		"logo": "https://github.com/user-attachments/assets/f6cd7a36-a977-4cef-984b-ec788a240a0d",
+		"submittedBy": "FennisRobert"
+	},
+	{
 		"name": "Heavi",
 		"tagline": "A python based circuit simulator for linear devices only (frequency domain)",
 		"description": "Heavi is a purely python based circuit simulator for linear RF components. It computes S-parameters in the frequency domain. The library is entirely written in Python and accelerated with Numba. It implements the Modified Nodal Analysis (MNA) for circuit simulations as does software like Qucs and others. You can import Touchstone files and describe arbitrarily complex networks. \n\nHeavi currently does not have a working time domain solver.",
