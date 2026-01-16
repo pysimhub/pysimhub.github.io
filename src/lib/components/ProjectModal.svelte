@@ -108,7 +108,7 @@
 			</div>
 
 			<div class="flex-shrink-0 flex items-center gap-1">
-				<Tooltip text="Open project page">
+				<Tooltip text="Open project page" position="left">
 					<a
 						href="/projects/{project.id}"
 						class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
@@ -116,7 +116,7 @@
 						<Icon name="arrow-right" size="lg" class="-rotate-45" />
 					</a>
 				</Tooltip>
-				<Tooltip text="Close">
+				<Tooltip text="Close" position="left">
 					<button
 						onclick={onclose}
 						class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
