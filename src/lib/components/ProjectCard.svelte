@@ -66,15 +66,10 @@
 	aria-haspopup="dialog"
 >
 	<!-- Logo and Name -->
-	<div class="flex items-start gap-2 lg:gap-3">
-		<div class="hidden lg:block">
-			<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="md" />
-		</div>
-		<div class="lg:hidden">
-			<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="sm" />
-		</div>
+	<div class="flex items-start gap-3">
+		<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="md" />
 		<div class="min-w-0 flex-1">
-			<h3 class="truncate text-sm lg:text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+			<h3 class="truncate text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
 				{project.name}
 			</h3>
 			<!-- Stats Row -->
