@@ -11,8 +11,6 @@
 	}
 
 	let { project }: Props = $props();
-	let linksContainer: HTMLElement | undefined = $state();
-	let maxVisibleLinks = $state(100);
 
 	function toggleTag(tag: string, e: MouseEvent) {
 		e.stopPropagation();
@@ -50,62 +48,10 @@
 		{ key: 'github', href: project.github, icon: 'github' as const, label: 'GitHub' },
 		project.docs ? { key: 'docs', href: project.docs, icon: 'docs' as const, label: 'Docs' } : null,
 		project.pypi ? { key: 'pypi', href: project.pypi, icon: 'package' as const, label: 'PyPI' } : null,
-		project.condaForge ? { key: 'conda', href: project.condaForge, icon: 'package' as const, label: 'conda' } : null,
-		project.homepage ? { key: 'home', href: project.homepage, icon: 'globe' as const, label: 'Web' } : null,
-		project.example ? { key: 'example', href: project.example, icon: 'play' as const, label: 'Demo' } : null,
+		project.condaForge ? { key: 'conda', href: project.condaForge, icon: 'package' as const, label: 'conda-forge' } : null,
+		project.homepage ? { key: 'home', href: project.homepage, icon: 'globe' as const, label: 'Website' } : null,
+		project.example ? { key: 'example', href: project.example, icon: 'play' as const, label: 'Example' } : null,
 	].filter(Boolean) as Array<{ key: string; href: string; icon: 'github' | 'docs' | 'package' | 'globe' | 'play'; label: string }>);
-
-	// Calculate visible items for single-line containers (links)
-	function calculateVisibleLinks(container: HTMLElement | undefined, setState: (count: number) => void) {
-		if (!container) return;
-
-		const items = container.querySelectorAll('[data-link]');
-		if (items.length === 0) return;
-
-		const containerRect = container.getBoundingClientRect();
-		const containerRight = containerRect.right;
-		const moreButtonWidth = 32;
-		const gap = 8;
-
-		let visibleCount = 0;
-		items.forEach((item, index) => {
-			const itemRect = item.getBoundingClientRect();
-			const isLast = index === items.length - 1;
-			const spaceNeeded = isLast ? 0 : moreButtonWidth + gap;
-
-			if (itemRect.right + spaceNeeded <= containerRight) {
-				visibleCount++;
-			}
-		});
-
-		setState(Math.max(1, visibleCount));
-	}
-
-	// Use effect to calculate link visibility on mount and resize
-	$effect(() => {
-		if (!linksContainer) return;
-
-		const calculate = () => {
-			calculateVisibleLinks(linksContainer, (count) => maxVisibleLinks = count);
-		};
-
-		const timeout = setTimeout(calculate, 10);
-
-		const resizeObserver = new ResizeObserver(() => {
-			maxVisibleLinks = 100;
-			requestAnimationFrame(calculate);
-		});
-
-		resizeObserver.observe(linksContainer);
-
-		return () => {
-			clearTimeout(timeout);
-			resizeObserver.disconnect();
-		};
-	});
-
-	const visibleLinkCount = $derived(Math.min(maxVisibleLinks, allLinks.length));
-	const hiddenLinkCount = $derived(allLinks.length - visibleLinkCount);
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
@@ -165,23 +111,17 @@
 	<div class="flex-1"></div>
 
 	<!-- Action Links (hidden on compact) -->
-	<div bind:this={linksContainer} class="hidden lg:flex mt-4 flex-nowrap items-center gap-2 overflow-hidden">
-		{#each allLinks.slice(0, visibleLinkCount) as link (link.key)}
+	<div class="hidden lg:flex mt-4 items-center gap-1.5">
+		{#each allLinks as link (link.key)}
 			<a
-				data-link
 				href={link.href}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-[var(--color-bg-hover)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-accent)] hover:text-white"
+				class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+				title={link.label}
 			>
 				<Icon name={link.icon} size="sm" />
-				{link.label}
 			</a>
 		{/each}
-		{#if hiddenLinkCount > 0}
-			<Badge variant="accent" size="sm" rounded="md" class="flex-shrink-0 whitespace-nowrap">
-				+{hiddenLinkCount}
-			</Badge>
-		{/if}
 	</div>
 </article>
