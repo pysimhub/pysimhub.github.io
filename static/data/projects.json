@@ -1,5 +1,25 @@
 [
 	{
+		"name": "Archimedes",
+		"tagline": "A Python framework for developing and deploying control systems",
+		"description": "Archimedes is an open-source Python framework designed for deployment of control systems to hardware. To make this possible, it provides a comprehensive toolkit for modeling, simulation, optimization, and C code generation.  Archimedes builds on the powerful symbolic computation capabilities of [CasADi](https://web.casadi.org/docs/) with a modern interface designed to be familiar to users of NumPy, JAX, and PyTorch.",
+		"tags": [
+			"control",
+			"digital-twin",
+			"dynamic-systems",
+			"engineering",
+			"system-modeling",
+			"transient"
+		],
+		"github": "https://github.com/PineTreeLabs/archimedes",
+		"docs": "https://pinetreelabs.github.io/archimedes/",
+		"pypi": "https://pypi.org/project/archimedes/",
+		"example": "https://pinetreelabs.github.io/archimedes/getting-started.html",
+		"id": "archimedes",
+		"logo": "https://github.com/user-attachments/assets/07f6384e-5794-4587-9e86-464529d33110",
+		"submittedBy": "jcallaham"
+	},
+	{
 		"name": "EMerge",
 		"tagline": "EMerge is a Python based finite element solver for electromagnetic waves",
 		"description": "EMerge is a purely Python based finite element simulation library for electromagnetic waves. It offers similar features to software like CST, HFSS and Comsol Multiphysics. The entire process from geometry creation, meshing, boundary-condition setup, solving and post-processing can all be done in one and the same Python script.\n\nIt leverages fast C-optimized libraries like GMSH (OCC Geometry kernal), Scipy/Numpy for sparse data formatting, Numba for parallel accellerated assembly and SuperLU, UMFPACK, CuDSS for sparse linear solves.",

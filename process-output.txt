@@ -1,5 +1,5 @@
-PROJECT_ID=emerge
-PROJECT_NAME=EMerge
-PROJECT_TAGLINE=EMerge is a Python based finite element solver for electromagnetic waves
-PROJECT_TAGS=engineering, microwave, rf, system-modeling, radio frequency, physics, finite-element, rf
-PROJECT_GITHUB=https://github.com/FennisRobert/EMerge
+PROJECT_ID=archimedes
+PROJECT_NAME=Archimedes
+PROJECT_TAGLINE=A Python framework for developing and deploying control systems
+PROJECT_TAGS=control, digital-twin, dynamic-systems, engineering, system-modeling, transient
+PROJECT_GITHUB=https://github.com/PineTreeLabs/archimedes
