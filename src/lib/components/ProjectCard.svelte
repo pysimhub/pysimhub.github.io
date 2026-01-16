@@ -98,8 +98,8 @@
 		{project.tagline}
 	</p>
 
-	<!-- Tags -->
-	<div class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5">
+	<!-- Tags (hidden on compact) -->
+	<div class="hidden lg:flex mt-3 flex-wrap items-start gap-1.5">
 		{#each project.tags as tag}
 			<Badge variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}

@@ -10,10 +10,10 @@
 	let { text, position = 'top', children }: Props = $props();
 </script>
 
-<div class="tooltip-wrapper group relative inline-flex">
+<div class="tooltip-wrapper group/tooltip relative inline-flex">
 	{@render children()}
 	<div
-		class="tooltip pointer-events-none absolute z-50 whitespace-nowrap rounded-md bg-[var(--color-bg-card)] border border-[var(--color-border)] px-2 py-1 text-xs font-medium text-[var(--color-text-primary)] opacity-0 shadow-lg transition-opacity duration-150 delay-0 group-hover:opacity-100 group-hover:delay-[400ms]
+		class="tooltip pointer-events-none absolute z-50 whitespace-nowrap rounded-md bg-[var(--color-bg-card)] border border-[var(--color-border)] px-2 py-1 text-xs font-medium text-[var(--color-text-primary)] opacity-0 shadow-lg transition-opacity duration-150 delay-0 group-hover/tooltip:opacity-100 group-hover/tooltip:delay-[400ms]
 		{position === 'top' ? 'bottom-full left-1/2 -translate-x-1/2 mb-2' : ''}
 		{position === 'bottom' ? 'top-full left-1/2 -translate-x-1/2 mt-2' : ''}
 		{position === 'left' ? 'right-full top-1/2 -translate-y-1/2 mr-2' : ''}
