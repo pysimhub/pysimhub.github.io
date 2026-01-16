@@ -61,7 +61,7 @@ export interface SortInfo {
 
 export const SORT_OPTIONS: SortInfo[] = [
 	{ id: 'random', name: 'Random', supportsDirection: false },
-	{ id: 'alphabetical', name: 'A-Z', reverseName: 'Z-A', supportsDirection: true },
-	{ id: 'stars', name: 'Most Stars', reverseName: 'Least Stars', supportsDirection: true },
-	{ id: 'release', name: 'New Releases', reverseName: 'Oldest Releases', supportsDirection: true }
+	{ id: 'stars', name: 'Stars', supportsDirection: true },
+	{ id: 'alphabetical', name: 'Alphabetic', supportsDirection: true },
+	{ id: 'release', name: 'Recent', supportsDirection: true }
 ];
