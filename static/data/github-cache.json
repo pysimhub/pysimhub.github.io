@@ -1,14 +1,25 @@
 {
+	"archimedes": {
+		"stars": 146,
+		"forks": 11,
+		"lastUpdate": "2025-12-23T19:54:38Z",
+		"description": null,
+		"license": "GPL-3.0",
+		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
+		"lastRelease": null,
+		"releaseVersion": null,
+		"fetchedAt": "2026-01-16T17:53:24.543Z"
+	},
 	"emerge": {
 		"stars": 135,
 		"forks": 15,
-		"lastUpdate": "2026-01-13T12:08:10Z",
+		"lastUpdate": "2026-01-16T12:43:37Z",
 		"description": "An electromagnetic field computation program",
 		"license": "NOASSERTION",
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-07T09:05:18Z",
 		"releaseVersion": "v2.0.1",
-		"fetchedAt": "2026-01-16T10:52:43.063Z"
+		"fetchedAt": "2026-01-16T17:53:24.891Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -19,18 +30,18 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-16T10:52:43.330Z"
+		"fetchedAt": "2026-01-16T17:53:25.211Z"
 	},
 	"scikit-rf": {
-		"stars": 838,
-		"forks": 323,
+		"stars": 839,
+		"forks": 322,
 		"lastUpdate": "2025-12-12T15:43:51Z",
 		"description": "RF and Microwave Engineering Scikit ",
 		"license": "BSD-3-Clause",
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-16T10:52:43.577Z"
+		"fetchedAt": "2026-01-16T17:53:25.557Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -41,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-06T22:07:52Z",
 		"releaseVersion": "v0.16.1",
-		"fetchedAt": "2026-01-16T10:52:43.855Z"
+		"fetchedAt": "2026-01-16T17:53:25.987Z"
 	},
 	"bdsim": {
 		"stars": 236,
@@ -52,6 +63,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-16T10:52:44.134Z"
+		"fetchedAt": "2026-01-16T17:53:26.368Z"
 	}
 }

@@ -23,6 +23,7 @@ body:
       label: Project
       description: Select the project to update.
       options:
+        - archimedes
         - bdsim
         - emerge
         - heavi
