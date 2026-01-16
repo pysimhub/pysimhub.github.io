@@ -27,23 +27,26 @@ jobs:
         with:
           script: |
             const projectId = '${{ steps.extract.outputs.project_id }}';
-            const badgeMarkdown = `[![PySimHub](https://pysimhub.io/badge.svg)](https://pysimhub.io/projects/${projectId})`;
+            const badgeMarkdown = '[![PySimHub](https://pysimhub.io/badge.svg)](https://pysimhub.io/projects/' + projectId + ')';
+            const body = [
+              '## 🎉 Your project is now live on PySimHub!',
+              '',
+              'You can add this badge to your README:',
+              '',
+              '```markdown',
+              badgeMarkdown,
+              '```',
+              '',
+              'It will look like this:',
+              '',
+              '![PySimHub Badge](https://pysimhub.io/badge.svg)',
+              '',
+              'Thanks for contributing to PySimHub!'
+            ].join('\n');
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `## 🎉 Your project is now live on PySimHub!
-
-You can add this badge to your README:
-
-\`\`\`markdown
-${badgeMarkdown}
-\`\`\`
-
-It will look like this:
-
-![PySimHub Badge](https://pysimhub.io/badge.svg)
-
-Thanks for contributing to PySimHub!`
+              body: body
             });
