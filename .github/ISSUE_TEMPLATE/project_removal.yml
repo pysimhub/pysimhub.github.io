@@ -25,6 +25,7 @@ body:
       description: Select the project to remove.
       options:
         - bdsim
+        - emerge
         - heavi
         - pathsim
         - scikit-rf

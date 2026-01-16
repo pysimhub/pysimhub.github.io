@@ -62,7 +62,10 @@ body:
         - label: digital-twin
         - label: dynamic-systems
         - label: engineering
+        - label: finite-element
         - label: microwave
+        - label: physics
+        - label: radio frequency
         - label: rf
         - label: robotics
         - label: system-modeling
