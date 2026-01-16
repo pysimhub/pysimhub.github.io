@@ -5,7 +5,7 @@
 	import { formatDate } from '$lib/utils/format';
 	import { fade, scale } from 'svelte/transition';
 	import { Icon } from '$lib/components/icons';
-	import { Avatar, Badge, Button, Tooltip } from '$lib/components/ui';
+	import { Avatar, Badge, Tooltip } from '$lib/components/ui';
 	import { marked } from 'marked';
 
 	interface Props {
@@ -131,7 +131,7 @@
 		<!-- Content -->
 		<div class="p-6 space-y-6">
 			<!-- Tagline -->
-			<p class="text-[var(--color-text-secondary)] italic">
+			<p class="text-[var(--color-text-secondary)]">
 				{project.tagline}
 			</p>
 
@@ -160,45 +160,75 @@
 			<!-- Links -->
 			<div>
 				<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Links</h3>
-				<div class="mt-2 flex flex-wrap gap-2">
-					<Button variant="secondary" size="sm" href={project.github} target="_blank">
+				<div class="mt-2 flex flex-wrap gap-1.5">
+					<a
+						href={project.github}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+					>
 						<Icon name="github" size="sm" />
 						GitHub
-					</Button>
+					</a>
 
 					{#if project.docs}
-						<Button variant="secondary" size="sm" href={project.docs} target="_blank">
+						<a
+							href={project.docs}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						>
 							<Icon name="docs" size="sm" />
 							Docs
-						</Button>
+						</a>
 					{/if}
 
 					{#if project.pypi}
-						<Button variant="secondary" size="sm" href={project.pypi} target="_blank">
+						<a
+							href={project.pypi}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						>
 							<Icon name="package" size="sm" />
 							PyPI
-						</Button>
+						</a>
 					{/if}
 
 					{#if project.condaForge}
-						<Button variant="secondary" size="sm" href={project.condaForge} target="_blank">
+						<a
+							href={project.condaForge}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						>
 							<Icon name="package" size="sm" />
 							conda-forge
-						</Button>
+						</a>
 					{/if}
 
 					{#if project.homepage}
-						<Button variant="secondary" size="sm" href={project.homepage} target="_blank">
+						<a
+							href={project.homepage}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						>
 							<Icon name="globe" size="sm" />
 							Website
-						</Button>
+						</a>
 					{/if}
 
 					{#if project.example}
-						<Button variant="secondary" size="sm" href={project.example} target="_blank">
+						<a
+							href={project.example}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						>
 							<Icon name="play" size="sm" />
 							Example
-						</Button>
+						</a>
 					{/if}
 				</div>
 			</div>

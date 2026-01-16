@@ -112,7 +112,7 @@ body {
 /* Apply blur only when supported */
 @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
 	.glass {
-		background: rgba(26, 26, 36, 0.8);
+		background: rgba(26, 26, 36, 0.92);
 		-webkit-backdrop-filter: blur(12px);
 		backdrop-filter: blur(12px);
 	}
