@@ -53,7 +53,7 @@
 
 <div class="flex min-h-screen flex-col">
 	<Header />
-	<main class="flex-1 pt-20">
+	<main class="flex-1 w-full pt-20">
 		{@render children()}
 	</main>
 	<Footer />
