@@ -3,18 +3,18 @@
   <!-- Left side - listed (rounded left corners) -->
   <path d="M0 3a3 3 0 013-3h37v20H3a3 3 0 01-3-3V3z" fill="#555"/>
   <!-- Right side - PySimHub (rounded right corners) -->
-  <path d="M40 0h87a3 3 0 013 3v14a3 3 0 01-3 3H40V0z" fill="#0a0a0f"/>
+  <path d="M40 0h87a3 3 0 013 3v14a3 3 0 01-3 3H40V0z" fill="#1a1a2e"/>
   <!-- Icon (scaled from original) -->
-  <circle cx="50" cy="10" r="6" stroke="#6366f1" stroke-width="1.2"/>
+  <circle cx="54" cy="10" r="6" stroke="#6366f1" stroke-width="1.2"/>
   <path d="
-    M50 10 L52.1 10
-    M50 10 L51.7 11.7
-    M50 10 L50 12.7
-    M50 10 L47.9 12.1
-    M50 10 L46.6 10
-    M50 10 L47.4 7.4
-    M50 10 L50 6
-    M50 10 L53 7
+    M54 10 L56.1 10
+    M54 10 L55.7 11.7
+    M54 10 L54 12.7
+    M54 10 L51.9 12.1
+    M54 10 L50.6 10
+    M54 10 L51.4 7.4
+    M54 10 L54 6
+    M54 10 L57 7
   " stroke="#6366f1" stroke-width="1" stroke-linecap="round"/>
   <!-- Text -->
   <text x="20" y="14" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fff">listed</text>
