@@ -61,11 +61,12 @@ body:
         - label: control
         - label: digital-twin
         - label: dynamic-systems
+        - label: electromagnetic
         - label: engineering
         - label: finite-element
         - label: microwave
         - label: physics
-        - label: radio frequency
+        - label: radio-frequency
         - label: rf
         - label: robotics
         - label: system-modeling

@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-07T09:05:18Z",
 		"releaseVersion": "v2.0.1",
-		"fetchedAt": "2026-01-16T09:42:12.725Z"
+		"fetchedAt": "2026-01-16T10:45:35.396Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-16T09:42:13.042Z"
+		"fetchedAt": "2026-01-16T10:45:35.635Z"
 	},
 	"scikit-rf": {
 		"stars": 838,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-16T09:42:13.393Z"
+		"fetchedAt": "2026-01-16T10:45:35.928Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -41,7 +41,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-06T22:07:52Z",
 		"releaseVersion": "v0.16.1",
-		"fetchedAt": "2026-01-16T09:42:13.708Z"
+		"fetchedAt": "2026-01-16T10:45:36.191Z"
 	},
 	"bdsim": {
 		"stars": 236,
@@ -52,6 +52,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-16T09:42:14.197Z"
+		"fetchedAt": "2026-01-16T10:45:36.457Z"
 	}
 }
