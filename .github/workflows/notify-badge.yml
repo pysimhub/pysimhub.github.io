@@ -27,9 +27,10 @@ jobs:
         with:
           script: |
             const projectId = '${{ steps.extract.outputs.project_id }}';
+            const author = context.payload.issue.user.login;
             const badgeMarkdown = '[![PySimHub](https://pysimhub.io/badge.svg)](https://pysimhub.io/projects/' + projectId + ')';
             const body = [
-              '## 🎉 Your project is now live on PySimHub!',
+              '## 🎉 @' + author + ', your project is now live on PySimHub!',
               '',
               'You can add this badge to your README:',
               '',
