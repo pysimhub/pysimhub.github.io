@@ -1,5 +1,5 @@
-PROJECT_ID=heavi
-PROJECT_NAME=Heavi
-PROJECT_TAGLINE=A python based circuit simulator for linear devices only (frequency domain)
-PROJECT_TAGS=engineering, microwave, rf
-PROJECT_GITHUB=https://github.com/FennisRobert/heavi
+PROJECT_ID=emerge
+PROJECT_NAME=EMerge
+PROJECT_TAGLINE=EMerge is a Python based finite element solver for electromagnetic waves
+PROJECT_TAGS=engineering, microwave, rf, system-modeling, radio frequency, physics, finite-element, rf
+PROJECT_GITHUB=https://github.com/FennisRobert/EMerge
