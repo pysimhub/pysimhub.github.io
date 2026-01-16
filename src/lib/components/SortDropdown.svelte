@@ -2,6 +2,7 @@
 	import { sortOption, sortDirection, resetVisible } from '$lib/stores/projects';
 	import { SORT_OPTIONS, type SortOption } from '$lib/types/project';
 	import { Icon } from '$lib/components/icons';
+	import { Tooltip } from '$lib/components/ui';
 
 	let isOpen = $state(false);
 
@@ -57,14 +58,15 @@
 
 	<!-- Direction toggle button -->
 	{#if currentSort.supportsDirection}
-		<button
-			onclick={toggleDirection}
-			class="flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-2 text-[var(--color-text-muted)] transition-colors hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-primary)]"
-			title={$sortDirection === 'desc' ? 'Switch to ascending' : 'Switch to descending'}
-			aria-label={$sortDirection === 'desc' ? 'Switch to ascending order' : 'Switch to descending order'}
-		>
-			<Icon name={$sortDirection === 'desc' ? 'chevron-down' : 'chevron-up'} size="sm" />
-		</button>
+		<Tooltip text={$sortDirection === 'desc' ? 'Switch to ascending' : 'Switch to descending'}>
+			<button
+				onclick={toggleDirection}
+				class="flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-2 text-[var(--color-text-muted)] transition-colors hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-primary)]"
+				aria-label={$sortDirection === 'desc' ? 'Switch to ascending order' : 'Switch to descending order'}
+			>
+				<Icon name={$sortDirection === 'desc' ? 'chevron-down' : 'chevron-up'} size="sm" />
+			</button>
+		</Tooltip>
 	{/if}
 
 	{#if isOpen}

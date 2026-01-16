@@ -4,7 +4,7 @@
 	import { selectedTags, resetVisible, openProjectModal } from '$lib/stores/projects';
 	import { formatDate, isRecentDate } from '$lib/utils/format';
 	import { Icon } from '$lib/components/icons';
-	import { Avatar, Badge } from '$lib/components/ui';
+	import { Avatar, Badge, Tooltip } from '$lib/components/ui';
 
 	interface Props {
 		project: Project;
@@ -113,15 +113,16 @@
 	<!-- Action Links (hidden on compact) -->
 	<div class="hidden lg:flex mt-4 items-center gap-1.5">
 		{#each allLinks as link (link.key)}
-			<a
-				href={link.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
-				title={link.label}
-			>
-				<Icon name={link.icon} size="sm" />
-			</a>
+			<Tooltip text={link.label}>
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+				>
+					<Icon name={link.icon} size="sm" />
+				</a>
+			</Tooltip>
 		{/each}
 	</div>
 </article>

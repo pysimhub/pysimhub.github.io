@@ -5,7 +5,7 @@
 	import { formatDate } from '$lib/utils/format';
 	import { fade, scale } from 'svelte/transition';
 	import { Icon } from '$lib/components/icons';
-	import { Avatar, Badge, Button } from '$lib/components/ui';
+	import { Avatar, Badge, Button, Tooltip } from '$lib/components/ui';
 	import { marked } from 'marked';
 
 	interface Props {
@@ -108,21 +108,23 @@
 			</div>
 
 			<div class="flex-shrink-0 flex items-center gap-1">
-				<a
-					href="/projects/{project.id}"
-					class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
-					title="Open project page"
-				>
-					<Icon name="arrow-right" size="lg" class="-rotate-45" />
-				</a>
-				<button
-					onclick={onclose}
-					class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
-					aria-label="Close modal"
-					title="Close"
-				>
-					<Icon name="close" size="lg" />
-				</button>
+				<Tooltip text="Open project page">
+					<a
+						href="/projects/{project.id}"
+						class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+					>
+						<Icon name="arrow-right" size="lg" class="-rotate-45" />
+					</a>
+				</Tooltip>
+				<Tooltip text="Close">
+					<button
+						onclick={onclose}
+						class="rounded-lg p-2 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-bg-hover)] hover:text-[var(--color-text-primary)]"
+						aria-label="Close modal"
+					>
+						<Icon name="close" size="lg" />
+					</button>
+				</Tooltip>
 			</div>
 		</div>
 
