@@ -11,10 +11,8 @@
 	}
 
 	let { project }: Props = $props();
-	let tagsContainer: HTMLElement | undefined = $state();
 	let linksContainer: HTMLElement | undefined = $state();
-	let maxVisibleTags = $state(100); // Will be calculated based on space
-	let maxVisibleLinks = $state(100); // Will be calculated based on space
+	let maxVisibleLinks = $state(100);
 
 	function toggleTag(tag: string, e: MouseEvent) {
 		e.stopPropagation();
@@ -83,48 +81,21 @@
 		setState(Math.max(1, visibleCount));
 	}
 
-	// Calculate visible items for multi-line containers (tags)
-	function calculateVisibleTags(container: HTMLElement | undefined, setState: (count: number) => void) {
-		if (!container) return;
-
-		const items = container.querySelectorAll('[data-tag]');
-		if (items.length === 0) return;
-
-		const containerRect = container.getBoundingClientRect();
-		const containerBottom = containerRect.bottom;
-
-		let visibleCount = 0;
-		items.forEach((item) => {
-			const itemRect = item.getBoundingClientRect();
-			// Item is visible if its bottom is within the container
-			if (itemRect.bottom <= containerBottom + 2) { // +2 for tolerance
-				visibleCount++;
-			}
-		});
-
-		setState(Math.max(1, visibleCount));
-	}
-
-	// Use effect to calculate on mount and resize
+	// Use effect to calculate link visibility on mount and resize
 	$effect(() => {
-		if (!tagsContainer || !linksContainer) return;
+		if (!linksContainer) return;
 
 		const calculate = () => {
-			calculateVisibleTags(tagsContainer, (count) => maxVisibleTags = count);
 			calculateVisibleLinks(linksContainer, (count) => maxVisibleLinks = count);
 		};
 
-		// Calculate after a small delay to ensure render is complete
 		const timeout = setTimeout(calculate, 10);
 
 		const resizeObserver = new ResizeObserver(() => {
-			// Reset to show all, then recalculate
-			maxVisibleTags = 100;
 			maxVisibleLinks = 100;
 			requestAnimationFrame(calculate);
 		});
 
-		resizeObserver.observe(tagsContainer);
 		resizeObserver.observe(linksContainer);
 
 		return () => {
@@ -133,9 +104,7 @@
 		};
 	});
 
-	const visibleTagCount = $derived(Math.min(maxVisibleTags, project.tags.length));
 	const visibleLinkCount = $derived(Math.min(maxVisibleLinks, allLinks.length));
-	const hiddenTagCount = $derived(project.tags.length - visibleTagCount);
 	const hiddenLinkCount = $derived(allLinks.length - visibleLinkCount);
 </script>
 
@@ -184,17 +153,12 @@
 	</p>
 
 	<!-- Tags -->
-	<div bind:this={tagsContainer} class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5 lg:max-h-[3.5rem] lg:overflow-hidden">
-		{#each project.tags.slice(0, visibleTagCount) as tag}
-			<Badge data-tag variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
+	<div class="mt-2 lg:mt-3 flex flex-wrap items-start gap-1 lg:gap-1.5">
+		{#each project.tags as tag}
+			<Badge variant={isTagSelected(tag) ? 'active' : 'default'} size="sm" interactive class="whitespace-nowrap" onclick={(e) => toggleTag(tag, e)}>
 				{tag}
 			</Badge>
 		{/each}
-		{#if hiddenTagCount > 0}
-			<Badge variant="accent" size="sm" class="whitespace-nowrap">
-				+{hiddenTagCount}
-			</Badge>
-		{/if}
 	</div>
 
 	<!-- Spacer -->
