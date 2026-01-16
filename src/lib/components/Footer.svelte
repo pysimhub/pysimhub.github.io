@@ -1,6 +1,27 @@
 <script lang="ts">
 	import Logo from './Logo.svelte';
 	import { IconButton } from '$lib/components/ui';
+	import cacheData from '../../../static/data/github-cache.json';
+
+	// Get the most recent fetchedAt timestamp from the cache
+	const lastDataUpdate = Object.values(cacheData)
+		.map((p) => p.fetchedAt)
+		.filter(Boolean)
+		.sort()
+		.pop();
+
+	function formatRelativeTime(isoString: string | undefined): string {
+		if (!isoString) return 'Unknown';
+		const date = new Date(isoString);
+		const now = new Date();
+		const diffMs = now.getTime() - date.getTime();
+		const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+		const diffDays = Math.floor(diffHours / 24);
+
+		if (diffDays > 0) return `${diffDays}d ago`;
+		if (diffHours > 0) return `${diffHours}h ago`;
+		return 'Just now';
+	}
 </script>
 
 <footer class="border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
@@ -31,9 +52,7 @@
 		<!-- Bottom bar -->
 		<div class="mt-4 flex flex-col items-center justify-between gap-2 border-t border-[var(--color-border)] pt-4 text-xs text-[var(--color-text-muted)] md:flex-row">
 			<p>&copy; {new Date().getFullYear()} PySimHub. MIT License.</p>
-			<p>
-				Built with <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-accent)]">SvelteKit</a>
-			</p>
+			<p>Data updated {formatRelativeTime(lastDataUpdate)}</p>
 		</div>
 	</div>
 </footer>
