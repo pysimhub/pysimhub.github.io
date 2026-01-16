@@ -28,7 +28,9 @@
 		"tags": [
 			"engineering",
 			"microwave",
-			"rf"
+			"radio-frequency",
+			"rf",
+			"circuit"
 		],
 		"github": "https://github.com/FennisRobert/heavi",
 		"docs": "https://github.com/FennisRobert/heavi/wiki",
