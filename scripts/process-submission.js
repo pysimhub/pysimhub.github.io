@@ -97,7 +97,7 @@ function parseSubmission(issueBody) {
 		? customTagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
 		: [];
 
-	project.tags = [...checkedTags, ...customTags];
+	project.tags = [...new Set([...checkedTags, ...customTags])];
 
 	if (project.tags.length === 0) {
 		throw new Error('At least one tag is required');
