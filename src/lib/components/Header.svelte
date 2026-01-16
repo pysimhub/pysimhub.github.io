@@ -48,7 +48,7 @@
 			{#each navItems as item}
 				<a
 					href={item.href}
-					class="rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+					class="rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
 					class:active={$page.url.pathname === item.href ||
 						(item.href !== '/' && $page.url.pathname.startsWith(item.href))}
 				>
@@ -87,7 +87,7 @@
 			{#each navItems as item}
 				<a
 					href={item.href}
-					class="block rounded-lg px-4 py-3 text-sm font-medium transition-colors"
+					class="block rounded-lg px-4 py-3 text-sm font-semibold text-white transition-colors"
 					class:active={$page.url.pathname === item.href ||
 						(item.href !== '/' && $page.url.pathname.startsWith(item.href))}
 					onclick={closeMobileMenu}
@@ -110,12 +110,7 @@
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	}
 
-	nav a {
-		color: var(--color-text-secondary);
-	}
-
 	nav a:hover {
-		color: var(--color-text-primary);
 		background-color: var(--color-bg-hover);
 	}
 
