@@ -111,8 +111,13 @@
 			</div>
 		</header>
 
-		<!-- Action Buttons -->
-		<div class="mt-8 flex flex-wrap gap-1.5">
+		<!-- Separator -->
+		<hr class="mt-8 border-t border-[var(--color-border)]" />
+
+		<!-- Links -->
+		<section class="mt-6">
+			<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">Links</h2>
+			<div class="mt-4 flex flex-wrap gap-1.5">
 			<a
 				href={project.github}
 				target="_blank"
@@ -182,7 +187,8 @@
 					conda-forge
 				</a>
 			{/if}
-		</div>
+			</div>
+		</section>
 
 		<!-- Description -->
 		{#if project.description}
