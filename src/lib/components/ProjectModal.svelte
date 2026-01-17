@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { Project } from '$lib/types/project';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { formatNumber } from '$lib/utils/countup';
-	import { selectedTags, resetVisible } from '$lib/stores/projects';
+	import { selectedTags, resetVisible, openProjectModal } from '$lib/stores/projects';
 	import { formatDate } from '$lib/utils/format';
 	import { fade, scale } from 'svelte/transition';
 	import { Icon } from '$lib/components/icons';
@@ -24,6 +26,14 @@
 	const descriptionHtml = $derived(project.description ? marked.parse(project.description) : '');
 
 	function toggleTag(tag: string) {
+		// If not on home page, navigate to home with this tag and keep modal open
+		if ($page.url.pathname !== '/') {
+			selectedTags.set([tag]);
+			openProjectModal(project);
+			goto('/');
+			return;
+		}
+
 		selectedTags.update((tags) => {
 			if (tags.includes(tag)) {
 				return tags.filter((t) => t !== tag);

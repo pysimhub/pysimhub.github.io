@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { formatNumber } from '$lib/utils/countup';
 	import { formatDate } from '$lib/utils/format';
 	import { Icon } from '$lib/components/icons';
@@ -6,16 +7,17 @@
 	import { marked } from 'marked';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import ProjectModal from '$lib/components/ProjectModal.svelte';
-	import { activeModalProject, closeProjectModal } from '$lib/stores/projects';
+	import { activeModalProject, closeProjectModal, selectedTags } from '$lib/stores/projects';
 
 	let { data } = $props();
 	const project = $derived(data.project);
 	const relatedProjects = $derived(data.relatedProjects);
 
-	// Close modal when navigating to a new project
+	// Close modal and reset tags when navigating to a new project
 	$effect(() => {
 		project.id;
 		closeProjectModal();
+		selectedTags.set([]);
 	});
 
 	marked.setOptions({
@@ -24,6 +26,12 @@
 	});
 
 	const descriptionHtml = $derived(project.description ? marked.parse(project.description) : '');
+
+	function navigateWithTag(tag: string) {
+		// Set the tag and navigate to home (modal stays open via store if active)
+		selectedTags.set([tag]);
+		goto('/');
+	}
 </script>
 
 <svelte:head>
@@ -205,7 +213,7 @@
 			<h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Tags</h2>
 			<div class="mt-4 flex flex-wrap gap-2">
 				{#each project.tags as tag}
-					<Badge variant="default" size="md">
+					<Badge variant="default" size="md" interactive onclick={() => navigateWithTag(tag)}>
 						{tag}
 					</Badge>
 				{/each}

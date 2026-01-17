@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Project } from '$lib/types/project';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { formatNumber } from '$lib/utils/countup';
 	import { selectedTags, resetVisible, openProjectModal } from '$lib/stores/projects';
 	import { formatDate, isRecentDate } from '$lib/utils/format';
@@ -14,6 +16,14 @@
 
 	function toggleTag(tag: string, e: MouseEvent) {
 		e.stopPropagation();
+
+		// If not on home page, navigate to home with this tag selected
+		if ($page.url.pathname !== '/') {
+			selectedTags.set([tag]);
+			goto('/');
+			return;
+		}
+
 		selectedTags.update((tags) => {
 			if (tags.includes(tag)) {
 				return tags.filter((t) => t !== tag);
