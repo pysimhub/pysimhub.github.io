@@ -47,7 +47,7 @@
 	<img
 		{src}
 		{alt}
-		class="{imgSizeClasses[size]} flex-shrink-0 rounded-lg object-contain object-left bg-[var(--color-bg-hover)] {className}"
+		class="{imgSizeClasses[size]} flex-shrink-0 object-contain object-left {className}"
 		loading="lazy"
 		onerror={handleError}
 	/>
