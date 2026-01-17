@@ -193,9 +193,8 @@ code {
 	font-size: 0.875em;
 }
 
-/* Prose styles for blog */
+/* Prose styles for markdown content */
 .prose {
-	max-width: 65ch;
 	color: var(--color-text-secondary);
 }
 
