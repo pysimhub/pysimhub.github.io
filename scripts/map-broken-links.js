@@ -16,6 +16,29 @@ const __dirname = dirname(__filename);
 // URL fields in projects.json that we should check
 const URL_FIELDS = ['github', 'docs', 'pypi', 'condaForge', 'homepage', 'example', 'logo'];
 
+/**
+ * Extract URLs from markdown text (links and raw URLs)
+ */
+function extractUrlsFromMarkdown(text) {
+	if (!text) return [];
+	const urls = [];
+
+	// Match markdown links: [text](url)
+	const mdLinkRegex = /\[([^\]]*)\]\(([^)]+)\)/g;
+	let match;
+	while ((match = mdLinkRegex.exec(text)) !== null) {
+		urls.push(match[2]);
+	}
+
+	// Match raw URLs (http/https)
+	const rawUrlRegex = /(?<!\]\()https?:\/\/[^\s<>\[\]"'`)]+/g;
+	while ((match = rawUrlRegex.exec(text)) !== null) {
+		urls.push(match[0]);
+	}
+
+	return [...new Set(urls)]; // dedupe
+}
+
 function loadProjects() {
 	const projectsPath = join(__dirname, '..', 'static', 'data', 'projects.json');
 	return JSON.parse(readFileSync(projectsPath, 'utf-8'));
@@ -52,6 +75,7 @@ function parseLycheeOutput(lycheeOutputPath) {
 
 function findProjectForUrl(url, projects) {
 	for (const project of projects) {
+		// Check explicit URL fields
 		for (const field of URL_FIELDS) {
 			if (project[field] && project[field] === url) {
 				return { project, field };
@@ -59,6 +83,16 @@ function findProjectForUrl(url, projects) {
 			// Also check if the broken URL starts with a project URL (for subpages)
 			if (project[field] && url.startsWith(project[field])) {
 				return { project, field };
+			}
+		}
+
+		// Check URLs in description (markdown links)
+		if (project.description) {
+			const descriptionUrls = extractUrlsFromMarkdown(project.description);
+			for (const descUrl of descriptionUrls) {
+				if (descUrl === url || url.startsWith(descUrl)) {
+					return { project, field: 'description' };
+				}
 			}
 		}
 	}

@@ -22,6 +22,49 @@ function isValidUrl(string) {
 	}
 }
 
+/**
+ * Validate a URL and return a detailed error message if invalid
+ */
+function validateUrl(url, fieldName) {
+	if (!url) return null;
+
+	// Check for common issues
+	if (!url.startsWith('http://') && !url.startsWith('https://')) {
+		return `${fieldName}: "${url}" - must start with http:// or https://`;
+	}
+
+	try {
+		new URL(url);
+	} catch {
+		return `${fieldName}: "${url}" - invalid URL format`;
+	}
+
+	return null; // Valid
+}
+
+/**
+ * Extract URLs from markdown text (links and raw URLs)
+ */
+function extractUrlsFromMarkdown(text) {
+	if (!text) return [];
+	const urls = [];
+
+	// Match markdown links: [text](url)
+	const mdLinkRegex = /\[([^\]]*)\]\(([^)]+)\)/g;
+	let match;
+	while ((match = mdLinkRegex.exec(text)) !== null) {
+		urls.push({ url: match[2], context: `[${match[1]}](...)` });
+	}
+
+	// Match raw URLs (http/https) not already in markdown links
+	const rawUrlRegex = /(?<!\]\()https?:\/\/[^\s<>\[\]"'`)]+/g;
+	while ((match = rawUrlRegex.exec(text)) !== null) {
+		urls.push({ url: match[0], context: 'raw URL' });
+	}
+
+	return urls;
+}
+
 function extractField(issueBody, label) {
 	// Match "### Label\n\nvalue" or "### Label\n\nvalue\n\n### Next"
 	const regex = new RegExp(`### ${label}\\s*\\n\\n([\\s\\S]*?)(?=\\n\\n###|$)`, 'i');
@@ -125,16 +168,27 @@ function parseUpdate(issueBody) {
 		updates.logo = logoUrl;
 	}
 
-	// Validate URLs
+	// Validate URLs with detailed feedback
 	const urlFields = ['docs', 'pypi', 'condaForge', 'homepage', 'example', 'logo'];
-	const invalidUrls = [];
+	const urlErrors = [];
+
+	// Validate explicit URL fields
 	for (const field of urlFields) {
-		if (updates[field] && !isValidUrl(updates[field])) {
-			invalidUrls.push(`${field}: ${updates[field]}`);
+		const error = validateUrl(updates[field], field);
+		if (error) urlErrors.push(error);
+	}
+
+	// Validate URLs in description (markdown links)
+	if (updates.description) {
+		const descriptionUrls = extractUrlsFromMarkdown(updates.description);
+		for (const { url, context } of descriptionUrls) {
+			const error = validateUrl(url, `description ${context}`);
+			if (error) urlErrors.push(error);
 		}
 	}
-	if (invalidUrls.length > 0) {
-		throw new Error(`Invalid URLs:\n${invalidUrls.join('\n')}`);
+
+	if (urlErrors.length > 0) {
+		throw new Error(`Invalid URLs found:\n\n${urlErrors.join('\n')}\n\nPlease ensure all URLs start with http:// or https:// and are properly formatted.`);
 	}
 
 	if (Object.keys(updates).length === 0) {
