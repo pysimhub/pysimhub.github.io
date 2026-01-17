@@ -139,7 +139,7 @@
 			{#if project.description}
 				<div>
 					<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">About</h3>
-					<div class="mt-2 prose prose-sm text-[var(--color-text-secondary)]">
+					<div class="mt-4 prose prose-sm text-[var(--color-text-secondary)]">
 						{@html descriptionHtml}
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 			<!-- Tags -->
 			<div>
 				<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Tags</h3>
-				<div class="mt-2 flex flex-wrap gap-2">
+				<div class="mt-4 flex flex-wrap gap-2">
 					{#each project.tags as tag}
 						<Badge variant={isTagSelected(tag) ? 'active' : 'default'} size="md" interactive onclick={() => toggleTag(tag)}>
 							{tag}
@@ -160,7 +160,7 @@
 			<!-- Links -->
 			<div>
 				<h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Links</h3>
-				<div class="mt-2 flex flex-wrap gap-1.5">
+				<div class="mt-4 flex flex-wrap gap-1.5">
 					<a
 						href={project.github}
 						target="_blank"

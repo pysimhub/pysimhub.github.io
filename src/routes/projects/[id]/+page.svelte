@@ -115,8 +115,8 @@
 		<hr class="mt-8 border-t border-[var(--color-border)]" />
 
 		<!-- Links -->
-		<section class="mt-6">
-			<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">Links</h2>
+		<section class="mt-8">
+			<h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Links</h2>
 			<div class="mt-4 flex flex-wrap gap-1.5">
 			<a
 				href={project.github}
@@ -192,8 +192,8 @@
 
 		<!-- Description -->
 		{#if project.description}
-			<section class="mt-12">
-				<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">About</h2>
+			<section class="mt-8">
+				<h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">About</h2>
 				<div class="mt-4 prose prose-lg max-w-none text-[var(--color-text-secondary)]">
 					{@html descriptionHtml}
 				</div>
@@ -201,8 +201,8 @@
 		{/if}
 
 		<!-- Tags -->
-		<section class="mt-12">
-			<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">Tags</h2>
+		<section class="mt-8">
+			<h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Tags</h2>
 			<div class="mt-4 flex flex-wrap gap-2">
 				{#each project.tags as tag}
 					<Badge variant="default" size="md">
@@ -217,11 +217,11 @@
 
 <!-- Related Projects -->
 {#if relatedProjects.length > 0}
-	<section class="px-4 pb-16 sm:px-6 lg:px-8">
+	<section class="px-4 pt-8 pb-16 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-5xl">
-			<h2 class="text-xl font-semibold text-[var(--color-text-primary)]">Related Projects</h2>
-			<p class="mt-1 text-sm text-[var(--color-text-muted)]">Other libraries with similar tags</p>
-			<div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-6">
+			<hr class="mb-8 border-t border-[var(--color-border)]" />
+			<h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Related Projects</h2>
+			<div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-6">
 				{#each relatedProjects as related}
 					<div class="flex">
 						<ProjectCard project={related} />
