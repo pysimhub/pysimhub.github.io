@@ -69,7 +69,7 @@
 	<div class="flex items-start gap-3">
 		<Avatar src={project.avatarUrl} alt="{project.name} logo" fallback={project.name.slice(0, 2)} size="md" />
 		<div class="min-w-0 flex-1">
-			<h3 class="truncate text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+			<h3 class="truncate text-lg font-semibold text-[var(--color-text-primary)]">
 				{project.name}
 			</h3>
 			<!-- Stats Row -->
