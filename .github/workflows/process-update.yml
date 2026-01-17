@@ -9,6 +9,10 @@ on:
         description: 'Issue number to process'
         required: true
 
+concurrency:
+  group: project-changes
+  cancel-in-progress: false
+
 jobs:
   process-update:
     if: >

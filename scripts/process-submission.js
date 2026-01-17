@@ -154,7 +154,7 @@ function addProjectToFile(project, projectsPath) {
 		throw new Error(`Project with ID '${project.id}' already exists`);
 	}
 
-	projects.unshift(project);
+	projects.push(project);
 	writeFileSync(projectsPath, JSON.stringify(projects, null, '\t') + '\n');
 
 	return projects;
