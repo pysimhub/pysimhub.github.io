@@ -2,13 +2,13 @@
 	"archimedes": {
 		"stars": 146,
 		"forks": 11,
-		"lastUpdate": "2025-12-23T19:54:38Z",
+		"lastUpdate": "2026-01-16T18:56:22Z",
 		"description": null,
 		"license": "GPL-3.0",
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-16T17:53:24.543Z"
+		"fetchedAt": "2026-01-17T06:36:35.660Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-07T09:05:18Z",
 		"releaseVersion": "v2.0.1",
-		"fetchedAt": "2026-01-16T17:53:24.891Z"
+		"fetchedAt": "2026-01-17T06:36:35.920Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-16T17:53:25.211Z"
+		"fetchedAt": "2026-01-17T06:36:36.214Z"
 	},
 	"scikit-rf": {
 		"stars": 839,
@@ -41,7 +41,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-16T17:53:25.557Z"
+		"fetchedAt": "2026-01-17T06:36:36.466Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -52,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-06T22:07:52Z",
 		"releaseVersion": "v0.16.1",
-		"fetchedAt": "2026-01-16T17:53:25.987Z"
+		"fetchedAt": "2026-01-17T06:36:36.734Z"
 	},
 	"bdsim": {
 		"stars": 236,
@@ -63,6 +63,6 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-16T17:53:26.368Z"
+		"fetchedAt": "2026-01-17T06:36:37.015Z"
 	}
 }
