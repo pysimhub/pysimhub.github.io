@@ -29,6 +29,7 @@ body:
         - emerge
         - heavi
         - pathsim
+        - pysd
         - scikit-rf
     validations:
       required: true

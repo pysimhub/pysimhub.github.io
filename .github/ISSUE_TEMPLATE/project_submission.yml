@@ -72,7 +72,10 @@ body:
         - label: robotics
         - label: system-modeling
         - label: transient
+        - label: translation
+        - label: vensim
         - label: visualization
+        - label: xmile
 
   - type: input
     id: custom_tags

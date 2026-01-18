@@ -136,7 +136,7 @@
 		"condaForge": "https://anaconda.org/conda-forge/pysd",
 		"example": "https://pysd.readthedocs.io/en/latest/getting_started.html",
 		"id": "pysd",
-		"logo": "https://github.com/user-attachments/assets/7bfc89de-8003-46ef-a6a5-ebbf0a2bc4e8",
+		"logo": "/logos/pysd.svg",
 		"submittedBy": "enekomartinmartinez"
 	}
 ]
