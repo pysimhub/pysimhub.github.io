@@ -1,5 +1,5 @@
-PROJECT_ID=archimedes
-PROJECT_NAME=Archimedes
-PROJECT_TAGLINE=A Python framework for developing and deploying control systems
-PROJECT_TAGS=control, digital-twin, dynamic-systems, engineering, system-modeling, transient
-PROJECT_GITHUB=https://github.com/PineTreeLabs/archimedes
+PROJECT_ID=pysd
+PROJECT_NAME=PySD
+PROJECT_TAGLINE=Simulating System Dynamics Models in Python
+PROJECT_TAGS=dynamic-systems, system-modeling, translation, vensim, xmile
+PROJECT_GITHUB=https://github.com/SDXorg/pysd
