@@ -1,5 +1,5 @@
-PROJECT_ID=thermal-engineering-systems-in-python-tespy
-PROJECT_NAME=Thermal Engineering Systems in Python: TESPy
-PROJECT_TAGLINE=A simulation framework in thermal engineering for systems like power plants, heat pumps or refrigeration machines
-PROJECT_TAGS=engineering, physics, system-modeling, thermodynamics, cycle simulation, refrigeration, heating, powerplant
-PROJECT_GITHUB=https://github.com/oemof/tespy
+PROJECT_ID=pymunk
+PROJECT_NAME=Pymunk
+PROJECT_TAGLINE=Pymunk is a easy-to-use pythonic 2d physics library that can be used whenever you need 2d rigid body physics from Python
+PROJECT_TAGS=physics
+PROJECT_GITHUB=https://github.com/viblo/pymunk
