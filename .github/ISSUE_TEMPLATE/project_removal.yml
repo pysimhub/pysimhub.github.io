@@ -29,6 +29,7 @@ body:
         - emerge
         - heavi
         - pathsim
+        - pymunk
         - pysd
         - scikit-rf
         - thermal-engineering-systems-in-python-tespy

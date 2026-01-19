@@ -175,7 +175,7 @@
 		"condaForge": "https://anaconda.org/conda-forge/pymunk",
 		"homepage": "https://www.pymunk.org",
 		"id": "pymunk",
-		"logo": "https://github.com/user-attachments/assets/49bc12cd-f1ef-4972-92f2-633a5d2f629d",
+		"logo": "/logos/pymunk.png",
 		"submittedBy": "viblo"
 	}
 ]
