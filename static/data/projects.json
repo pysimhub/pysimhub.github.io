@@ -159,7 +159,7 @@
 		"condaForge": "https://anaconda.org/channels/conda-forge/packages/tespy/overview",
 		"example": "https://tespy.readthedocs.io/en/main/basic_tutorials.html",
 		"id": "thermal-engineering-systems-in-python-tespy",
-		"logo": "https://github.com/user-attachments/assets/6032a094-b0fd-4d90-a7c5-937423240f45",
+		"logo": "/logos/thermal-engineering-systems-in-python-tespy.svg",
 		"submittedBy": "fwitte"
 	}
 ]

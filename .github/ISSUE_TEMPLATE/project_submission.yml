@@ -60,17 +60,22 @@ body:
         - label: block-diagram
         - label: circuit
         - label: control
+        - label: cycle simulation
         - label: digital-twin
         - label: dynamic-systems
         - label: electromagnetic
         - label: engineering
         - label: finite-element
+        - label: heating
         - label: microwave
         - label: physics
+        - label: powerplant
         - label: radio-frequency
+        - label: refrigeration
         - label: rf
         - label: robotics
         - label: system-modeling
+        - label: thermodynamics
         - label: transient
         - label: translation
         - label: vensim

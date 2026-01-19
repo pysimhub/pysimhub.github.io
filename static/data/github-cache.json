@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-19T06:45:31.634Z"
+		"fetchedAt": "2026-01-19T08:22:08.300Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-19T06:45:31.901Z"
+		"fetchedAt": "2026-01-19T08:22:08.611Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-19T06:45:32.180Z"
+		"fetchedAt": "2026-01-19T08:22:08.910Z"
 	},
 	"scikit-rf": {
 		"stars": 840,
@@ -41,7 +41,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-19T06:45:32.535Z"
+		"fetchedAt": "2026-01-19T08:22:09.243Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -52,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-17T18:42:27Z",
 		"releaseVersion": "v0.16.4",
-		"fetchedAt": "2026-01-19T06:45:32.826Z"
+		"fetchedAt": "2026-01-19T08:22:09.614Z"
 	},
 	"bdsim": {
 		"stars": 236,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-19T06:45:33.124Z"
+		"fetchedAt": "2026-01-19T08:22:09.947Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,6 +74,17 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-19T06:45:33.370Z"
+		"fetchedAt": "2026-01-19T08:22:10.260Z"
+	},
+	"thermal-engineering-systems-in-python-tespy": {
+		"stars": 362,
+		"forks": 124,
+		"lastUpdate": "2026-01-19T07:26:54Z",
+		"description": "Thermal Engineering Systems in Python (TESPy). This package provides a powerful simulation toolkit for thermodynamic modeling of thermal engineering plants such as power plants, heat pumps or refrigeration machines.",
+		"license": "MIT",
+		"avatarUrl": "https://github.com/oemof.png?size=128",
+		"lastRelease": "2025-12-17T14:17:00Z",
+		"releaseVersion": "v0.9.11",
+		"fetchedAt": "2026-01-19T08:22:10.571Z"
 	}
 }
