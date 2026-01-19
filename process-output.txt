@@ -1,5 +1,5 @@
-PROJECT_ID=pysd
-PROJECT_NAME=PySD
-PROJECT_TAGLINE=Simulating System Dynamics Models in Python
-PROJECT_TAGS=dynamic-systems, system-modeling, translation, vensim, xmile
-PROJECT_GITHUB=https://github.com/SDXorg/pysd
+PROJECT_ID=thermal-engineering-systems-in-python-tespy
+PROJECT_NAME=Thermal Engineering Systems in Python: TESPy
+PROJECT_TAGLINE=A simulation framework in thermal engineering for systems like power plants, heat pumps or refrigeration machines
+PROJECT_TAGS=engineering, physics, system-modeling, thermodynamics, cycle simulation, refrigeration, heating, powerplant
+PROJECT_GITHUB=https://github.com/oemof/tespy
