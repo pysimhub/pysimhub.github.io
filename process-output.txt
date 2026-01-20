@@ -1,5 +1,5 @@
-PROJECT_ID=mesa
-PROJECT_NAME=Mesa
-PROJECT_TAGLINE=Mesa is an open-source Python library for agent-based modeling.
-PROJECT_TAGS=cycle simulation, digital-twin, dynamic-systems, system-modeling
-PROJECT_GITHUB=https://github.com/mesa/mesa
+PROJECT_ID=brian2
+PROJECT_NAME=Brian2
+PROJECT_TAGLINE=A simulator for spiking neural networks.
+PROJECT_TAGS=system-modeling, network, spiking neural network, snn, neuroscience, computational neuroscience
+PROJECT_GITHUB=https://github.com/brian-team/brian2
