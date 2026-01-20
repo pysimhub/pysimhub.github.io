@@ -1,5 +1,5 @@
-PROJECT_ID=pymunk
-PROJECT_NAME=Pymunk
-PROJECT_TAGLINE=Pymunk is a easy-to-use pythonic 2d physics library that can be used whenever you need 2d rigid body physics from Python
-PROJECT_TAGS=physics
-PROJECT_GITHUB=https://github.com/viblo/pymunk
+PROJECT_ID=mesa
+PROJECT_NAME=Mesa
+PROJECT_TAGLINE=Mesa is an open-source Python library for agent-based modeling.
+PROJECT_TAGS=cycle simulation, digital-twin, dynamic-systems, system-modeling
+PROJECT_GITHUB=https://github.com/mesa/mesa
