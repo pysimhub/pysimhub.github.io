@@ -27,6 +27,7 @@ body:
         - bdsim
         - emerge
         - heavi
+        - mesa
         - pathsim
         - pymunk
         - pysd
