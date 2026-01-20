@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-20T07:01:43.487Z"
+		"fetchedAt": "2026-01-20T10:31:56.991Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-20T07:01:43.828Z"
+		"fetchedAt": "2026-01-20T10:31:57.473Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-20T07:01:44.197Z"
+		"fetchedAt": "2026-01-20T10:31:57.879Z"
 	},
 	"scikit-rf": {
 		"stars": 840,
@@ -41,7 +41,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-20T07:01:44.562Z"
+		"fetchedAt": "2026-01-20T10:31:58.230Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -52,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-17T18:42:27Z",
 		"releaseVersion": "v0.16.4",
-		"fetchedAt": "2026-01-20T07:01:45.049Z"
+		"fetchedAt": "2026-01-20T10:31:58.658Z"
 	},
 	"bdsim": {
 		"stars": 237,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-20T07:01:45.414Z"
+		"fetchedAt": "2026-01-20T10:31:59.019Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,7 +74,7 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-20T07:01:45.785Z"
+		"fetchedAt": "2026-01-20T10:31:59.362Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 362,
@@ -85,7 +85,7 @@
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2025-12-17T14:17:00Z",
 		"releaseVersion": "v0.9.11",
-		"fetchedAt": "2026-01-20T07:01:46.153Z"
+		"fetchedAt": "2026-01-20T10:31:59.736Z"
 	},
 	"pymunk": {
 		"stars": 1039,
@@ -96,7 +96,7 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-20T07:01:46.527Z"
+		"fetchedAt": "2026-01-20T10:32:00.098Z"
 	},
 	"mesa": {
 		"stars": 3373,
@@ -107,6 +107,17 @@
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-10T09:46:26Z",
 		"releaseVersion": "v3.4.1",
-		"fetchedAt": "2026-01-20T07:01:46.868Z"
+		"fetchedAt": "2026-01-20T10:32:00.503Z"
+	},
+	"brian2": {
+		"stars": 1101,
+		"forks": 256,
+		"lastUpdate": "2026-01-06T09:52:52Z",
+		"description": "Brian is a free, open source simulator for spiking neural networks. ",
+		"license": "NOASSERTION",
+		"avatarUrl": "https://github.com/brian-team.png?size=128",
+		"lastRelease": null,
+		"releaseVersion": null,
+		"fetchedAt": "2026-01-20T10:32:00.882Z"
 	}
 }

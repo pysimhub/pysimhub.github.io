@@ -25,6 +25,7 @@ body:
       options:
         - archimedes
         - bdsim
+        - brian2
         - emerge
         - heavi
         - mesa
@@ -83,6 +84,7 @@ body:
       options:
         - label: block-diagram
         - label: circuit
+        - label: computational neuroscience
         - label: control
         - label: cycle simulation
         - label: digital-twin
@@ -92,12 +94,16 @@ body:
         - label: finite-element
         - label: heating
         - label: microwave
+        - label: network
+        - label: neuroscience
         - label: physics
         - label: powerplant
         - label: radio-frequency
         - label: refrigeration
         - label: rf
         - label: robotics
+        - label: snn
+        - label: spiking neural network
         - label: system-modeling
         - label: thermodynamics
         - label: transient

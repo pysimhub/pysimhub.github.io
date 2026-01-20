@@ -26,6 +26,7 @@ body:
       options:
         - archimedes
         - bdsim
+        - brian2
         - emerge
         - heavi
         - mesa
