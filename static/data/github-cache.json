@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-22T06:41:17.566Z"
+		"fetchedAt": "2026-01-23T06:40:57.902Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-22T06:41:17.898Z"
+		"fetchedAt": "2026-01-23T06:40:58.137Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-22T06:41:18.197Z"
+		"fetchedAt": "2026-01-23T06:40:58.376Z"
 	},
 	"scikit-rf": {
 		"stars": 842,
@@ -41,18 +41,18 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-22T06:41:18.518Z"
+		"fetchedAt": "2026-01-23T06:40:58.617Z"
 	},
 	"pathsim": {
 		"stars": 226,
 		"forks": 20,
-		"lastUpdate": "2026-01-17T18:42:27Z",
+		"lastUpdate": "2026-01-22T09:36:05Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
-		"lastRelease": "2026-01-17T18:42:27Z",
-		"releaseVersion": "v0.16.4",
-		"fetchedAt": "2026-01-22T06:41:18.847Z"
+		"lastRelease": "2026-01-22T09:36:05Z",
+		"releaseVersion": "v0.16.5",
+		"fetchedAt": "2026-01-23T06:40:58.895Z"
 	},
 	"bdsim": {
 		"stars": 237,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-22T06:41:19.189Z"
+		"fetchedAt": "2026-01-23T06:40:59.195Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,18 +74,18 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-22T06:41:19.512Z"
+		"fetchedAt": "2026-01-23T06:40:59.439Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 362,
 		"forks": 124,
-		"lastUpdate": "2026-01-21T14:00:43Z",
+		"lastUpdate": "2026-01-22T15:40:48Z",
 		"description": "Thermal Engineering Systems in Python (TESPy). This package provides a powerful simulation toolkit for thermodynamic modeling of thermal engineering plants such as power plants, heat pumps or refrigeration machines.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2025-12-17T14:17:00Z",
 		"releaseVersion": "v0.9.11",
-		"fetchedAt": "2026-01-22T06:41:19.822Z"
+		"fetchedAt": "2026-01-23T06:40:59.676Z"
 	},
 	"pymunk": {
 		"stars": 1039,
@@ -96,18 +96,18 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-22T06:41:20.145Z"
+		"fetchedAt": "2026-01-23T06:40:59.916Z"
 	},
 	"mesa": {
-		"stars": 3378,
-		"forks": 1121,
-		"lastUpdate": "2026-01-20T12:09:44Z",
+		"stars": 3379,
+		"forks": 1122,
+		"lastUpdate": "2026-01-22T10:28:49Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-10T09:46:26Z",
 		"releaseVersion": "v3.4.1",
-		"fetchedAt": "2026-01-22T06:41:20.529Z"
+		"fetchedAt": "2026-01-23T06:41:00.178Z"
 	},
 	"brian2": {
 		"stars": 1102,
@@ -118,7 +118,7 @@
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-22T06:41:20.902Z"
+		"fetchedAt": "2026-01-23T06:41:00.441Z"
 	},
 	"scikit-fem": {
 		"stars": 605,
@@ -129,6 +129,6 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-22T06:41:21.197Z"
+		"fetchedAt": "2026-01-23T06:41:00.670Z"
 	}
 }
