@@ -8,18 +8,18 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-23T06:40:57.902Z"
+		"fetchedAt": "2026-01-24T06:37:26.026Z"
 	},
 	"emerge": {
 		"stars": 135,
 		"forks": 15,
-		"lastUpdate": "2026-01-17T10:40:05Z",
+		"lastUpdate": "2026-01-23T19:31:29Z",
 		"description": "An electromagnetic field computation program",
 		"license": "NOASSERTION",
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-23T06:40:58.137Z"
+		"fetchedAt": "2026-01-24T06:37:26.276Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,10 +30,10 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-23T06:40:58.376Z"
+		"fetchedAt": "2026-01-24T06:37:26.547Z"
 	},
 	"scikit-rf": {
-		"stars": 842,
+		"stars": 843,
 		"forks": 323,
 		"lastUpdate": "2026-01-21T15:29:25Z",
 		"description": "RF and Microwave Engineering Scikit ",
@@ -41,7 +41,7 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-23T06:40:58.617Z"
+		"fetchedAt": "2026-01-24T06:37:26.820Z"
 	},
 	"pathsim": {
 		"stars": 226,
@@ -52,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-22T09:36:05Z",
 		"releaseVersion": "v0.16.5",
-		"fetchedAt": "2026-01-23T06:40:58.895Z"
+		"fetchedAt": "2026-01-24T06:37:27.163Z"
 	},
 	"bdsim": {
 		"stars": 237,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-23T06:40:59.195Z"
+		"fetchedAt": "2026-01-24T06:37:27.456Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,21 +74,21 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-23T06:40:59.439Z"
+		"fetchedAt": "2026-01-24T06:37:27.746Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 362,
 		"forks": 124,
-		"lastUpdate": "2026-01-22T15:40:48Z",
+		"lastUpdate": "2026-01-23T11:48:06Z",
 		"description": "Thermal Engineering Systems in Python (TESPy). This package provides a powerful simulation toolkit for thermodynamic modeling of thermal engineering plants such as power plants, heat pumps or refrigeration machines.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2025-12-17T14:17:00Z",
 		"releaseVersion": "v0.9.11",
-		"fetchedAt": "2026-01-23T06:40:59.676Z"
+		"fetchedAt": "2026-01-24T06:37:28.024Z"
 	},
 	"pymunk": {
-		"stars": 1039,
+		"stars": 1038,
 		"forks": 191,
 		"lastUpdate": "2026-01-19T20:47:42Z",
 		"description": "Pymunk is a easy-to-use pythonic 2d physics library that can be used whenever  you need 2d rigid body physics from Python",
@@ -96,21 +96,21 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-23T06:40:59.916Z"
+		"fetchedAt": "2026-01-24T06:37:28.301Z"
 	},
 	"mesa": {
-		"stars": 3379,
-		"forks": 1122,
-		"lastUpdate": "2026-01-22T10:28:49Z",
+		"stars": 3381,
+		"forks": 1123,
+		"lastUpdate": "2026-01-23T15:18:50Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
-		"lastRelease": "2026-01-10T09:46:26Z",
-		"releaseVersion": "v3.4.1",
-		"fetchedAt": "2026-01-23T06:41:00.178Z"
+		"lastRelease": "2026-01-23T12:25:07Z",
+		"releaseVersion": "v3.4.2",
+		"fetchedAt": "2026-01-24T06:37:28.624Z"
 	},
 	"brian2": {
-		"stars": 1102,
+		"stars": 1103,
 		"forks": 256,
 		"lastUpdate": "2026-01-20T12:20:44Z",
 		"description": "Brian is a free, open source simulator for spiking neural networks. ",
@@ -118,7 +118,7 @@
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-23T06:41:00.441Z"
+		"fetchedAt": "2026-01-24T06:37:28.880Z"
 	},
 	"scikit-fem": {
 		"stars": 605,
@@ -129,6 +129,6 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-23T06:41:00.670Z"
+		"fetchedAt": "2026-01-24T06:37:29.135Z"
 	}
 }
