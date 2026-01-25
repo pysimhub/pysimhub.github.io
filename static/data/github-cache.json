@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-24T06:37:26.026Z"
+		"fetchedAt": "2026-01-25T06:38:16.996Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-24T06:37:26.276Z"
+		"fetchedAt": "2026-01-25T06:38:17.240Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,10 +30,10 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-24T06:37:26.547Z"
+		"fetchedAt": "2026-01-25T06:38:17.477Z"
 	},
 	"scikit-rf": {
-		"stars": 843,
+		"stars": 844,
 		"forks": 323,
 		"lastUpdate": "2026-01-21T15:29:25Z",
 		"description": "RF and Microwave Engineering Scikit ",
@@ -41,10 +41,10 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-24T06:37:26.820Z"
+		"fetchedAt": "2026-01-25T06:38:17.768Z"
 	},
 	"pathsim": {
-		"stars": 226,
+		"stars": 227,
 		"forks": 20,
 		"lastUpdate": "2026-01-22T09:36:05Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
@@ -52,10 +52,10 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-22T09:36:05Z",
 		"releaseVersion": "v0.16.5",
-		"fetchedAt": "2026-01-24T06:37:27.163Z"
+		"fetchedAt": "2026-01-25T06:38:18.042Z"
 	},
 	"bdsim": {
-		"stars": 237,
+		"stars": 238,
 		"forks": 37,
 		"lastUpdate": "2025-12-16T10:47:27Z",
 		"description": "Simulate dynamic systems expressed in block diagram form using Python",
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-24T06:37:27.456Z"
+		"fetchedAt": "2026-01-25T06:38:18.324Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,18 +74,18 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-24T06:37:27.746Z"
+		"fetchedAt": "2026-01-25T06:38:18.611Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 362,
 		"forks": 124,
-		"lastUpdate": "2026-01-23T11:48:06Z",
+		"lastUpdate": "2026-01-24T14:26:36Z",
 		"description": "Thermal Engineering Systems in Python (TESPy). This package provides a powerful simulation toolkit for thermodynamic modeling of thermal engineering plants such as power plants, heat pumps or refrigeration machines.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/oemof.png?size=128",
-		"lastRelease": "2025-12-17T14:17:00Z",
-		"releaseVersion": "v0.9.11",
-		"fetchedAt": "2026-01-24T06:37:28.024Z"
+		"lastRelease": "2026-01-24T14:22:48Z",
+		"releaseVersion": "v0.9.12",
+		"fetchedAt": "2026-01-25T06:38:18.878Z"
 	},
 	"pymunk": {
 		"stars": 1038,
@@ -96,21 +96,21 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-24T06:37:28.301Z"
+		"fetchedAt": "2026-01-25T06:38:19.100Z"
 	},
 	"mesa": {
 		"stars": 3381,
 		"forks": 1123,
-		"lastUpdate": "2026-01-23T15:18:50Z",
+		"lastUpdate": "2026-01-25T06:26:37Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-23T12:25:07Z",
 		"releaseVersion": "v3.4.2",
-		"fetchedAt": "2026-01-24T06:37:28.624Z"
+		"fetchedAt": "2026-01-25T06:38:19.354Z"
 	},
 	"brian2": {
-		"stars": 1103,
+		"stars": 1104,
 		"forks": 256,
 		"lastUpdate": "2026-01-20T12:20:44Z",
 		"description": "Brian is a free, open source simulator for spiking neural networks. ",
@@ -118,7 +118,7 @@
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-24T06:37:28.880Z"
+		"fetchedAt": "2026-01-25T06:38:19.593Z"
 	},
 	"scikit-fem": {
 		"stars": 605,
@@ -129,6 +129,6 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-24T06:37:29.135Z"
+		"fetchedAt": "2026-01-25T06:38:19.852Z"
 	}
 }
