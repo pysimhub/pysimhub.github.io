@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-25T06:38:16.996Z"
+		"fetchedAt": "2026-01-26T06:44:13.553Z"
 	},
 	"emerge": {
 		"stars": 135,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-25T06:38:17.240Z"
+		"fetchedAt": "2026-01-26T06:44:13.893Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-25T06:38:17.477Z"
+		"fetchedAt": "2026-01-26T06:44:14.215Z"
 	},
 	"scikit-rf": {
 		"stars": 844,
@@ -41,18 +41,18 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-25T06:38:17.768Z"
+		"fetchedAt": "2026-01-26T06:44:14.590Z"
 	},
 	"pathsim": {
 		"stars": 227,
 		"forks": 20,
-		"lastUpdate": "2026-01-22T09:36:05Z",
+		"lastUpdate": "2026-01-26T06:39:38Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-22T09:36:05Z",
 		"releaseVersion": "v0.16.5",
-		"fetchedAt": "2026-01-25T06:38:18.042Z"
+		"fetchedAt": "2026-01-26T06:44:14.961Z"
 	},
 	"bdsim": {
 		"stars": 238,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-25T06:38:18.324Z"
+		"fetchedAt": "2026-01-26T06:44:15.294Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,7 +74,7 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-25T06:38:18.611Z"
+		"fetchedAt": "2026-01-26T06:44:15.775Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 362,
@@ -85,7 +85,7 @@
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2026-01-24T14:22:48Z",
 		"releaseVersion": "v0.9.12",
-		"fetchedAt": "2026-01-25T06:38:18.878Z"
+		"fetchedAt": "2026-01-26T06:44:16.143Z"
 	},
 	"pymunk": {
 		"stars": 1038,
@@ -96,21 +96,21 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-25T06:38:19.100Z"
+		"fetchedAt": "2026-01-26T06:44:16.532Z"
 	},
 	"mesa": {
-		"stars": 3381,
-		"forks": 1123,
-		"lastUpdate": "2026-01-25T06:26:37Z",
+		"stars": 3382,
+		"forks": 1124,
+		"lastUpdate": "2026-01-25T21:03:28Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-23T12:25:07Z",
 		"releaseVersion": "v3.4.2",
-		"fetchedAt": "2026-01-25T06:38:19.354Z"
+		"fetchedAt": "2026-01-26T06:44:16.896Z"
 	},
 	"brian2": {
-		"stars": 1104,
+		"stars": 1105,
 		"forks": 256,
 		"lastUpdate": "2026-01-20T12:20:44Z",
 		"description": "Brian is a free, open source simulator for spiking neural networks. ",
@@ -118,7 +118,7 @@
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-25T06:38:19.593Z"
+		"fetchedAt": "2026-01-26T06:44:17.213Z"
 	},
 	"scikit-fem": {
 		"stars": 605,
@@ -129,6 +129,6 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-25T06:38:19.852Z"
+		"fetchedAt": "2026-01-26T06:44:17.665Z"
 	}
 }
