@@ -1,5 +1,5 @@
-PROJECT_ID=scikit-fem
-PROJECT_NAME=scikit-fem
-PROJECT_TAGLINE=Simple finite element assemblers
-PROJECT_TAGS=finite-element
-PROJECT_GITHUB=https://github.com/kinnala/scikit-fem
+PROJECT_ID=autoemulate
+PROJECT_NAME=AutoEmulate
+PROJECT_TAGLINE=Emulate simulations easily
+PROJECT_TAGS=digital-twin, engineering, physics, emulation, sensitivity analysis, calibration, uncertainty quantification
+PROJECT_GITHUB=https://github.com/alan-turing-institute/autoemulate
