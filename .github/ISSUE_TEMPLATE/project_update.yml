@@ -24,6 +24,7 @@ body:
       description: Select the project to update.
       options:
         - archimedes
+        - autoemulate
         - bdsim
         - brian2
         - emerge
@@ -84,6 +85,7 @@ body:
       description: Only check if you want to replace the current tags. Leave all unchecked to keep current tags.
       options:
         - label: block-diagram
+        - label: calibration
         - label: circuit
         - label: computational neuroscience
         - label: control
@@ -91,6 +93,7 @@ body:
         - label: digital-twin
         - label: dynamic-systems
         - label: electromagnetic
+        - label: emulation
         - label: engineering
         - label: finite-element
         - label: heating
@@ -103,12 +106,14 @@ body:
         - label: refrigeration
         - label: rf
         - label: robotics
+        - label: sensitivity analysis
         - label: snn
         - label: spiking neural network
         - label: system-modeling
         - label: thermodynamics
         - label: transient
         - label: translation
+        - label: uncertainty quantification
         - label: vensim
         - label: visualization
         - label: xmile

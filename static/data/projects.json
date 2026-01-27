@@ -251,7 +251,7 @@
 		"homepage": "https://www.autoemulate.com",
 		"example": "https://alan-turing-institute.github.io/autoemulate/tutorials/index.html",
 		"id": "autoemulate",
-		"logo": "https://raw.githubusercontent.com/alan-turing-institute/autoemulate/refs/heads/main/misc/AE_logo_final.png",
+		"logo": "/logos/autoemulate.png",
 		"submittedBy": "radka-j"
 	}
 ]

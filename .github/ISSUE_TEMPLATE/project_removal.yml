@@ -25,6 +25,7 @@ body:
       description: Select the project to remove.
       options:
         - archimedes
+        - autoemulate
         - bdsim
         - brian2
         - emerge
