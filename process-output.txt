@@ -1,5 +1,5 @@
-PROJECT_ID=autoemulate
-PROJECT_NAME=AutoEmulate
-PROJECT_TAGLINE=Emulate simulations easily
-PROJECT_TAGS=digital-twin, engineering, physics, emulation, sensitivity analysis, calibration, uncertainty quantification
-PROJECT_GITHUB=https://github.com/alan-turing-institute/autoemulate
+PROJECT_ID=festim
+PROJECT_NAME=FESTIM
+PROJECT_TAGLINE=Simulate hydrogen transport in materials
+PROJECT_TAGS=engineering, finite-element, physics, hydrogen
+PROJECT_GITHUB=https://github.com/festim-dev/FESTIM
