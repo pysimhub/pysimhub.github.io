@@ -8,10 +8,10 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-28T06:42:26.616Z"
+		"fetchedAt": "2026-01-29T06:54:49.736Z"
 	},
 	"emerge": {
-		"stars": 135,
+		"stars": 136,
 		"forks": 15,
 		"lastUpdate": "2026-01-23T19:31:29Z",
 		"description": "An electromagnetic field computation program",
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-28T06:42:26.861Z"
+		"fetchedAt": "2026-01-29T06:54:50.020Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-28T06:42:27.106Z"
+		"fetchedAt": "2026-01-29T06:54:50.275Z"
 	},
 	"scikit-rf": {
 		"stars": 845,
@@ -41,18 +41,18 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-28T06:42:27.398Z"
+		"fetchedAt": "2026-01-29T06:54:50.643Z"
 	},
 	"pathsim": {
 		"stars": 228,
 		"forks": 20,
-		"lastUpdate": "2026-01-27T12:48:17Z",
+		"lastUpdate": "2026-01-28T14:55:08Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-27T12:48:18Z",
 		"releaseVersion": "v0.16.7",
-		"fetchedAt": "2026-01-28T06:42:27.642Z"
+		"fetchedAt": "2026-01-29T06:54:51.010Z"
 	},
 	"bdsim": {
 		"stars": 238,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-28T06:42:27.910Z"
+		"fetchedAt": "2026-01-29T06:54:51.326Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,18 +74,18 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-28T06:42:28.173Z"
+		"fetchedAt": "2026-01-29T06:54:51.631Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
-		"stars": 362,
+		"stars": 363,
 		"forks": 124,
-		"lastUpdate": "2026-01-24T14:26:36Z",
+		"lastUpdate": "2026-01-29T06:41:32Z",
 		"description": "Thermal Engineering Systems in Python (TESPy). This package provides a powerful simulation toolkit for thermodynamic modeling of thermal engineering plants such as power plants, heat pumps or refrigeration machines.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2026-01-24T14:22:48Z",
 		"releaseVersion": "v0.9.12",
-		"fetchedAt": "2026-01-28T06:42:28.438Z"
+		"fetchedAt": "2026-01-29T06:54:51.953Z"
 	},
 	"pymunk": {
 		"stars": 1038,
@@ -96,29 +96,29 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-28T06:42:28.674Z"
+		"fetchedAt": "2026-01-29T06:54:52.210Z"
 	},
 	"mesa": {
-		"stars": 3390,
-		"forks": 1127,
-		"lastUpdate": "2026-01-27T14:22:48Z",
+		"stars": 3392,
+		"forks": 1129,
+		"lastUpdate": "2026-01-28T19:55:40Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-23T12:25:07Z",
 		"releaseVersion": "v3.4.2",
-		"fetchedAt": "2026-01-28T06:42:28.952Z"
+		"fetchedAt": "2026-01-29T06:54:52.506Z"
 	},
 	"brian2": {
-		"stars": 1105,
-		"forks": 257,
+		"stars": 1104,
+		"forks": 258,
 		"lastUpdate": "2026-01-20T12:20:44Z",
 		"description": "Brian is a free, open source simulator for spiking neural networks. ",
 		"license": "NOASSERTION",
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-28T06:42:29.225Z"
+		"fetchedAt": "2026-01-29T06:54:52.786Z"
 	},
 	"scikit-fem": {
 		"stars": 606,
@@ -129,17 +129,17 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-28T06:42:29.527Z"
+		"fetchedAt": "2026-01-29T06:54:53.041Z"
 	},
 	"autoemulate": {
 		"stars": 109,
 		"forks": 27,
-		"lastUpdate": "2026-01-27T23:05:32Z",
+		"lastUpdate": "2026-01-28T23:07:35Z",
 		"description": "Emulate simulations easily",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/alan-turing-institute.png?size=128",
 		"lastRelease": "2026-01-14T13:47:34Z",
 		"releaseVersion": "v2.0.0",
-		"fetchedAt": "2026-01-28T06:42:29.838Z"
+		"fetchedAt": "2026-01-29T06:54:53.364Z"
 	}
 }
