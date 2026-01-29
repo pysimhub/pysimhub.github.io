@@ -29,6 +29,7 @@ body:
         - bdsim
         - brian2
         - emerge
+        - festim
         - heavi
         - mesa
         - pathsim
