@@ -8,7 +8,7 @@
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-29T21:57:08.957Z"
+		"fetchedAt": "2026-01-30T06:56:19.080Z"
 	},
 	"emerge": {
 		"stars": 136,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-01-29T21:57:09.212Z"
+		"fetchedAt": "2026-01-30T06:56:19.421Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,7 +30,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-01-29T21:57:09.475Z"
+		"fetchedAt": "2026-01-30T06:56:19.751Z"
 	},
 	"scikit-rf": {
 		"stars": 845,
@@ -41,10 +41,10 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2025-11-30T13:16:41Z",
 		"releaseVersion": "v1.9.0",
-		"fetchedAt": "2026-01-29T21:57:09.766Z"
+		"fetchedAt": "2026-01-30T06:56:20.027Z"
 	},
 	"pathsim": {
-		"stars": 231,
+		"stars": 232,
 		"forks": 20,
 		"lastUpdate": "2026-01-29T10:39:04Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
@@ -52,7 +52,7 @@
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-27T12:48:18Z",
 		"releaseVersion": "v0.16.7",
-		"fetchedAt": "2026-01-29T21:57:10.098Z"
+		"fetchedAt": "2026-01-30T06:56:20.311Z"
 	},
 	"bdsim": {
 		"stars": 238,
@@ -63,7 +63,7 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-01-29T21:57:10.402Z"
+		"fetchedAt": "2026-01-30T06:56:20.632Z"
 	},
 	"pysd": {
 		"stars": 435,
@@ -74,7 +74,7 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-01-29T21:57:10.729Z"
+		"fetchedAt": "2026-01-30T06:56:20.905Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 363,
@@ -85,7 +85,7 @@
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2026-01-24T14:22:48Z",
 		"releaseVersion": "v0.9.12",
-		"fetchedAt": "2026-01-29T21:57:11.541Z"
+		"fetchedAt": "2026-01-30T06:56:21.192Z"
 	},
 	"pymunk": {
 		"stars": 1038,
@@ -96,18 +96,18 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-01-29T21:57:11.916Z"
+		"fetchedAt": "2026-01-30T06:56:21.478Z"
 	},
 	"mesa": {
-		"stars": 3396,
-		"forks": 1129,
+		"stars": 3397,
+		"forks": 1130,
 		"lastUpdate": "2026-01-29T14:03:59Z",
 		"description": "Mesa is an open-source Python library for agent-based modeling, ideal for simulating complex systems and exploring emergent behaviors.",
 		"license": "Apache-2.0",
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-23T12:25:07Z",
 		"releaseVersion": "v3.4.2",
-		"fetchedAt": "2026-01-29T21:57:12.211Z"
+		"fetchedAt": "2026-01-30T06:56:21.759Z"
 	},
 	"brian2": {
 		"stars": 1104,
@@ -118,7 +118,7 @@
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-01-29T21:57:12.496Z"
+		"fetchedAt": "2026-01-30T06:56:22.095Z"
 	},
 	"scikit-fem": {
 		"stars": 606,
@@ -129,18 +129,18 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-01-29T21:57:12.765Z"
+		"fetchedAt": "2026-01-30T06:56:22.373Z"
 	},
 	"autoemulate": {
 		"stars": 109,
 		"forks": 27,
-		"lastUpdate": "2026-01-29T17:08:26Z",
+		"lastUpdate": "2026-01-29T23:07:23Z",
 		"description": "Emulate simulations easily",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/alan-turing-institute.png?size=128",
 		"lastRelease": "2026-01-14T13:47:34Z",
 		"releaseVersion": "v2.0.0",
-		"fetchedAt": "2026-01-29T21:57:13.096Z"
+		"fetchedAt": "2026-01-30T06:56:22.678Z"
 	},
 	"festim": {
 		"stars": 115,
@@ -151,6 +151,6 @@
 		"avatarUrl": "https://github.com/festim-dev.png?size=128",
 		"lastRelease": "2025-08-28T18:03:40Z",
 		"releaseVersion": "v1.4.1.post1",
-		"fetchedAt": "2026-01-29T21:57:13.393Z"
+		"fetchedAt": "2026-01-30T06:56:22.950Z"
 	}
 }
