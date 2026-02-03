@@ -36,6 +36,7 @@ body:
         - pysd
         - scikit-fem
         - scikit-rf
+        - sfepy
         - thermal-engineering-systems-in-python-tespy
     validations:
       required: true
@@ -98,6 +99,7 @@ body:
         - label: engineering
         - label: finite-element
         - label: heating
+        - label: homogenization
         - label: hydrogen
         - label: microwave
         - label: network

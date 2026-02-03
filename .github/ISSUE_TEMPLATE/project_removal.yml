@@ -37,6 +37,7 @@ body:
         - pysd
         - scikit-fem
         - scikit-rf
+        - sfepy
         - thermal-engineering-systems-in-python-tespy
     validations:
       required: true

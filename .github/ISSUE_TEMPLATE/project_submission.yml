@@ -70,6 +70,7 @@ body:
         - label: engineering
         - label: finite-element
         - label: heating
+        - label: homogenization
         - label: hydrogen
         - label: microwave
         - label: network
