@@ -1,5 +1,5 @@
-PROJECT_ID=festim
-PROJECT_NAME=FESTIM
-PROJECT_TAGLINE=Simulate hydrogen transport in materials
-PROJECT_TAGS=engineering, finite-element, physics, hydrogen
-PROJECT_GITHUB=https://github.com/festim-dev/FESTIM
+PROJECT_ID=sfepy
+PROJECT_NAME=SfePy
+PROJECT_TAGLINE=Simple finite elements in Python
+PROJECT_TAGS=engineering, finite-element, homogenization
+PROJECT_GITHUB=https://github.com/sfepy/sfepy
