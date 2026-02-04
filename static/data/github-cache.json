@@ -2,13 +2,13 @@
 	"archimedes": {
 		"stars": 147,
 		"forks": 11,
-		"lastUpdate": "2026-01-16T18:56:22Z",
+		"lastUpdate": "2026-02-04T01:11:14Z",
 		"description": null,
 		"license": "GPL-3.0",
 		"avatarUrl": "https://github.com/PineTreeLabs.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-02-03T14:59:06.505Z"
+		"fetchedAt": "2026-02-04T06:59:03.700Z"
 	},
 	"emerge": {
 		"stars": 136,
@@ -19,7 +19,7 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2026-01-17T10:41:06Z",
 		"releaseVersion": "v2.1.0",
-		"fetchedAt": "2026-02-03T14:59:06.842Z"
+		"fetchedAt": "2026-02-04T06:59:03.962Z"
 	},
 	"heavi": {
 		"stars": 24,
@@ -30,10 +30,10 @@
 		"avatarUrl": "https://github.com/FennisRobert.png?size=128",
 		"lastRelease": "2025-12-23T16:25:27Z",
 		"releaseVersion": "v0.7.9",
-		"fetchedAt": "2026-02-03T14:59:07.195Z"
+		"fetchedAt": "2026-02-04T06:59:04.205Z"
 	},
 	"scikit-rf": {
-		"stars": 846,
+		"stars": 847,
 		"forks": 324,
 		"lastUpdate": "2026-02-02T18:03:59Z",
 		"description": "RF and Microwave Engineering Scikit ",
@@ -41,18 +41,18 @@
 		"avatarUrl": "https://github.com/scikit-rf.png?size=128",
 		"lastRelease": "2026-02-01T11:59:47Z",
 		"releaseVersion": "v1.10.0",
-		"fetchedAt": "2026-02-03T14:59:07.561Z"
+		"fetchedAt": "2026-02-04T06:59:04.521Z"
 	},
 	"pathsim": {
-		"stars": 243,
-		"forks": 20,
+		"stars": 244,
+		"forks": 21,
 		"lastUpdate": "2026-01-29T10:39:04Z",
 		"description": "A Python native dynamical system simulation framework in the block diagram paradigm.",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/pathsim.png?size=128",
 		"lastRelease": "2026-01-27T12:48:18Z",
 		"releaseVersion": "v0.16.7",
-		"fetchedAt": "2026-02-03T14:59:07.918Z"
+		"fetchedAt": "2026-02-04T06:59:04.873Z"
 	},
 	"bdsim": {
 		"stars": 240,
@@ -63,10 +63,10 @@
 		"avatarUrl": "https://github.com/petercorke.png?size=128",
 		"lastRelease": "2022-07-14T11:23:39Z",
 		"releaseVersion": "0.9.0",
-		"fetchedAt": "2026-02-03T14:59:08.279Z"
+		"fetchedAt": "2026-02-04T06:59:05.149Z"
 	},
 	"pysd": {
-		"stars": 435,
+		"stars": 436,
 		"forks": 94,
 		"lastUpdate": "2025-12-22T09:03:36Z",
 		"description": "System Dynamics Modeling in Python",
@@ -74,7 +74,7 @@
 		"avatarUrl": "https://github.com/SDXorg.png?size=128",
 		"lastRelease": "2025-03-23T14:45:03Z",
 		"releaseVersion": "v3.14.3",
-		"fetchedAt": "2026-02-03T14:59:08.637Z"
+		"fetchedAt": "2026-02-04T06:59:05.424Z"
 	},
 	"thermal-engineering-systems-in-python-tespy": {
 		"stars": 363,
@@ -85,7 +85,7 @@
 		"avatarUrl": "https://github.com/oemof.png?size=128",
 		"lastRelease": "2026-01-24T14:22:48Z",
 		"releaseVersion": "v0.9.12",
-		"fetchedAt": "2026-02-03T14:59:09.018Z"
+		"fetchedAt": "2026-02-04T06:59:05.698Z"
 	},
 	"pymunk": {
 		"stars": 1038,
@@ -96,7 +96,7 @@
 		"avatarUrl": "https://github.com/viblo.png?size=128",
 		"lastRelease": "2025-11-02T18:47:39Z",
 		"releaseVersion": "7.2.0",
-		"fetchedAt": "2026-02-03T14:59:09.342Z"
+		"fetchedAt": "2026-02-04T06:59:06.003Z"
 	},
 	"mesa": {
 		"stars": 3401,
@@ -107,18 +107,18 @@
 		"avatarUrl": "https://github.com/mesa.png?size=128",
 		"lastRelease": "2026-01-23T12:25:07Z",
 		"releaseVersion": "v3.4.2",
-		"fetchedAt": "2026-02-03T14:59:09.702Z"
+		"fetchedAt": "2026-02-04T06:59:06.275Z"
 	},
 	"brian2": {
-		"stars": 1112,
-		"forks": 262,
+		"stars": 1113,
+		"forks": 263,
 		"lastUpdate": "2026-02-01T01:06:54Z",
 		"description": "Brian is a free, open source simulator for spiking neural networks. ",
 		"license": "NOASSERTION",
 		"avatarUrl": "https://github.com/brian-team.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-02-03T14:59:10.053Z"
+		"fetchedAt": "2026-02-04T06:59:06.567Z"
 	},
 	"scikit-fem": {
 		"stars": 607,
@@ -129,18 +129,18 @@
 		"avatarUrl": "https://github.com/kinnala.png?size=128",
 		"lastRelease": "2026-01-19T12:26:57Z",
 		"releaseVersion": "12.0.0",
-		"fetchedAt": "2026-02-03T14:59:10.393Z"
+		"fetchedAt": "2026-02-04T06:59:06.825Z"
 	},
 	"autoemulate": {
 		"stars": 109,
 		"forks": 27,
-		"lastUpdate": "2026-02-02T23:07:48Z",
+		"lastUpdate": "2026-02-03T23:08:59Z",
 		"description": "Emulate simulations easily",
 		"license": "MIT",
 		"avatarUrl": "https://github.com/alan-turing-institute.png?size=128",
 		"lastRelease": "2026-01-14T13:47:34Z",
 		"releaseVersion": "v2.0.0",
-		"fetchedAt": "2026-02-03T14:59:10.753Z"
+		"fetchedAt": "2026-02-04T06:59:07.118Z"
 	},
 	"festim": {
 		"stars": 115,
@@ -151,7 +151,7 @@
 		"avatarUrl": "https://github.com/festim-dev.png?size=128",
 		"lastRelease": "2025-08-28T18:03:40Z",
 		"releaseVersion": "v1.4.1.post1",
-		"fetchedAt": "2026-02-03T14:59:11.069Z"
+		"fetchedAt": "2026-02-04T06:59:07.392Z"
 	},
 	"sfepy": {
 		"stars": 821,
@@ -162,6 +162,6 @@
 		"avatarUrl": "https://github.com/sfepy.png?size=128",
 		"lastRelease": null,
 		"releaseVersion": null,
-		"fetchedAt": "2026-02-03T14:59:11.481Z"
+		"fetchedAt": "2026-02-04T06:59:07.687Z"
 	}
 }
