@@ -30,6 +30,7 @@ body:
         - emerge
         - festim
         - heavi
+        - lcapy
         - mesa
         - pathsim
         - pymunk
