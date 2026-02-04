@@ -1,5 +1,5 @@
-PROJECT_ID=sfepy
-PROJECT_NAME=SfePy
-PROJECT_TAGLINE=Simple finite elements in Python
-PROJECT_TAGS=engineering, finite-element, homogenization
-PROJECT_GITHUB=https://github.com/sfepy/sfepy
+PROJECT_ID=lcapy
+PROJECT_NAME=Lcapy
+PROJECT_TAGLINE=Linear circuit analysis and symbolic signal processing
+PROJECT_TAGS=circuit, control, system-modeling
+PROJECT_GITHUB=https://github.com/mph-/lcapy
